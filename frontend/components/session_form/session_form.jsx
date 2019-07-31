@@ -21,7 +21,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.action(user);
     }
 
     renderErrors() {
@@ -37,44 +37,77 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        return (
-            <div className="login-form-container">
-                <form onSubmit={this.handleSubmit} className="login-form-box">
-                    Welcome to Spoofify!
+        if (this.props.formType === 'login') {
+            return (
+                <div className="login-form-container">
+                    <form onSubmit={this.handleSubmit} className="login-form-box">
+                        Welcome to Spoofify!
           <br />
-                    Please {this.props.formType} or {this.props.navLink}
-                    {this.renderErrors()}
-                    <div className="login-form">
-                        <br />
-                        <label>Username:
+                        Please {this.props.formType} or {this.props.navLink}
+                        {this.renderErrors()}
+                        <div className="login-form">
+                            <br />
+                            <label>Username/Email:
               <input type="text"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                                className="login-input"
-                            />
-                        </label>
-                        <br />
-                        <label>Email:
-              <input type="text"
-                                value={this.state.eamil}
-                                onChange={this.update('email')}
-                                className="login-input"
-                            />
-                        </label>
-                        <br />
-                        <label>Password:
+                                    value={this.state.username}
+                                    onChange={this.update('username')}
+                                    className="login-input"
+                                />
+                            </label>
+                            <br />
+                            <label>Password:
               <input type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                                className="login-input"
-                            />
-                        </label>
-                        <br />
-                        <input className="session-submit" type="submit" value={this.props.formType} />
-                    </div>
-                </form>
-            </div>
-        );
+                                    value={this.state.password}
+                                    onChange={this.update('password')}
+                                    className="login-input"
+                                />
+                            </label>
+                            <br />
+                            <input className="session-submit" type="submit" value={this.props.formType} />
+                        </div>
+                    </form>
+                </div>
+            );
+        } else {
+            return (
+                <div className="login-form-container">
+                    <form onSubmit={this.handleSubmit} className="login-form-box">
+                        Welcome to Spoofify!
+                    <br />
+                        Please {this.props.formType} or {this.props.navLink}
+                        {this.renderErrors()}
+                        <div className="login-form">
+                            <br />
+                            <label>Username:
+              <input type="text"
+                                    value={this.state.username}
+                                    onChange={this.update('username')}
+                                    className="login-input"
+                                />
+                            </label>
+                            <br />
+                            <label>Email:
+              <input type="text"
+                                    value={this.state.email}
+                                    onChange={this.update('email')}
+                                    className="login-input"
+                                />
+                            </label>
+                            <br />
+                            <label>Password:
+              <input type="password"
+                                    value={this.state.password}
+                                    onChange={this.update('password')}
+                                    className="login-input"
+                                />
+                            </label>
+                            <br />
+                            <input className="session-submit" type="submit" value={this.props.formType} />
+                        </div>
+                    </form>
+                </div>
+            );
+        }
     }
 }
 
