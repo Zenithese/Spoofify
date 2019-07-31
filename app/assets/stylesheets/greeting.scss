@@ -1,0 +1,102 @@
+#root {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.title {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    width: 50%;
+}
+
+.login-signup {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    // position: relative;
+    // left: 87%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 16px;
+    font-weight: 666;
+    color: whitesmoke;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.links {
+    
+}
+
+.greeting {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    padding-bottom: 250px;    
+}
+
+.greeting h2{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 50px;
+    line-height: 0em;
+}
+
+.greeting h3{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    line-height: 0em;
+}
+
+.listen-button {
+    background-color:rgb(16, 185, 16);
+    color: rgb(250, 234, 4);
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.listen-button:hover{
+    color:rgb(16, 185, 16);
+    background-color: (rgb(250, 234, 4));
+}
+
+.totality {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(250, 234, 4, 0.5), rgba(153, 0, 255, 0.5)), url('bubbles.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // left: 0;
+    // right: 0;
+}
+
+// Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+
+
+
