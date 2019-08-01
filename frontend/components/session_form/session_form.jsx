@@ -61,12 +61,12 @@ class SessionForm extends React.Component {
         if (this.props.formType === 'login') {
             return (
                 <div className="login-form-container">
+                    <h1>Welcome to Spoofify!</h1>
+                    <div className="line-width-1">
+                        <div className="split-1" />
+                    </div>
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        <h1>Welcome to Spoofify!</h1>
-                        <div className="line-width-1">
-                            <div className="split-1" />
-                        </div>
-          <br />
+                        <br />
                         <div className="demo-direction">To continue, log in to Spoofify.</div>
                         <div className="demo">
                             <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
@@ -120,11 +120,11 @@ class SessionForm extends React.Component {
         } else {
             return (
                 <div className="login-form-container">
+                    <h1>Welcome to Spoofify!</h1>
+                    <div className="line-width-1">
+                        <div className="split-1" />
+                    </div>
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        <h1>Welcome to Spoofify!</h1>
-                        <div className="line-width-1">
-                            <div className="split-1" />
-                        </div>
                     <br />
                         {errors}
                         <div className="login-form">

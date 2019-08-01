@@ -1,10 +1,11 @@
 .line-width-1 {
-    width: 10000000vh;
+    width: 100%;
+    position: relative;
 }
 
 .split-1 {
     border-top: 1px solid rgb(199, 199, 199);
-    display: block;
+    display: flex;
     position: relative;
     text-align: center;
 }
