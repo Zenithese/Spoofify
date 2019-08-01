@@ -5,10 +5,12 @@
     align-items: center;
     flex-direction: column;
     margin: auto;
-    padding-top: 250px;  
+    // padding-top: 250px;  
 }
 
 .login-form-container h1{
+    font-size: 50px;
+    font-family: cursive;
 }
 
 .login-form-box {
@@ -21,10 +23,11 @@
     display: flex;
     // align-items: center;
     flex-direction: column;
+    line-height: 0em;
 }
 
 .login-input {
-    width: 30vh;
+    width: 45vh;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -38,43 +41,40 @@
 }
 
 .demo-button {
-    background-color:rgb(16, 185, 16);
-    color: rgb(250, 234, 4);
+    background-color: #3b5998;
+    color: #fff;
     padding: 15px 25px;
     border: none;
     cursor: pointer;
-    width: 30vh;
+    width: 45vh;
     // text-align: center;
     font-size: 15px;
+    letter-spacing: 2px;
     border-radius: 50px;
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 20px;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 .demo-button:hover{
-    color:rgb(16, 185, 16);
-    background-color: (rgb(250, 234, 4));
+    color:#fff;
+    background-color: #4667af;
 }
 
 .line-width {
-    width: 100%;
+    width: 45vh;
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
     box-sizing: border-box;
-    font-family: Circular,Helvetica,Arial,sans-serif;
-    font-size: 16px;
     line-height: 1.5;
-    color: #222326;
     background-color: #fff;
     font-weight: 400;
 }
 
 .split {
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(199, 199, 199);
     display: block;
     line-height: 1px;
     margin: 15px 0;
@@ -112,20 +112,24 @@
 
 .session-submit {
     background-color:rgb(16, 185, 16);
-    color: rgb(250, 234, 4);
+    color: white;
     padding: 15px 25px;
     border: none;
     cursor: pointer;
     position: relative;
-    right: -144px;
-    width: 50%;
+    // right: -200px;
+    margin: auto;
+    width: 45vh;
     text-align: center;
     font-size: 15px;
+    letter-spacing: 2px;
     border-radius: 50px;
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 20px;
     text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
 
@@ -135,22 +139,26 @@
 }
 
 .switchform {
-    background-color:rgb(16, 185, 16);
-    color: rgb(250, 234, 4);
+    background-color:white;
+    color: rgb(97, 100, 103);
     padding: 15px 25px;
-    border: none;
+    border: 2px solid transparent;
+    border-color: rgb(97, 100, 103);
     cursor: pointer;
     text-align: center;
-    width: 30vh;
+    width: 40vh;
     font-size: 15px;
     border-radius: 50px;
     font-weight: 600;
+    letter-spacing: 2px;
     margin-top: 20px;
     margin-bottom: 20px;
     text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
 .switchform:hover{
-    color:rgb(16, 185, 16);
-    background-color: (rgb(250, 234, 4));
+    color:white;
+    background-color: (rgb(97, 100, 103));
 }

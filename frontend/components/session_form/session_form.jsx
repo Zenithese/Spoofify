@@ -11,6 +11,12 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        // this.oldState = this.state;
+    }
+
+    componentWillUnmount() {
+        debugger
+        this.props.removeErrors();
     }
 
     update(field) {
@@ -62,7 +68,7 @@ class SessionForm extends React.Component {
                         <br/>
                         <div class="line-width"> 
                             <div className="split">
-                                <strong class="or">or</strong>
+                                <strong className="or">or</strong>
                             </div>
                         </div>
                         <br/>
@@ -74,10 +80,10 @@ class SessionForm extends React.Component {
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     className="login-input"
-                                    autocomplete="off"
-                                    autocorrect="off"
-                                    autocapitalize="off"
-                                    spellcheck="false"
+                                    autoComplete="off"
+                                    autoCorrect="off"
+                                    autoCapitalize="off"
+                                    spellCheck="false"
                                     placeholder="Username/Email"
                                 />
                             </label>
@@ -92,13 +98,16 @@ class SessionForm extends React.Component {
                                 />
                             </label>
                             <br />
-                            <input className="session-submit" type="submit" value={this.props.formType} />
+                            <input onClick={this.props.handleErrors} className="session-submit" type="submit" value={this.props.formType} />
                         </div>
-                        <div class="line-width">
+                        <div className="line-width">
                             <div className="split" />
                         </div>
                         Not a member?
                         {this.props.navLink}
+                        <div className="line-width">
+                            <div className="split" />
+                        </div>
                     </form>
                 </div>
             );
@@ -108,7 +117,6 @@ class SessionForm extends React.Component {
                     <form onSubmit={this.handleSubmit} className="login-form-box">
                         <h1>Welcome to Spoofify!</h1>
                     <br />
-                        Please {this.props.formType}
                         {this.renderErrors()}
                         <div className="login-form">
                             <br />
@@ -117,10 +125,10 @@ class SessionForm extends React.Component {
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     className="login-input"
-                                    autocomplete="off" 
-                                    autocorrect="off" 
-                                    autocapitalize="off" 
-                                    spellcheck="false"
+                                    autoComplete="off" 
+                                    autoCorrect="off" 
+                                    autoCapitalize="off" 
+                                    spellCheck="false"
                                     placeholder="Username"
                                 />
                             </label>
@@ -130,10 +138,10 @@ class SessionForm extends React.Component {
                                     value={this.state.email}
                                     onChange={this.update('email')}
                                     className="login-input"
-                                    autocomplete="off"
-                                    autocorrect="off"
-                                    autocapitalize="off"
-                                    spellcheck="false"
+                                    autoComplete="off"
+                                    autoCorrect="off"
+                                    autoCapitalize="off"
+                                    spellCheck="false"
                                     placeholder="Email"
                                 />
                             </label>
@@ -147,14 +155,17 @@ class SessionForm extends React.Component {
                                 />
                             </label>
                             <br />
-                            <input className="session-submit" type="submit" value={this.props.formType} />
+                            <input onClick={this.props.handleErrors} className="session-submit" type="submit" value={this.props.formType} />
                         </div>
-                        <div class="line-width">
+                        <div className="line-width">
                             <div className="split"/>
                         </div>
                         <br />
                         Already a member?
                         {this.props.navLink}
+                        <div className="line-width">
+                            <div className="split" />
+                        </div>
                     </form>
                 </div>
             );
