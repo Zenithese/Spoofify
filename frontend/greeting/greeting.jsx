@@ -19,7 +19,7 @@ const Greeting = ({ currentUser, logout }) => {
                 <div className='greeting'>
                     <h2>Music for everyone.</h2>
                     <h3>A number of songs. No credit card needed.</h3>
-                    <Link to="/signup" className="listen-button">Join</Link>
+                    <Link to="/signup" className="listen-button">Join Here</Link>
                 </div>
         </div>
     );
