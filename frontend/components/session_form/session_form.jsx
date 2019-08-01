@@ -60,29 +60,42 @@ class SessionForm extends React.Component {
                             <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
                         </div>
                         <br/>
-                        ---------or---------
+                        <div class="line-width"> 
+                            <div className="split">
+                                <strong class="or">or</strong>
+                            </div>
+                        </div>
                         <br/>
-                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;{this.props.formType}
                         {this.renderErrors()}
                         <div className="login-form">
                             <br />
-                            <label>Username/Email:
+                            <label>
               <input type="text"
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     className="login-input"
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    autocapitalize="off"
+                                    spellcheck="false"
+                                    placeholder="Username/Email"
                                 />
                             </label>
                             <br />
-                            <label>Password:
+                            <label>
               <input type="password"
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     className="login-input"
+                                    placeholder="Password"
+
                                 />
                             </label>
                             <br />
                             <input className="session-submit" type="submit" value={this.props.formType} />
+                        </div>
+                        <div class="line-width">
+                            <div className="split" />
                         </div>
                         Not a member?
                         {this.props.navLink}
@@ -99,32 +112,47 @@ class SessionForm extends React.Component {
                         {this.renderErrors()}
                         <div className="login-form">
                             <br />
-                            <label>Username:
+                            <label>
               <input type="text"
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     className="login-input"
+                                    autocomplete="off" 
+                                    autocorrect="off" 
+                                    autocapitalize="off" 
+                                    spellcheck="false"
+                                    placeholder="Username"
                                 />
                             </label>
                             <br />
-                            <label>Email:
+                            <label>
               <input type="text"
                                     value={this.state.email}
                                     onChange={this.update('email')}
                                     className="login-input"
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    autocapitalize="off"
+                                    spellcheck="false"
+                                    placeholder="Email"
                                 />
                             </label>
                             <br />
-                            <label>Password:
+                            <label>
               <input type="password"
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     className="login-input"
+                                    placeholder="Password"
                                 />
                             </label>
                             <br />
                             <input className="session-submit" type="submit" value={this.props.formType} />
                         </div>
+                        <div class="line-width">
+                            <div className="split"/>
+                        </div>
+                        <br />
                         Already a member?
                         {this.props.navLink}
                     </form>
