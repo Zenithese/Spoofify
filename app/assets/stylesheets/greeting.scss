@@ -9,13 +9,17 @@
 
 .title {
     font-family: Circular, Helvetica, Arial, sans-serif;
-    width: 50%;
+    padding-left: 30px;
 }
 
 .login-signup {
     font-family: Circular, Helvetica, Arial, sans-serif;
     // position: relative;
     // left: 87%;
+    z-index: 2;
+    align-items: center;
+    width: 200px;
+    padding-top: 30px;
 }
 
 .navbar {
@@ -28,11 +32,15 @@
     position: fixed;
     right: 0;
     left: 0;
+    top:0;
     z-index: 1;
 }
 
 .links {
-    
+    color: whitesmoke;
+    padding-right: 30px;
+    align-items: center;
+    text-decoration: none;
 }
 
 .greeting {
@@ -74,6 +82,7 @@
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .listen-button:hover{
@@ -88,10 +97,12 @@
     height: 100vh;
     background: linear-gradient(rgba(250, 234, 4, 0.5), rgba(153, 0, 255, 0.5)), url('bubbles.svg');
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-repeat: no-repeat;
+    background-size: fill;
     // left: 0;
     // right: 0;
+    // top: 0;
+    z-index: 0;
 }
 
 // Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

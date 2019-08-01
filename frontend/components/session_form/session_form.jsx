@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
             email: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
     }
 
     update(field) {
@@ -21,6 +22,15 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
+        this.props.action(user);
+    }
+
+    handleDemo(e) {
+        e.preventDefault();
+        const user = {
+            username: 'OG',
+            password: 'password'
+        };
         this.props.action(user);
     }
 
@@ -44,9 +54,15 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        Welcome to Spoofify!
+                        <h1>Welcome to Spoofify!</h1>
           <br />
-                        Please {this.props.formType} or {this.props.navLink}
+                        <div className="demo">
+                            <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
+                        </div>
+                        <br/>
+                        ---------or---------
+                        <br/>
+                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;{this.props.formType}
                         {this.renderErrors()}
                         <div className="login-form">
                             <br />
@@ -68,6 +84,8 @@ class SessionForm extends React.Component {
                             <br />
                             <input className="session-submit" type="submit" value={this.props.formType} />
                         </div>
+                        Not a member?
+                        {this.props.navLink}
                     </form>
                 </div>
             );
@@ -75,9 +93,9 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        Welcome to Spoofify!
+                        <h1>Welcome to Spoofify!</h1>
                     <br />
-                        Please {this.props.formType} or {this.props.navLink}
+                        Please {this.props.formType}
                         {this.renderErrors()}
                         <div className="login-form">
                             <br />
@@ -107,6 +125,8 @@ class SessionForm extends React.Component {
                             <br />
                             <input className="session-submit" type="submit" value={this.props.formType} />
                         </div>
+                        Already a member?
+                        {this.props.navLink}
                     </form>
                 </div>
             );

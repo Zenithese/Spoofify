@@ -12,13 +12,13 @@ const Greeting = ({ currentUser, logout }) => {
                     <nav className="login-signup">
                     <Link className="links" to="/login">Login</Link>
                         &nbsp; &nbsp;
-                    <Link className="links" to="/signup">Sign up!</Link>
+                    <Link className="links" to="/signup">Join</Link>
                     </nav>
             </div>
                 <div className='greeting'>
                     <h2>Music for everyone.</h2>
                     <h3>A number of songs. It's free!</h3>
-                    <Link to="/signup" className="listen-button">Sign up!</Link>
+                    <Link to="/signup" className="listen-button">Join</Link>
                 </div>
         </div>
     );
