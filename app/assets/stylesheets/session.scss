@@ -125,6 +125,22 @@
     text-transform: uppercase;
 }
 
+.errors {
+    list-style-type: none;
+    border-width: 0;
+    font-size: 12px;
+    padding: 14px 14px 12px;
+    font-weight: 400;
+    background-color: #f59b23;
+    border-color: #f59b23;
+    color: #fff;
+    margin-bottom: 24px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    width: 66vh;
+    text-align: center;
+}
+
 .session-submit {
     background-color:rgb(29, 185, 84);
     color: white;
