@@ -51,16 +51,18 @@
     flex-direction: column;
     margin: auto;
     box-sizing: border-box;
+    padding-top: 95px;
     
 }
 
 .greeting h2{
     color: white;
-    font-size: 48px;
-    font-weight: 900;
+    // font-weight: bolder;
     letter-spacing: -0.04em;
     line-height: 1.15;
-    margin-top: 0;
+    // margin-top: 0;
+    margin: auto;
+    font-size: 80px;
 }
 
 .greeting h3{
@@ -71,15 +73,17 @@
     line-height: 0em;
     font-weight: 500;
     letter-spacing: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .listen-button {
-    background-color:rgb(16, 185, 16);
+    background-color:rgb(29, 185, 84);
     color:  white;
     padding: 15px 25px;
     border: none;
     cursor: pointer;
-    width: 50%;
+    width: 30vh;
     text-align: center;
     font-size: 15px;
     border-radius: 50px;
@@ -89,6 +93,7 @@
     text-decoration: none;
     transition: 0.3s;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .listen-button:hover{
@@ -104,7 +109,7 @@
     background: linear-gradient(rgba(250, 234, 4, 0.5), rgba(153, 0, 255, 0.5)), image-url('bubbles.svg');
     background-position: center;
     // background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fill;
     // left: 0;
     // right: 0;
     // top: 0;
@@ -112,6 +117,8 @@
 }
 
 // Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+// rgb(30, 215, 96)
 
 
 

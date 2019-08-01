@@ -1,16 +1,27 @@
+.line-width-1 {
+    width: 10000000vh;
+}
+
+.split-1 {
+    border-top: 1px solid rgb(199, 199, 199);
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
 .login-form-container {
     font-family: Circular, Helvetica, Arial, sans-serif;
     display: flex;
     position: relative;
     align-items: center;
     flex-direction: column;
-    margin: auto;
+    // margin: auto;
     background-color: white;
     // padding-top: 250px;  
 }
 
 .login-form-container h1{
-    font-size: 50px;
+    font-size: 40px;
     font-family: cursive;
 }
 
@@ -28,7 +39,7 @@
 }
 
 .login-input {
-    width: 45vh;
+    width: 70vh;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -38,24 +49,26 @@
     // font-size: 50px;
 }
 
-.demo {
-    
+.demo-direction {
+    font-size: 17px;
+    font-weight: bolder;
+    padding-top: 15px;
 }
 
 .demo-button {
     background-color: #3b5998;
     color: #fff;
     padding: 15px 25px;
+    margin-top: 20px;
+    margin-bottom: 5px;
     border: none;
     cursor: pointer;
-    width: 45vh;
+    width: 70vh;
     // text-align: center;
     font-size: 15px;
     letter-spacing: 2px;
     border-radius: 50px;
     font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-decoration: none;
     transition: 0.3s;
 }
@@ -66,26 +79,26 @@
 }
 
 .line-width {
-    width: 45vh;
-    position: relative;
-    min-height: 1px;
-    box-sizing: border-box;
-    line-height: 1.5;
-    background-color: #fff;
-    font-weight: 400;
+    width: 70vh;
+    // position: relative;
+    // min-height: 1px;
+    // box-sizing: border-box;
+    // line-height: 1.5;
+    // background-color: #fff;
+    // font-weight: 400;
 }
 
 .split {
     border-top: 1px solid rgb(199, 199, 199);
     display: block;
     line-height: 1px;
-    margin: 15px 0;
+    // margin: 15px 0;
     position: relative;
     text-align: center;
 }
 
 .or {
-    box-sizing: border-box;
+    // box-sizing: border-box;
     background-attachment: scroll;
     background-clip: border-box;
     background-color: rgb(255, 255, 255);
@@ -93,7 +106,7 @@
     background-origin: padding-box;
     background-position-x: 0%;
     background-position-y: 0%;
-    background-size: auto;
+    // background-size: auto;
     box-sizing: border-box;
     color: rgb(34, 35, 38);
     display: inline;
@@ -113,7 +126,7 @@
 }
 
 .session-submit {
-    background-color:rgb(16, 185, 16);
+    background-color:rgb(29, 185, 84);
     color: white;
     padding: 15px 25px;
     border: none;
@@ -121,7 +134,7 @@
     position: relative;
     // right: -200px;
     margin: auto;
-    width: 45vh;
+    width: 70vh;
     text-align: center;
     font-size: 15px;
     letter-spacing: 2px;
@@ -140,6 +153,12 @@
     background-color:  rgba(153, 0, 255, 0.5);
 }
 
+.switch-question {
+    font-size: 17px;
+    font-weight: bolder;
+    padding-top: 15px;
+}
+
 .switchform {
     background-color:white;
     color: rgb(97, 100, 103);
@@ -148,7 +167,7 @@
     border-color: rgb(97, 100, 103);
     cursor: pointer;
     text-align: center;
-    width: 36vh;
+    width: 61vh;
     font-size: 15px;
     border-radius: 50px;
     font-weight: 600;

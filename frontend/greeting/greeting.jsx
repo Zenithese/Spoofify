@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const Greeting = ({ currentUser, logout }) => {
     
     const sessionLinks = () => (
@@ -10,14 +11,14 @@ const Greeting = ({ currentUser, logout }) => {
            <div className="navbar">
                 <h1 className='title'>Spoofify</h1>
                     <nav className="login-signup">
-                    <Link className="links" to="/login">Login</Link>
-                        &nbsp; &nbsp;
                     <Link className="links" to="/signup">Join</Link>
+                        &nbsp; &nbsp;
+                    <Link className="links" to="/login">Login</Link>
                     </nav>
             </div>
                 <div className='greeting'>
                     <h2>Music for everyone.</h2>
-                    <h3>A number of songs. It's free!</h3>
+                    <h3>A number of songs. No credit card needed.</h3>
                     <Link to="/signup" className="listen-button">Join</Link>
                 </div>
         </div>

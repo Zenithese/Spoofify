@@ -52,15 +52,22 @@ class SessionForm extends React.Component {
     }
 
     render() {
+        let errors;
         if (this.props.errors.length) {
-            
+            errors = this.renderErrors()
+        } else {
+            errors = <div></div>
         }
         if (this.props.formType === 'login') {
             return (
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
                         <h1>Welcome to Spoofify!</h1>
+                        <div className="line-width-1">
+                            <div className="split-1" />
+                        </div>
           <br />
+                        <div className="demo-direction">To continue, log in to Spoofify.</div>
                         <div className="demo">
                             <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
                         </div>
@@ -71,7 +78,7 @@ class SessionForm extends React.Component {
                             </div>
                         </div>
                         <br/>
-                        {this.renderErrors()}
+                        {errors}
                         <div className="login-form">
                             <br />
                             <label>
@@ -102,7 +109,7 @@ class SessionForm extends React.Component {
                         <div className="line-width">
                             <div className="split" />
                         </div>
-                        Not a member?
+                        <div className="switch-question">Don't have an account?</div>
                         {this.props.navLink}
                         <div className="line-width">
                             <div className="split" />
@@ -115,8 +122,11 @@ class SessionForm extends React.Component {
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
                         <h1>Welcome to Spoofify!</h1>
+                        <div className="line-width-1">
+                            <div className="split-1" />
+                        </div>
                     <br />
-                        {this.renderErrors()}
+                        {errors}
                         <div className="login-form">
                             <br />
                             <label>
@@ -160,7 +170,7 @@ class SessionForm extends React.Component {
                             <div className="split"/>
                         </div>
                         <br />
-                        Already a member?
+                        <div className="switch-question">Already have an account?</div>
                         {this.props.navLink}
                         <div className="line-width">
                             <div className="split" />
