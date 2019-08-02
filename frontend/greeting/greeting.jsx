@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PersonalGreeting from '../components/personalGreeting/personalGreeting'
 
 
 
@@ -23,15 +24,8 @@ const Greeting = ({ currentUser, logout }) => {
                 </div>
         </div>
     );
-    const personalGreeting = () => (
-        <hgroup className="header-group">
-       
-            <h2 className="header-name">{currentUser.username}</h2>
-            <button className="header-button" onClick={logout}>Log Out</button>
-        </hgroup>
-    );
 
-    return currentUser ? personalGreeting() : sessionLinks();
+    return currentUser ? <PersonalGreeting currentUser={currentUser} logout={logout} /> : sessionLinks();
 };
 
 

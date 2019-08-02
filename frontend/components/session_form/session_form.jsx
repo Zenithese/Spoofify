@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
                             <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
                         </div>
                         <br/>
-                        <div class="line-width"> 
+                        <div className="line-width"> 
                             <div className="split">
                                 <strong className="or">or</strong>
                             </div>

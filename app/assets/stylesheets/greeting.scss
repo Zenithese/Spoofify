@@ -116,6 +116,109 @@
     z-index: 0;
 }
 
+.header-group {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    background-color: black;
+    font-weight: 666;
+    color: whitesmoke;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top:0;
+    z-index: 1;
+}
+
+// peronsalGreeting
+
+.header-name {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    padding-left: 160px;
+}
+
+.header-dropdown {
+    color: whitesmoke;
+    background-color: black;
+    border: none;
+    margin: 20px 200px 20px 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: inherit;
+}
+
+.caret {
+    transform: rotate(-180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 49%;
+    // left: 0;
+    right: 10px;
+    z-index: 5;
+    // display: none;
+    // float: left;
+    min-width: 160px;
+    // min-height: 160px;
+    padding: 5px 0;
+    margin: 23px 177px 0;
+    list-style: none;
+    // font-size: 16px;
+    text-align: left;
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+
+.dropdown::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid #FFF;
+    top: -14px;
+    right: 7px;
+}
+
+.dropdown-title {
+    color: black;
+    padding: 1em;
+    text-decoration: none;
+    line-height: 2;
+    font-family: sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.dropdown-title:hover {
+    color: rgb(29, 185, 84);
+}
+
+.dropdown-content {
+    // list-style-type: none;
+}
+
+.dropdown-logout {
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+    color: #919496;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 1rem;
+    line-height: 2;
+    font-family: sans-serif;
+    letter-spacing: 0.04em;
+}
+
 // Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 // rgb(30, 215, 96)
