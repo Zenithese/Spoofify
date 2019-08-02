@@ -51,7 +51,7 @@
     flex-direction: column;
     margin: auto;
     box-sizing: border-box;
-    padding-top: 95px;
+    padding-top: 50px;
     
 }
 
@@ -83,9 +83,10 @@
     padding: 15px 25px;
     border: none;
     cursor: pointer;
-    width: 30vh;
+    min-width: 160px;
+    width: 21vh;
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
     border-radius: 50px;
     font-weight: 600;
     margin-top: 20px;
@@ -106,7 +107,7 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(250, 234, 4, 0.5), rgba(153, 0, 255, 0.5)), image-url('bubbles.svg');
+    background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('bubbles.svg');
     background-position: center;
     // background-repeat: no-repeat;
     background-size: fill;
