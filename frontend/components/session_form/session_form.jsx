@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
             username: 'Demo',
             password: 'password'
         };
-        this.props.action(user);
+        this.props.login(user);
     }
 
     renderErrors() {
@@ -125,7 +125,18 @@ class SessionForm extends React.Component {
                         <div className="split-1" />
                     </div>
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                    <br />
+                        <br />
+                        <div className="demo-direction">To continue, log in to Spoofify.</div>
+                        <div className="demo">
+                            <button onClick={this.handleDemo} className="demo-button">DEMO LOGIN</button>
+                        </div>
+                        <br />
+                        <div className="line-width">
+                            <div className="split">
+                                <strong className="or">or</strong>
+                            </div>
+                        </div>
+                    <br/>
                         {errors}
                         <div className="login-form">
                             <br />
