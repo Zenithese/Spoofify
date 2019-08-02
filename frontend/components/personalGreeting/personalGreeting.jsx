@@ -13,35 +13,28 @@ class PersonalGreeting extends React.Component {
        
 
         this.handleClick = this.handleClick.bind(this);
-        this.toggleVisible = this.toggleVisible.bind(this);
+        this.falsifyVisible = this.falsifyVisible.bind(this);
     }
 
-    toggleVisible() {
+    falsifyVisible() {
         this.setState({
-            visible: !this.state.visible,
+            visible: false,
         })
     }
 
-    componentWillMount() {
-        document.addEventListener('mousedown', this.handleClick, false)
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClick, false)
-    }
-
     handleClick(e) {
-        if (this.click && this.click.contains(e.target) || (this.iconClick.contains(e.target))) {
-            return;
+        e.stopPropagation();
+        if  (this.state.visible && (["header-dropdown", "icon"].includes(e.target.className) || e.target.id === "id" || e.target.tagName === "path")) {   
+            this.setState({ visible: false })
+        } else {
+            this.setState({ visible: true })
         }
-
-        this.setState({ visible: false })
     }
 
     render() {
 
         const dropDown = this.state.visible ? (
-            <ul className="dropdown" ref={click => this.click = click} >
+            <ul  className="dropdown"  >
                 <a className="dropdown-title">Account</a>
                 <li className="dropdown-content">
                     <a className="dropdown-logout" onClick={this.props.logout}>Log Out</a>
@@ -53,8 +46,10 @@ class PersonalGreeting extends React.Component {
             <hgroup className="header-group">
 
                 <h2 className="header-name">{this.props.currentUser.username}</h2>
-                {dropDown}
-                <button className="header-dropdown" onClick={this.toggleVisible} ref={iconClick => this.iconClick = iconClick} >Profile &nbsp;<FontAwesomeIcon className={this.state.visible ? "caret" : ""} icon={faAngleUp} /></button>
+                <button onClick={this.handleClick} tabIndex="0" onBlur={this.falsifyVisible} className="header-dropdown" >
+                    <a className="icon" >Profile &nbsp;<FontAwesomeIcon id="id" className={this.state.visible ? "caret" : ""} icon={faAngleUp} /></a>
+                    {dropDown}
+                </button>
             </hgroup>
         )
     }
