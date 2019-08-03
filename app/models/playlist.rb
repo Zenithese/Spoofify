@@ -6,7 +6,7 @@ class Playlist < ApplicationRecord
     has_many :follows
 
     has_one :playlist_id,
-        foreign_key: :playlist_id,
+        foreign_key: :playlist_id
 
     has_many :songs,
         through: :playlist_id,
