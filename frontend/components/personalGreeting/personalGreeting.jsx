@@ -23,7 +23,7 @@ class PersonalGreeting extends React.Component {
     }
 
     handleClick(e) {
-        e.stopPropagation();
+        // e.stopPropagation();
         if  (this.state.visible && (["header-dropdown", "icon"].includes(e.target.className) || e.target.id === "id" || e.target.tagName === "path")) {   
             this.setState({ visible: false })
         } else {
