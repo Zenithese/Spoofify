@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :playlist,
+  has_many :playlists,
     foreign_key: :user_id
 
     

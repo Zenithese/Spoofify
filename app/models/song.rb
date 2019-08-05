@@ -4,5 +4,5 @@ class Song < ApplicationRecord
     has_many :playlist,
      foreign_key: :song_id
 
-    has_one_attached :photo
+    # has_one_attached :photo
 end

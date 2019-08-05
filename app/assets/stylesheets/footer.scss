@@ -16,6 +16,7 @@
 .footer-left {
     display: flex;
     align-items: center;
+    padding-left: 10px;
 }
 
 .footer-center {
@@ -28,7 +29,7 @@
     margin-left: 29px;
     margin-bottom: 5px;
     width: 224px;
-    padding-left: 4pc;
+    padding-left: 7pc;
     // -webkit-box-pack: justify;
     // -ms-flex-pack: justify;
     // justify-content: space-between;
@@ -73,6 +74,9 @@
 
 .currentSong {
     margin: auto;
+    width: 35px;
+    height: 35px;
+    border: 2px solid black;
     // padding-bottom: 70px;
 }
 
@@ -98,6 +102,10 @@
     letter-spacing: 0.04em;
     outline: none;
     padding-left: 139px;
+}
+
+.likeSong:hover {
+    color: rgb(29, 185, 84);
 }
 
 .previous {

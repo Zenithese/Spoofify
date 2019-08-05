@@ -11,4 +11,6 @@ class Playlist < ApplicationRecord
     has_many :songs,
         through: :playlist_id,
         source: :song
+
+    # has_one_attached :photo
 end

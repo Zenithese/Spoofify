@@ -13,7 +13,7 @@ class Footer extends React.Component {
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
-                        <img src="/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/bubbles.svg"/>
+                        <img src=""/>
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">

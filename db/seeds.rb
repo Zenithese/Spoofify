@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'open-uri'
+
+Playlist.destroy_all
+
+Playlist.create!(title: "Chilling On A Dirt Road", user_id: 2)
+Playlist.create!(title: "Anti Pop", user_id: 2)
+Playlist.create!(title: "Chill Out Classics", user_id: 2)
+Playlist.create!(title: "mint Acoustic", user_id: 2)
+Playlist.create!(title: "POLLEN", user_id: 2)
