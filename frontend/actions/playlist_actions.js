@@ -34,12 +34,10 @@ export const fetchPlaylist = (playlist) => dispatch => {
 }
 
 export const createPlaylist = (playlist) => dispatch => {
-    debugger
     return APIUtil.createPlaylist(playlist).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 
 export const updatePlaylist = (playlist) => dispatch => {
-    debugger
     return APIUtil.updatePlaylist(playlist).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 

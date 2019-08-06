@@ -1,0 +1,132 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000000;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -webkit-fill-available;
+}
+
+.create-playlist {
+    text-align: center;
+    color: white;
+}
+
+.close {
+    outline: none;
+    background-color: transparent;
+    color: white;
+    border: transparent;
+    font-size: 54px;
+    transform: scale(1.3);
+    font-weight: 100;
+}
+
+.close:hover {
+    -webkit-transform: scale(1.4);
+}
+
+.create-playlist-header {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 800;
+    font-family: sans-serif;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    text-transform: none;
+}
+
+.create-playlist-input {
+    height: 147px;
+    background-color: #282828;
+}
+.lock {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.create-playlist-input-header {
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-bold);
+    color: #fff;
+    text-transform: none;
+    margin-bottom: .5em;
+    text-align: left;
+    // align-items: center;
+    padding-left: 30px;
+    padding-top: 15px;
+    width: 787.812px;
+    // display: flex;
+    // position: relative;
+    
+}
+
+.create-playlist-input-text {
+    border: none;
+    background-color: #282828;
+    width: 787.812px;
+    height: 56px;
+    font-size: -webkit-xxx-large;
+    color: white;
+    caret-color: rgb(29, 185, 84);
+    padding-left: 30px;
+    font-weight: 600;
+}
+
+.create-playlist-input-text:focus {
+    outline: none;
+}
+
+.cancel {
+    letter-spacing: .16em;
+    margin-top: 16px;
+    display: inline-block;
+    border: 2px solid #bebebe;
+    border-radius: 500px;
+    padding: 11px;
+    min-width: 135px;
+    margin-top: 35px;
+    margin-left: 10px;
+    // line-height: 1.6;
+    background-color: black;
+    color: #bebebe;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.cancel:hover {
+    transform: scale(1.1);
+}
+
+.create {
+    letter-spacing: .16em;
+    margin-top: 16px;
+    display: inline-block;
+    border: 0;
+    border-radius: 500px;
+    padding: 13px;
+    min-width: 139px;
+    margin-top: 35px;
+    margin-left: 10px;
+    // line-height: 1.6;
+    background-color: rgb(29, 185, 84);
+    color: white;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.create:hover {
+    transform: scale(1.1);
+}

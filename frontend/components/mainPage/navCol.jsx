@@ -1,7 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { connect } from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { openModal } from '../../actions/modal_actions';
 import { faHome, faSearch, faBook, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+
+const mapDispatchToProps = dispatch => ({
+    openModal: (modal) => dispatch(openModal(modal))
+})
 
 class NavCol extends React.Component {
 
@@ -23,7 +29,10 @@ class NavCol extends React.Component {
 
                 <div className="playlist">
                     <h2 className="playlist-header">PLAYLISTS</h2>
-                    <button className="createPlaylist"><FontAwesomeIcon icon={faPlusSquare} className="playlist-icon" /> &nbsp; <span className="playlist-words">&nbsp;&nbsp;Create Playlist</span></button>
+                    <button 
+                        className="createPlaylist"
+                        onClick={() => this.props.openModal('newPlaylist')}
+                    ><FontAwesomeIcon icon={faPlusSquare} className="playlist-icon" /> &nbsp; <span className="playlist-words">&nbsp;&nbsp;Create Playlist</span></button>
                     {/* <ul>{userplaylist}</ul> */}
                 </div>
 
@@ -35,4 +44,4 @@ class NavCol extends React.Component {
     }
 }
 
-export default NavCol;
+export default connect(null, mapDispatchToProps)(NavCol);
