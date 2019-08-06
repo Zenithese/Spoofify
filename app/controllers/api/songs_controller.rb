@@ -9,9 +9,9 @@ class Api::SongsController < ApplicationController
         render :show
     end
 
-    # private
+    private
 
-    # def song_params
-    #     params.require(:song).permit(:title, :artist_name, :kind)
-    # end
+    def song_params
+        params.require(:song).permit(:title, :artist_name, :kind)
+    end
 end

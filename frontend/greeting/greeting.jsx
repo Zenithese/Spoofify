@@ -25,6 +25,8 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
     );
 
+    // if (!currentUser) return sessionLinks();
+
     return currentUser ? <PersonalGreeting currentUser={currentUser} logout={logout} /> : sessionLinks();
 };
 

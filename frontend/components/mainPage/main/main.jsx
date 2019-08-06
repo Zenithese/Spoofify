@@ -17,12 +17,12 @@ class Main extends React.Component {
 
         let playlists = this.props.playlists.map(playlist => {
             return (
-                <div className="main-playlist">
+                <Link to={`/${playlist.id}`} className="main-playlist">
                     <div className="main-playlist-image">
                         <img className="playlist-image" src="" />
                     </div>
                     <div className="main-playlist-title">{playlist.title}</div>
-                </div>
+                </Link>
             )
         })
 

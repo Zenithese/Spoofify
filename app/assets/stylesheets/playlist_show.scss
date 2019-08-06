@@ -1,0 +1,118 @@
+.playlist-content {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 0%;
+    background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
+    color: white
+}
+
+.left-right {
+    top: 62px;
+    left: 230px;
+    right: 0%;
+    display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    position: absolute;
+    font-family: sans-serif;
+}
+
+.left {
+    width: 25%;
+    // height: -webkit-fill-available;
+    float: left;
+    position: fixed;
+    margin: auto;
+    margin-top: 0;
+    padding-left: 34px;
+    padding-right: 8px;
+    border: 0;
+    vertical-align: baseline;
+    text-align: center;
+    max-width: 320px;
+}
+
+.left-content-image-container {
+    border: 2px solid black;
+    width: 100%;
+    // max-width: 238.75px;
+    // height: 238.75px;
+    max-width: 320px;
+    max-height: 320px;
+    
+}
+
+.left-content-image-container:before{
+  content: '';
+  padding: 50% 0; /* vertical value as  100% equals width */
+  display: inline-block;
+}
+
+.playlist-title {
+    margin: 12px;
+    margin-bottom: 6px;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: .005em;
+    font-weight: 700;
+    color: #fff;
+    text-transform: none;
+}
+
+.playlist-owner {
+    font-size: 14px;
+    letter-spacing: .005em;
+    color: rgb(179, 179, 179);
+}
+
+.play {
+    font-size: 12px;
+    letter-spacing: .16em;
+    display: inline-block;
+    border: 0;
+    border-radius: 500px;
+    padding: 13px;
+    min-width: 139px;
+    margin-top: 32px;
+    background-color: rgb(29, 185, 84);
+    color: white;
+    vertical-align: middle;
+}
+
+.play:hover {
+    transform: scale(1.05);
+    background-color: rgb(35, 207, 95)
+}
+
+.right {
+    width: 75%;
+    // float: left;
+    position: relative;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: auto;
+    margin-top: 0;
+    border: 0;
+    left: 250px;
+}
+
+.track-row {
+    display: flex;
+    height: 4.56em;
+    list-style-type: none;
+    color: rgb(179, 179, 179);
+    letter-spacing: 0.21px;
+    justify-content: space-between;
+    margin-right: 150px;
+}
+
+.note-icon {
+    padding-top: 8px;
+}
+
+.track-info {
+    position: absolute;
+    left: 55px;
+}

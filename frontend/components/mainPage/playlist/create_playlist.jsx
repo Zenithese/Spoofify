@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../actions/modal_actions';
-import { createPlaylist } from '../../actions/playlist_actions'
+import { openModal, closeModal } from '../../../actions/modal_actions';
+import { createPlaylist } from '../../../actions/playlist_actions'
 
 class CreatePlaylist extends React.Component {
     constructor(props) {

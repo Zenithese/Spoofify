@@ -29,8 +29,8 @@ export const fetchPlaylists = () => dispatch => {
     return APIUtil.fetchPlaylists().then(playlists => dispatch(receieveAllPlaylist(playlists)))
 }
 
-export const fetchPlaylist = (playlist) => dispatch => {
-    return APIUtil.fetchPlaylist(playlist).then(playlist => dispatch(receivePlaylist(playlist)))
+export const fetchPlaylist = (id) => dispatch => {
+    return APIUtil.fetchPlaylist(id).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 
 export const createPlaylist = (playlist) => dispatch => {

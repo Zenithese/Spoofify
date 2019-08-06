@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Main from './main';
-import { createPlaylist } from '../../actions/playlist_actions';
+import Main from '../main';
+import { createPlaylist } from '../../../actions/playlist_actions';
 
 
 const msp = () => {

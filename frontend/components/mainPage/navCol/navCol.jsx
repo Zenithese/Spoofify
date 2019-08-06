@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { openModal } from '../../actions/modal_actions';
+import { openModal } from '../../../actions/modal_actions';
 import { faHome, faSearch, faBook, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
 const mapDispatchToProps = dispatch => ({

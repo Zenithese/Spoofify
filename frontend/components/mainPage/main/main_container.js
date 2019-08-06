@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Main from './main';
-import { fetchPlaylists, deletePlaylist } from '../../actions/playlist_actions'
+import { fetchPlaylists, deletePlaylist } from '../../../actions/playlist_actions'
 
 const mapStateToProps = (state) => {
 
