@@ -9,7 +9,7 @@ const msp = (state, props) => {
     let playlist = state.entities.playlists[props.match.params.playlistId] || { title: "", song_ids: [] }
     return {
         playlist,
-        // songs: playlist ? playlist.song_ids.map(id => state.entities.songs[id]) : [],
+        songs: playlist ? playlist.song_ids.map(id => state.entities.songs[id]) : [],
     }
 }
 

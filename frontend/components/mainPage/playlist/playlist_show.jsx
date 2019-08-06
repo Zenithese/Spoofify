@@ -14,18 +14,18 @@ class PlaylistShow extends React.Component {
     }
 
     render () {
-        // let songs = this.props.songs.map(song => {
-        //     return (
-        //         <div className="track-row">
-        //             <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-        //             <div className="track-info">
-        //                 <div className="track-title">{song.title}</div>
-        //                 <div className="track-artist">{song.artist_name}</div>
-        //             </div>
-        //             <div className="song-length">0:00</div>
-        //         </div>
-        //     )
-        // })
+        let songs = this.props.songs.map(song => {
+            return (
+                <div className="track-row">
+                    <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
+                    <div className="track-info">
+                        <div className="track-title">{song.title}</div>
+                        <div className="track-artist">{song.artist_name}</div>
+                    </div>
+                    <div className="song-length">0:00</div>
+                </div>
+            )
+        })
         return (
             <div className="playlist-content">
                 <div className="left-right">
@@ -40,7 +40,7 @@ class PlaylistShow extends React.Component {
                         <button className="play">Play</button>
                     </div>
                     <div className="right">
-                        {/* {songs} */}
+                        {songs}
                         <div className="track-row">
                             <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
                             <div className="track-info">
