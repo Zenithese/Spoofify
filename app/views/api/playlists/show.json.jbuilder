@@ -1,5 +1,5 @@
 json.playlist do
-    json.extract! playlist, :id, :title
+    json.extract! @playlist, :id, :title
     # json.song_ids @playlist.songs.pluck(:id)
 end 
 
