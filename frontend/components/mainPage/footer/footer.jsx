@@ -21,14 +21,14 @@ class Footer extends React.Component {
     }
 
     audio() {
-        debugger
+        
         if (this.state.playing === false) {
-            debugger
+            
             this.sound.load();
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            debugger
+            
             this.sound.pause();
             this.setState({ playing: false })
         }
