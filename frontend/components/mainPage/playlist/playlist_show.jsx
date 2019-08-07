@@ -10,7 +10,7 @@ class PlaylistShow extends React.Component {
             time: "",
         }
 
-        this.sound = React.createRef();
+        // this.sound = React.createRef();
     }
 
     componentDidMount() {
@@ -20,10 +20,14 @@ class PlaylistShow extends React.Component {
     }
 
     audio() {
+        debugger
         if (this.state.playing === false) {
+            debugger
+            this.sound.load();
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
+            debugger
             this.sound.pause();
             this.setState({ playing: false })
         }
@@ -42,12 +46,12 @@ class PlaylistShow extends React.Component {
             return (
                 <div className="track-row">
                     <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-                    <div onClick={(s) => this.audio(s)} className="track-info">
+                    <div onClick={() => this.audio()} className="track-info">
                         <div className="track-title">{song.title}</div>
                         <div className="track-artist">{song.artist_name}</div>
                     </div>
                     <div className="song-length">{this.state.time}</div>
-                    <audio src={song.track} ref={(s) => this.sound = s}/>
+                    <audio ref={(s) => this.sound = s} src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3" />
                 </div>
             )
         })

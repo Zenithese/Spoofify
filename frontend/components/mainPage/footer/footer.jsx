@@ -6,7 +6,41 @@ import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute } from '@f
 // import { connect } from 'react-redux';
 
 class Footer extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            playing: false,
+            time: "",
+        }
 
+    }
+
+    componentDidMount() {
+        // this.props.fetchSongs();
+        setInterval(() => this.setState({ time: this.songTime(this.sound.currentTime) }), 1000)
+    }
+
+    audio() {
+        debugger
+        if (this.state.playing === false) {
+            debugger
+            this.sound.load();
+            this.sound.play();
+            this.setState({ playing: true })
+        } else if (this.state.playing === true) {
+            debugger
+            this.sound.pause();
+            this.setState({ playing: false })
+        }
+    }
+
+    songTime(time) {
+        let rounded = Math.floor(time);
+        let minutes = Math.floor(rounded / 60);
+        let seconds = Math.floor(rounded % 60);
+        seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
+        return `${minutes}:${seconds}`;
+    }
 
     render () {
         return (
@@ -29,15 +63,15 @@ class Footer extends React.Component {
                 <div className="footer-center">
                     <div className="controls">
                         <button className="previous"><FontAwesomeIcon icon={faStepBackward} /></button>
-                        <button className="playpause"><FontAwesomeIcon className="pp" icon={faPlay}/></button>
+                        <button onClick={() => this.audio()} className="playpause"><FontAwesomeIcon className="pp" icon={faPlay}/></button>
                         <button className="forward"><FontAwesomeIcon icon={faStepForward} /></button>
                     </div>
                     <div className="progress-bar">
-                        <div className="progress-time">0:00</div>
+                        <div className="progress-time">{this.state.time}</div>
                         <div className="progress-container">
                             <input className="slider" type="range" min="0" max="99" />
                         </div>
-                        <div className="progress-time">6:41</div>
+                        <div className="progress-time">{this.state.time}</div>
                     </div>
                 </div>
 
@@ -49,6 +83,7 @@ class Footer extends React.Component {
                         </div>
                     </div>
                 </div>
+                <audio ref={(s) => this.sound = s} src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3" />
             </footer>
         )
     }
