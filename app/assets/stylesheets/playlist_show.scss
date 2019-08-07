@@ -36,7 +36,7 @@
 }
 
 .left-content-image-container {
-    border: 2px solid black;
+    // border: 2px solid black;
     width: 100%;
     // max-width: 238.75px;
     // height: 238.75px;
@@ -49,6 +49,11 @@
   content: '';
   padding: 50% 0; /* vertical value as  100% equals width */
   display: inline-block;
+}
+
+.left-content-image {
+    height: 100%;
+    width: 100%
 }
 
 .playlist-title {
@@ -116,4 +121,9 @@
 .track-info {
     position: absolute;
     left: 55px;
+    cursor: pointer;
+}
+
+.track_info:hover {
+    
 }

@@ -1,5 +1,8 @@
+require 'open-uri'
+
 class Playlist < ApplicationRecord
     validates :title, presence: true
+    after_initialize :ensure_default_photo
 
     belongs_to :user
 
@@ -13,4 +16,13 @@ class Playlist < ApplicationRecord
         source: :song
 
     has_one_attached :photo
+
+    private
+
+    def ensure_default_photo
+        unless self.photo.attached?
+            file = open('https://seedie.s3.amazonaws.com/Sun.jpg')
+            self.photo.attach(io: file, filename: 'Sun.jpg')
+        end
+    end
 end

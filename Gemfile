@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor'
 gem 'jquery-rails'
 gem "aws-sdk-s3"
+gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

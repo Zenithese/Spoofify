@@ -5,14 +5,36 @@ import { faMusic } from '@fortawesome/free-solid-svg-icons'
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props) 
+        this.state = {
+            playing: false,
+            time: "",
+        }
 
-        
+        this.sound = React.createRef();
     }
 
     componentDidMount() {
-        
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
+        setInterval(() => this.setState({ time: this.songTime(this.sound.currentTime)}), 1000)
+    }
+
+    audio() {
+        if (this.state.playing === false) {
+            this.sound.play();
+            this.setState({ playing: true })
+        } else if (this.state.playing === true) {
+            this.sound.pause();
+            this.setState({ playing: false })
+        }
+    }
+
+    songTime(time) {
+        let rounded = Math.floor(time);
+        let minutes = Math.floor(rounded / 60);
+        let seconds = Math.floor(rounded % 60);
+        seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
+        return `${minutes}:${seconds}`;
     }
 
     render () {
@@ -20,11 +42,12 @@ class PlaylistShow extends React.Component {
             return (
                 <div className="track-row">
                     <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-                    <div className="track-info">
+                    <div onClick={(s) => this.audio(s)} className="track-info">
                         <div className="track-title">{song.title}</div>
                         <div className="track-artist">{song.artist_name}</div>
                     </div>
-                    <div className="song-length">0:00</div>
+                    <div className="song-length">{this.state.time}</div>
+                    <audio src={song.track} ref={(s) => this.sound = s}/>
                 </div>
             )
         })
@@ -34,7 +57,7 @@ class PlaylistShow extends React.Component {
                     <div className="left">
                         <div className="left-content">
                             <div className="left-content-image-container">
-                                <img className="left-content-image" src=""/>
+                                <img className="left-content-image" src={this.props.playlist.photoUrl ? this.props.playlist.photoUrl : "/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/Sun.jpg"}/>
                             </div>
                             <div className="playlist-title">{this.props.playlist.title}</div>
                             <div className="playlist-owner">owner</div>

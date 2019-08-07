@@ -5,7 +5,7 @@
     position: absolute;
     bottom: 0%;
     background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
-    color: white
+    color: aliceblue
 }
 
 .main-container {
@@ -18,13 +18,17 @@
     position: relative;
 }
 
+.main-container {
+    
+}
+
 .featured {
     list-style: none;
     text-align: center;
     letter-spacing: 0.09em;
     font-size: 12px;
     font-family: sans-serif;
-    color :white;
+    color :aliceblue;
 }
 
 .featured:hover {
@@ -55,10 +59,13 @@
     display: flex;
     padding-left: 20px;
     flex-wrap: wrap;
+    margin-bottom: 100px;
 }
 
 .main-playlist {
     margin: 8px;
+    text-decoration: none;
+    color: aliceblue;
 }
 
 .main-playlist-title {

@@ -3,9 +3,9 @@ import Main from '../main';
 import { createPlaylist } from '../../../actions/playlist_actions';
 
 
-const msp = () => {
+const msp = (state, ownProps) => {
     return {
-        playlist: { title: "" },
+        playlist: { title: "" , song_ids: [], photoUrl: "" },
     }
 }
 

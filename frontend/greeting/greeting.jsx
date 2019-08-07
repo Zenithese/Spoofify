@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PersonalGreeting from '../components/personalGreeting/personalGreeting'
+import PersonalGreeting2 from '../components/personalGreeting/personalGreeting2'
 
 
 
@@ -25,9 +25,7 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
     );
 
-    // if (!currentUser) return sessionLinks();
-
-    return currentUser ? <PersonalGreeting currentUser={currentUser} logout={logout} /> : sessionLinks();
+    return currentUser ? <PersonalGreeting2 currentUser={currentUser} logout={logout} /> : sessionLinks();
 };
 
 

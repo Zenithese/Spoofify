@@ -121,7 +121,9 @@
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    background-color: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
+    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 8, 0));
+    background: linear-gradient( rgba(83, 32, 117, 0.5),rgba(250, 234, 8, 0));
+    // background: linear-gradient( rgba(22, 2, 48, 0.7), transparent);
     font-weight: 666;
     color: whitesmoke;
     position: fixed;
@@ -129,6 +131,20 @@
     left: 0;
     top:0;
     z-index: 1;
+}
+
+.header-group-2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    background: transparent;
+    font-weight: 666;
+    color: whitesmoke;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top:0;
+    z-index: -200;
 }
 
 // peronsalGreeting

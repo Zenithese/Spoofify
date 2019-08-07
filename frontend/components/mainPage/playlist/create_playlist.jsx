@@ -8,7 +8,8 @@ class CreatePlaylist extends React.Component {
         super(props);
         this.state = {
             title: '',
-            user_id: this.props.curretUserId
+            user_id: this.props.curretUserId,
+            // photoUrl: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this)
     }
