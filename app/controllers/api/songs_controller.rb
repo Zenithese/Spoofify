@@ -1,12 +1,12 @@
 class Api::SongsController < ApplicationController
     def index
         @songs = Song.all
-        render :index
+        render("api/songs/index.json.jbuilder")
     end
 
     def show
         @song = Song.find(params[:id])
-        render :show
+        render("api/songs/show.json.jbuilder")
     end
 
     private

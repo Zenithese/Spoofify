@@ -37,12 +37,18 @@
     padding-left: 0px;
     padding-top: 45px;
     list-style: none;
+    // height: 110px;
 }
 
 .nav-group {
     letter-spacing: 0.09em;
     position: relative;
     // overflow: hidden;
+}
+
+.navLinks {
+    text-decoration: none;
+    color: white;
 }
 
 .faBoys {

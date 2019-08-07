@@ -11,10 +11,10 @@ const receieveAllPlaylist = (playlists) => {
     }
 }
 
-const receivePlaylist = (playlist) => {
+const receivePlaylist = (payload) => {
     return {
         type: RECEIVE_PLAYLIST,
-        playlist,
+        payload,
     }
 }
 

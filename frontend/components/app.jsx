@@ -21,7 +21,7 @@ const App = () => (
             <ProtectedRoute path="/:playlistId" component={PlaylistShowContainer} />
             <ProtectedRoute path="/" component={MainContainer} />
         </Switch>  
-        
+        <ProtectedRoute path="/" component={PersonalGreeting} />
         <ProtectedRoute path="/" component={NavColContainer}/>
         <ProtectedRoute path="/" component={FooterContainer}/>
         {/* <ProtectedRoute path="/browse" component={PersonalGreeting}/> */}

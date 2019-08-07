@@ -10,7 +10,9 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
+        
         this.props.fetchPlaylist(this.props.match.params.playlistId);
+        this.props.fetchSongs();
     }
 
     render () {
@@ -34,7 +36,7 @@ class PlaylistShow extends React.Component {
                             <div className="left-content-image-container">
                                 <img className="left-content-image" src=""/>
                             </div>
-                            <div className="playlist-title">Title</div>
+                            <div className="playlist-title">{this.props.playlist.title}</div>
                             <div className="playlist-owner">owner</div>
                         </div>
                         <button className="play">Play</button>

@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
-// const mapStateToProps = ({ session, entities: { users } }) => {
+const mapStateToProps = ({ session, entities: { users } }) => {
 
-//     return {
-//         currentUser: users[session.id]
-//     };
-// };
+    return {
+        currentUser: users[session.id]
+    };
+};
 
-// const mapDispatchToProps = dispatch => ({
-//     logout: () => dispatch(logout())
-// });
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logout())
+});
 
 class PersonalGreeting extends React.Component {
     constructor(props){
@@ -67,6 +67,6 @@ class PersonalGreeting extends React.Component {
     }
 }
 
-export default PersonalGreeting;
+// export default PersonalGreeting;
 
-// export default connect(mapStateToProps, mapDispatchToProps)(PersonalGreeting);
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalGreeting);

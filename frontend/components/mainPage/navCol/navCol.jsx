@@ -20,11 +20,11 @@ class NavCol extends React.Component {
             <div className="nav">
                 <h1 className="nav-header">Spoofify</h1>
                 <ul className="nav-group-container">
-                    <li className="nav-group">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faHome} className="faBoys"/> &nbsp; Home</li>
+                    <li className="nav-group"><Link to="/" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faHome} className="faBoys" /> &nbsp; Home</Link></li>
                     <br/>
-                    <li className="nav-group">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faSearch} className="faBoys"/> &nbsp;&nbsp;Search</li>
+                    <li className="nav-group"><Link className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faSearch} className="faBoys" /> &nbsp;&nbsp;Search</Link></li>
                     <br/>
-                    <li className="nav-group">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faBook} className="faBoys"/> &nbsp;&nbsp; Library</li>
+                    <li className="nav-group"><Link className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faBook} className="faBoys" /> &nbsp;&nbsp; Library</Link></li>
                 </ul>
 
                 <div className="playlist">

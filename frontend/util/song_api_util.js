@@ -1,13 +1,13 @@
 export const fetchSongs = () => {
     return $.ajax({
         method: 'GET',
-        url: '/api/playlists',
+        url: '/api/songs',
     })
 };
 
 export const fetchSong = (id) => {
     return $.ajax({
         method: 'GET',
-        url: `/api/playlists/${id}`
+        url: `/api/songs/${id}`
     })
 };

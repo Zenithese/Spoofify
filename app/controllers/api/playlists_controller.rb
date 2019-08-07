@@ -1,6 +1,6 @@
 class Api::PlaylistsController < ApplicationController
     def index
-        @playlists = Playlist.all
+        @playlists = Playlist.all.includes(:songs, :playlist_song)
         render :index
     end
 
