@@ -4,6 +4,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import NavColContainer from './mainPage/navCol/navCol_container'
 import FooterContainer from './mainPage/footer/footer_container'
 import MainContainer from './mainPage/main/main_container'
+import SearchContainer from './mainPage/search/search_container'
 import Modal from './mainPage/modal/modal'
 import CreatePlaylist from './mainPage/playlist/create_playlist'
 import React from 'react';
@@ -17,10 +18,12 @@ const App = () => (
     <div>
         <Modal />
 
-        <Switch>
-            <ProtectedRoute path="/:playlistId" component={PlaylistShowContainer} />
-            <ProtectedRoute path="/" component={MainContainer} />
-        </Switch>  
+        {/* <Switch> */}
+            {/* <ProtectedRoute path="/:playlistId" component={PlaylistShowContainer} /> */}
+            {/* <ProtectedRoute path="/search" component={SearchContainer} /> */}
+            {/* <ProtectedRoute path="/" component={MainContainer} /> */}
+        {/* </Switch>   */}
+        <ProtectedRoute path="/" component={SearchContainer} />
         <ProtectedRoute path="/" component={PersonalGreeting} />
         <ProtectedRoute path="/" component={NavColContainer}/>
         <ProtectedRoute path="/" component={FooterContainer}/>

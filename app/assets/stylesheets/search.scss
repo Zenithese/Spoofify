@@ -1,0 +1,105 @@
+.search-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 0%;
+    // background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
+    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
+    background: rgb(22, 22, 22);
+    color: aliceblue
+}
+
+.search {
+    position: absolute;
+    left: 230px;
+    top: 62px;
+}
+
+.search-header {
+    
+}
+
+.search-body {
+    
+}
+
+.search-input-box {
+    right: 0;
+    left: 230px;
+    position: fixed;
+    background-color: #282828;
+    padding: 16px;
+    // top: 0;
+}
+
+.search-input-box-input {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+    font-weight: 600;
+    color: #fff;
+    caret-color: #1db954;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.search-content {
+    padding-top: 88px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-spacing {
+    padding: 0 32px;
+    margin: 0 auto;
+    max-width: 1480px;
+}
+
+.search-body-list {
+    list-style: none;
+    padding-left: 0px;
+    transform: translateY(-5px);
+    
+}
+
+.search-body-result {
+    text-decoration: none;
+    color: rgb(179, 179, 179);
+}
+
+.search-body-result h1{
+    letter-spacing: 0.03em;
+    font-size: 27px;
+    font-family: sans-serif;
+    margin-bottom: 0px;
+}
+
+.search-body-result span{
+    letter-spacing: .2em;
+    font-size: 11px;
+    font-family: sans-serif;
+    color: rgb(153, 153, 153);
+}
+
+.clear-button {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    display: inline-block;
+    border: 2px solid #bebebe;
+    border-radius: 500px;
+    padding: 11px;
+    min-width: 270px;
+    background-color: black;
+    color: #bebebe;
+}
+
+.clear-button:hover {
+    transform: scale(1.08);
+    color: white;
+    border-color: white;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
 
 // import { connect } from 'react-redux';
 
@@ -11,13 +11,14 @@ class Footer extends React.Component {
         this.state = {
             playing: false, 
             time: "",
-            volume: 49,
-            previousVolume: 49,
+            volume: 100,
+            previousVolume: 0,
             duration: "",
             timeDuration: "",
             timePosition: "",
         }
         this.setVolume = this.setVolume.bind(this);
+        this.setTime = this.setTime.bind(this);
     }
 
     componentDidMount() {
@@ -57,14 +58,20 @@ class Footer extends React.Component {
         this.setState({ volume: vol });
     }
 
+    setTime(position) {
+        this.sound.currentTime = position;
+        this.setState({ time: position })
+    }
+
     toggleMute() {
+        // let volumeLevel = document.getElementById("volume-level")
         if (this.sound.volume > 0) {
             this.setState({ previousVolume: this.sound.volume, volume: 0 })
             this.sound.volume = 0
         } else {
-            this.setState({ volume: this.state.previousVolume })
+            this.setState({ volume: this.state.previousVolume * 100 })
             this.sound.volume = this.state.previousVolume
-
+            // volumeLevel.value = this.sound.volume * 100
         }
     }
 
@@ -89,13 +96,15 @@ class Footer extends React.Component {
                 <div className="footer-center">
                     <div className="controls">
                         <button className="previous"><FontAwesomeIcon icon={faStepBackward} /></button>
-                        <button onClick={() => this.audio()} className="playpause"><FontAwesomeIcon className="pp" icon={faPlay}/></button>
+                        <button onClick={() => this.audio()} className="playpause">{this.state.playing === false ? <FontAwesomeIcon className="pp" icon={faPlay}/> : <FontAwesomeIcon className="pause" icon={faPause} />}</button>
                         <button className="forward"><FontAwesomeIcon icon={faStepForward} /></button>
                     </div>
                     <div className="progress-bar">
                         <div className="progress-time">{this.state.time}</div>
                         <div className="progress-container">
-                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} step="0.00001"/>
+                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} step="0.00001"
+                                onInput={(e) => this.setTime(e.currentTarget.value)}
+                            />
                         </div>
                         <div className="progress-time">{(this.state.timeDuration)}</div>
                     </div>
@@ -104,10 +113,9 @@ class Footer extends React.Component {
                 <div className="footer-right">
                     <div className="volume-bar">
                         <div className="progress-container">
-                            <button onClick={() => this.toggleMute()} className="volume-mute"><FontAwesomeIcon icon={faVolumeMute} /></button>
-                            <input type="range" min="0" max="99" value={this.state.volume} step="1" 
+                            <button onClick={() => this.toggleMute()} className="volume-mute">{this.state.volume > 0 ? <FontAwesomeIcon className="FontAwesomeIcon" icon={faVolumeUp} /> : <FontAwesomeIcon className="FontAwesomeIcon" icon={faVolumeMute} />}</button>
+                            <input className="volume-level" type="range" min="0" max="99" value={this.state.volume} step="1" 
                                 onInput={(e) => this.setVolume(e.currentTarget.value)}
-                                onChange={(e) => this.setVolume(e.currentTarget.value)} 
                             />
                         </div>
                     </div>

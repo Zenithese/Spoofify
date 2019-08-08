@@ -126,7 +126,7 @@
 }
 
 .volume-bar {
-    padding-top: 36px;
+    padding-top: 30px;
     position: absolute;
     right: 18px;
 }
@@ -179,6 +179,10 @@
 
 }
 
+.pause {
+    transform: translateX(-1.35px)
+}
+
 .playpause:hover {
     transform: scale(1.1);
     color: #d4d7d8;
@@ -204,9 +208,36 @@
     font-size: 15px;
     color: #919496;
     background-color: transparent;
-    text-decoration: none;
-    line-height: 2;
-    font-family: sans-serif;
-    letter-spacing: 0.04em;
+    transform: translateY(2.5px);
     outline: none;
+}
+
+.FontAwesomeIcon{
+}
+
+.volume-level {
+    overflow: hidden;
+    -webkit-appearance: none;
+    // width: 100%;
+    height: 5px;
+    border-radius: 5px;   
+    //   background: rgb(29, 185, 84);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    cursor: pointer;
+    
+}
+
+.volume-level::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    box-shadow: -200px 0 0 200px rgb(29, 185, 84);
+    z-index: 2;
 }
