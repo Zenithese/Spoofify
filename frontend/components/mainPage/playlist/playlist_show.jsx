@@ -8,23 +8,29 @@ class PlaylistShow extends React.Component {
         this.state = {
             playing: false,
             time: "",
-            length: "",
+            volume: 100,
+            previousVolume: 0,
+            duration: "",
+            timeDuration: "",
+            timePosition: "",
         }
 
-        // this.sound = React.createRef();
     }
 
     componentDidMount() {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
-        setInterval(() => this.setState({ time: this.songTime(this.sound.currentTime)}), 1000)
+        setInterval(() => this.setState({
+            duration: this.sound.duration,
+            time: this.songTime(this.sound.currentTime),
+            timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
+            timePosition: `${this.sound.currentTime}`,
+        }), 1000)
     }
 
     audio() {
         
         if (this.state.playing === false) {
-            
-            this.sound.load();
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
@@ -51,8 +57,8 @@ class PlaylistShow extends React.Component {
                         <div className="track-title">{song.title}</div>
                         <div className="track-artist">{song.artist_name}</div>
                     </div>
-                    <div className="song-length">{this.state.time}</div>
-                    <audio ref={(s) => this.sound = s} src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3" />
+                    <div className="song-length">{ this.state.playing ? this.state.time : this.state.timePosition > 0 ? this.state.time : this.state.timeDuration}</div>
+                    <audio ref={(s) => this.sound = s} src={song.trackUrl} />
                 </div>
             )
         })
@@ -67,7 +73,7 @@ class PlaylistShow extends React.Component {
                             <div className="playlist-title">{this.props.playlist.title}</div>
                             <div className="playlist-owner">owner</div>
                         </div>
-                        <button className="play">Play</button>
+                        <button onClick={() => this.audio()} className="play">{ this.state.playing ? "Pause" : "Play" }</button>
                     </div>
                     <div className="right">
                         {songs}
@@ -247,3 +253,5 @@ class PlaylistShow extends React.Component {
 }
 
 export default PlaylistShow;
+
+// "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3"

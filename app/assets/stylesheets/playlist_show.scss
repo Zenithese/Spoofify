@@ -76,6 +76,7 @@
 }
 
 .play {
+    cursor: pointer;
     font-size: 12px;
     letter-spacing: .16em;
     display: inline-block;
@@ -87,6 +88,7 @@
     background-color: rgb(29, 185, 84);
     color: white;
     vertical-align: middle;
+    outline: none;
 }
 
 .play:hover {
