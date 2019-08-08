@@ -8,6 +8,7 @@ class PlaylistShow extends React.Component {
         this.state = {
             playing: false,
             time: "",
+            length: "",
         }
 
         // this.sound = React.createRef();

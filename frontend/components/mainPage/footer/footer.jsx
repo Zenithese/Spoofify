@@ -9,22 +9,32 @@ class Footer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            playing: false,
+            playing: false, 
             time: "",
+            volume: 49,
+            previousVolume: 49,
+            duration: "",
+            timeDuration: "",
+            timePosition: "",
         }
-
+        this.setVolume = this.setVolume.bind(this);
     }
 
     componentDidMount() {
-        // this.props.fetchSongs();
-        setInterval(() => this.setState({ time: this.songTime(this.sound.currentTime) }), 1000)
-    }
+        // let theTime = this.songTime(this.sound.currentTime)
+        setInterval(() => this.setState({
+            duration: this.sound.duration,
+            time: this.songTime(this.sound.currentTime),
+            timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
+            timePosition: `${this.sound.currentTime}`,
+            }), 1000)
+        }
 
     audio() {
         
         if (this.state.playing === false) {
             
-            this.sound.load();
+            // this.sound.load();
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
@@ -42,12 +52,28 @@ class Footer extends React.Component {
         return `${minutes}:${seconds}`;
     }
 
+    setVolume(vol) {
+        this.sound.volume = vol / 100;
+        this.setState({ volume: vol });
+    }
+
+    toggleMute() {
+        if (this.sound.volume > 0) {
+            this.setState({ previousVolume: this.sound.volume, volume: 0 })
+            this.sound.volume = 0
+        } else {
+            this.setState({ volume: this.state.previousVolume })
+            this.sound.volume = this.state.previousVolume
+
+        }
+    }
+
     render () {
         return (
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
-                        <img src=""/>
+                        <img src="https://seedie.s3.amazonaws.com/ATC.jpg"/>
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
@@ -69,17 +95,20 @@ class Footer extends React.Component {
                     <div className="progress-bar">
                         <div className="progress-time">{this.state.time}</div>
                         <div className="progress-container">
-                            <input className="slider" type="range" min="0" max="99" />
+                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} step="0.00001"/>
                         </div>
-                        <div className="progress-time">{this.state.time}</div>
+                        <div className="progress-time">{(this.state.timeDuration)}</div>
                     </div>
                 </div>
 
                 <div className="footer-right">
                     <div className="volume-bar">
                         <div className="progress-container">
-                            <button className="volume-mute"><FontAwesomeIcon icon={faVolumeMute} /></button>
-                            <input type="range" min="0" max="99" step="1" />
+                            <button onClick={() => this.toggleMute()} className="volume-mute"><FontAwesomeIcon icon={faVolumeMute} /></button>
+                            <input type="range" min="0" max="99" value={this.state.volume} step="1" 
+                                onInput={(e) => this.setVolume(e.currentTarget.value)}
+                                onChange={(e) => this.setVolume(e.currentTarget.value)} 
+                            />
                         </div>
                     </div>
                 </div>
