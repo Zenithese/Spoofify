@@ -18,12 +18,12 @@ const App = () => (
     <div>
         <Modal />
 
-        {/* <Switch> */}
-            {/* <ProtectedRoute path="/:playlistId" component={PlaylistShowContainer} /> */}
-            {/* <ProtectedRoute path="/search" component={SearchContainer} /> */}
-            {/* <ProtectedRoute path="/" component={MainContainer} /> */}
-        {/* </Switch>   */}
-        <ProtectedRoute path="/" component={SearchContainer} />
+        <Switch>
+            <ProtectedRoute exact path="/search" component={SearchContainer} />
+            <ProtectedRoute exact path="/:playlistId" component={PlaylistShowContainer} />
+            <ProtectedRoute path="/" component={MainContainer} />
+        </Switch>  
+        {/* <ProtectedRoute path="/" component={SearchContainer} /> */}
         <ProtectedRoute path="/" component={PersonalGreeting} />
         <ProtectedRoute path="/" component={NavColContainer}/>
         <ProtectedRoute path="/" component={FooterContainer}/>
