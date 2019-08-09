@@ -34,7 +34,7 @@ class Footer extends React.Component {
                 time: this.songTime(this.sound.currentTime),
                 timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
                 timePosition: `${this.sound.currentTime}`,
-            }), 500)
+            }), 0)
         }
             // this.props.recieveSong();
     }
