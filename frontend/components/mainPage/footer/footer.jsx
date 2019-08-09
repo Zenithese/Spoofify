@@ -18,6 +18,7 @@ class Footer extends React.Component {
             timeDuration: "",
             timePosition: "",
             currentSong: 0,
+            // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
         this.setTime = this.setTime.bind(this);
@@ -79,22 +80,22 @@ class Footer extends React.Component {
         this.audio()
         if (this.state.currentSong === 0) {
             this.setState({ currentSong: this.props.songs.length })
+            this.props.presentSong = this.props.songs[this.state.currentSong];
         } else {
             this.setState({ currentSong: this.state.currentSong - 1 })
+            this.props.presentSong = this.props.songs[this.state.currentSong];
         }
         this.audio()
     }
 
     nextSong() {
         if (this.state.playing === true) {
-            // this.sound.pause();
-            // this.sound.load();
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: true });
             this.audio()
-            // this.audio()
-            // this.sound.play();
+            this.props.presentSong = this.props.songs[this.state.currentSong];
         } else {
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
+            this.props.presentSong = this.props.songs[this.state.currentSong];
         }
     }
 

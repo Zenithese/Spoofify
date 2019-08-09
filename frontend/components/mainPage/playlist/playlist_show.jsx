@@ -21,6 +21,7 @@ class PlaylistShow extends React.Component {
     componentDidMount() {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
+        
         // setInterval(() => this.setState({
         //     // duration: this.sound.duration,
         //     time: this.songTime(this.sound.currentTime),
@@ -30,6 +31,12 @@ class PlaylistShow extends React.Component {
 
         // this.props.recieveCurrentSong();
     }
+
+    // componentDidUpdate() {
+    //     if (this.props.presentSong !== this.prevProps.presentSong) {
+    //         this.setState({ playing: !playing })
+    //     }
+    // }
 
 
     audio(i, song) {

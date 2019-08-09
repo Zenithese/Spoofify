@@ -12,13 +12,17 @@ Playlist.destroy_all
 Song.destroy_all
 PlaylistSong.destroy_all
 
-
+#playlistPic
 ChillingOnADirtRoad = EzDownload.open("https://seedie.s3.amazonaws.com/ChillingOnADirtRoad.jpg")
 AntiPop = EzDownload.open("https://seedie.s3.amazonaws.com/AntiPop.jpg")
 ChilloutClassics = EzDownload.open("https://seedie.s3.amazonaws.com/ChilloutClassics.jpg")
 POLLEN = EzDownload.open("https://seedie.s3.amazonaws.com/POLLEN.jpg")
 mintAcoustic = EzDownload.open("https://seedie.s3.amazonaws.com/mintAcoustic.jpg")
 
+# SongPic
+DeeJay = ExDownLoad.open("https://seedie.s3.amazonaws.com/dj.jpg")
+
+# songs
 Lalala = EzDownload.open("https://seedie.s3.amazonaws.com/ATC.mp3")
 # Lalalala = EzDownload.open("https://seedie.s3.amazonaws.com/ATC.mp3")
 # Lalalalala = EzDownload.open("https://seedie.s3.amazonaws.com/ATC.mp3")
@@ -43,13 +47,16 @@ s1 = Song.create!(title: "Around the World (La La La La La) (Radio Version)", ar
     s1.track.attach(io: Lalala, filename: "ATC.mp3")
 s2 = Song.create!(title: "Better Off Alone", artist_name: "Alice DJ", kind: "Classic")
     s2.track.attach(io: betteroffalone, filename: "BetterOffAlone.mp3")
+    s2.photo.attach(io: betteroffalone, filename "The AliceDj")
 s3 = Song.create!(title: "Show Me Love", artist_name: "Robin S", kind: "Classic")
     s3.track.attach(io: ShowMeLove, filename: "ShowMeLove.mp3")
+    s4.track.attach(io: ShoeMeLove) filename: "ShowMeLove.mp3")
 s4 = Song.create!(title: "Scatman (Ski Ba Bop Ba Dop Bop)", artist_name: "Scatman", kind: "Scat")
     s4.track.attach(io: Scatman, filename: "Scatman.mp3")
+    s4.tract.attach("io: Scatman), filename: scatman.mp3"
 s5 = Song.create!(title: "Aaron Carter - That's How I Beat Shaq", artist_name: "Aaron Carter", kind: "Beats")
     s5.track.attach(io: HowIBeatShaq, filename: "AaronCarter.mp3")
-
+    s5.photo.attach?(io: HowIBeatShaq, filename: "aaron")
 
 PlaylistSong.create!(playlist_id: p1.id, song_id: s1.id)
 PlaylistSong.create!(playlist_id: p1.id, song_id: s2.id)
@@ -76,3 +83,4 @@ PlaylistSong.create!(playlist_id: p5.id, song_id: s1.id)
 PlaylistSong.create!(playlist_id: p5.id, song_id: s2.id)
 PlaylistSong.create!(playlist_id: p5.id, song_id: s3.id)
 PlaylistSong.create!(playlist_id: p5.id, song_id: s4.id)
+
