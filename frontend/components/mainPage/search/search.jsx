@@ -25,8 +25,8 @@ class Search extends React.Component {
                                         <ul className="search-body-list">
                                             <li>
                                                 <a className="search-body-result" href="">
-                                                    <h1>King Fantastic</h1>
-                                                    <span>ARTIST</span>
+                                                    <h1>Around the World (La La La La La) (Radio Version)</h1>
+                                                    <span>ATC</span>
                                                 </a>
                                             </li>
                                         </ul>

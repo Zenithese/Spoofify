@@ -2,6 +2,7 @@ import React from 'react';
 import { } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
+import { recieveCurrentSong, pauseCurrentSong, clearCurrentSong } from '../../../actions/song_actions'
 
 // import { connect } from 'react-redux';
 
@@ -16,32 +17,82 @@ class Footer extends React.Component {
             duration: "",
             timeDuration: "",
             timePosition: "",
+            currentSong: 0,
         }
         this.setVolume = this.setVolume.bind(this);
         this.setTime = this.setTime.bind(this);
+        this.audio = this.audio.bind(this);
     }
 
     componentDidMount() {
-        // let theTime = this.songTime(this.sound.currentTime)
-        setInterval(() => this.setState({
-            duration: this.sound.duration,
-            time: this.songTime(this.sound.currentTime),
-            timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
-            timePosition: `${this.sound.currentTime}`,
+        debugger
+        this.props.fetchSongs();
+        if (this.sound) {
+            debugger
+            setInterval(() => this.setState({
+                // duration: this.sound.duration,
+                time: this.songTime(this.sound.currentTime),
+                timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
+                timePosition: `${this.sound.currentTime}`,
             }), 1000)
         }
+            // this.props.recieveSong();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.presentSong !== prevProps.presentSong) {
+            this.audio();
+            // this.sound.play();
+            // this.setState({ playing: true });
+        }
+        // } else if (this.state.playing === true) {
+        //     this.sound.pause();
+        //     this.setState({ playing: false });
+        // }
+        // } else if (this.state.playing === false) {
+        //     debugger
+        //     let playProm = this.sound.play();
+        //     this.setState({ playing: true })
+            // if (playProm !== undefined) {
+            //     playProm.then(() => this.sound.pause()).catch(error => {})
+            // } 
+            // this.sound.play();
+            // this.setState({ playing: true })
+     
+    }
 
     audio() {
-        
+        debugger
         if (this.state.playing === false) {
-            
-            // this.sound.load();
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            
+            debugger
             this.sound.pause();
             this.setState({ playing: false })
+        }
+    }
+
+    previousSong() {
+        this.audio()
+        if (this.state.currentSong === 0) {
+            this.setState({ currentSong: this.props.songs.length })
+        } else {
+            this.setState({ currentSong: this.state.currentSong - 1 })
+        }
+        this.audio()
+    }
+
+    nextSong() {
+        if (this.state.playing === true) {
+            // this.sound.pause();
+            // this.sound.load();
+            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: true });
+            this.audio()
+            // this.audio()
+            // this.sound.play();
+        } else {
+            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
         }
     }
 
@@ -76,7 +127,13 @@ class Footer extends React.Component {
     }
 
     render () {
-        return (
+        // let var = this.props.songs ? this.state.timePosition === this.state.timeDuration ? this.props.songs[(this.state.currentSong + 1) % this.props.songs.length].trackUrl : this.props.songs[this.state.currentSong % this.props.songs.length].trackUrl : ""
+        let songUrl = this.props.songs.map( song => {
+            return (
+                song.trackUrl
+            )
+        })
+            return (
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
@@ -84,10 +141,10 @@ class Footer extends React.Component {
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
-                            <a href="">Song Name</a>
+                            <a className="songInfo-track" href="">{this.props.presentSong.title}</a>
                         </div>
                         <div className="songArtist" draggable="true">
-                            <a href="">Artist Name</a>
+                            <a className="songInfo-artist" href="">{this.props.presentSong.artist_name}</a>
                         </div>
                     </div>
                     <button className="likeSong"><FontAwesomeIcon icon={faHeart} /></button>
@@ -95,15 +152,15 @@ class Footer extends React.Component {
 
                 <div className="footer-center">
                     <div className="controls">
-                        <button className="previous"><FontAwesomeIcon icon={faStepBackward} /></button>
+                        <button onClick={() => this.previousSong()} className="previous"><FontAwesomeIcon icon={faStepBackward} /></button>
                         <button onClick={() => this.audio()} className="playpause">{this.state.playing === false ? <FontAwesomeIcon className="pp" icon={faPlay}/> : <FontAwesomeIcon className="pause" icon={faPause} />}</button>
-                        <button className="forward"><FontAwesomeIcon icon={faStepForward} /></button>
+                        <button onClick={() => this.nextSong()} className="forward"><FontAwesomeIcon icon={faStepForward} /></button>
                     </div>
                     <div className="progress-bar">
                         <div className="progress-time">{this.state.time}</div>
                         <div className="progress-container">
                             <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} step="0.00001"
-                                onInput={(e) => this.setTime(e.currentTarget.value)}
+                                onChange={(e) => this.setTime(e.currentTarget.value)}
                             />
                         </div>
                         <div className="progress-time">{(this.state.timeDuration)}</div>
@@ -115,12 +172,12 @@ class Footer extends React.Component {
                         <div className="progress-container">
                             <button onClick={() => this.toggleMute()} className="volume-mute">{this.state.volume > 0 ? <FontAwesomeIcon className="FontAwesomeIcon" icon={faVolumeUp} /> : <FontAwesomeIcon className="FontAwesomeIcon" icon={faVolumeMute} />}</button>
                             <input className="volume-level" type="range" min="0" max="99" value={this.state.volume} step="1" 
-                                onInput={(e) => this.setVolume(e.currentTarget.value)}
+                                onChange={(e) => this.setVolume(e.currentTarget.value)}
                             />
                         </div>
                     </div>
                 </div>
-                <audio ref={(s) => this.sound = s} src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3" />
+                    <audio ref={(s) => this.sound = s} src={Object.values(this.props.presentSong).length === 0 ? songUrl[this.state.currentSong] : this.props.presentSong.trackUrl} />
             </footer>
         )
     }
@@ -136,6 +193,10 @@ class Footer extends React.Component {
 // const mapDispatchToProps = dispatch => ({
 //     logout: () => dispatch(logout())
 // });
+
+// this.props.presentSong.trackUrl === undefined ? songUrl[this.state.currentSong] : this.props.presentSong.trackUrl
+
+// Object.values(this.props.presentSongId).length === 0 ? songUrl[this.state.currentSong] : Object.values(this.props.presentSongId).join('')
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Footer);
 

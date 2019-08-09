@@ -7,58 +7,72 @@ class PlaylistShow extends React.Component {
         super(props) 
         this.state = {
             playing: false,
-            time: "",
-            volume: 100,
-            previousVolume: 0,
-            duration: "",
-            timeDuration: "",
-            timePosition: "",
+            // time: "",
+            // volume: 100,
+            // previousVolume: 0,
+            // duration: "",
+            // timeDuration: "",
+            // timePosition: "",
+            // currentSong: 0,
         }
-
+        this.sounds = [];
     }
 
     componentDidMount() {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
-        setInterval(() => this.setState({
-            duration: this.sound.duration,
-            time: this.songTime(this.sound.currentTime),
-            timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
-            timePosition: `${this.sound.currentTime}`,
-        }), 1000)
+        // setInterval(() => this.setState({
+        //     // duration: this.sound.duration,
+        //     time: this.songTime(this.sound.currentTime),
+        //     timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
+        //     timePosition: `${this.sound.currentTime}`,
+        // }), 1000)
+
+        // this.props.recieveCurrentSong();
     }
 
-    audio() {
-        
-        if (this.state.playing === false) {
-            this.sound.play();
-            this.setState({ playing: true })
-        } else if (this.state.playing === true) {
+
+    audio(i, song) {
+        this.props.recieveCurrentSong(song)
+        // if (this.state.playing === false) {
             
-            this.sound.pause();
-            this.setState({ playing: false })
-        }
+            // this.sounds[this.state.currentSong].pause();
+            // this.sounds[this.state.currentSong].load();
+            // this.sounds[i].play();
+            // this.setState({ playing: true, currentSong: i })
+            // this.props.recieveCurrentSong(song)
+        // } else if (this.state.playing === true && i === this.state.currentSong) {
+            
+        //     this.sounds[i].pause();
+        //     this.setState({ playing: false })
+        // } else if (this.state.playing === true && i !== this.state.currentSong) {
+            
+        //     this.sounds[this.state.currentSong].pause();
+        //     this.sounds[this.state.currentSong].load();
+        //     this.sounds[i].play();
+        //     this.setState({ currentSong: i })
+        // }
     }
 
-    songTime(time) {
-        let rounded = Math.floor(time);
-        let minutes = Math.floor(rounded / 60);
-        let seconds = Math.floor(rounded % 60);
-        seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
-        return `${minutes}:${seconds}`;
-    }
+    // songTime(time) {
+    //     let rounded = Math.floor(time);
+    //     let minutes = Math.floor(rounded / 60);
+    //     let seconds = Math.floor(rounded % 60);
+    //     seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
+    //     return `${minutes}:${seconds}`;
+    // }
 
     render () {
-        let songs = this.props.songs.map(song => {
+        
+        let songs = this.props.songs.map( (song, i) => {
             return (
                 <div className="track-row">
                     <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-                    <div onClick={() => this.audio()} className="track-info">
+                    <div onClick={() => this.audio(i, song)} className="track-info">
                         <div className="track-title">{song.title}</div>
                         <div className="track-artist">{song.artist_name}</div>
                     </div>
-                    <div className="song-length">{ this.state.playing ? this.state.time : this.state.timePosition > 0 ? this.state.time : this.state.timeDuration}</div>
-                    <audio ref={(s) => this.sound = s} src={song.trackUrl} />
+                    <audio ref={(s) => this.sounds.push(s)} src={song.trackUrl} />
                 </div>
             )
         })
@@ -77,174 +91,6 @@ class PlaylistShow extends React.Component {
                     </div>
                     <div className="right">
                         {songs}
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
-                        <div className="track-row">
-                            <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                            <div className="track-info">
-                                <div className="track-title">Title</div>
-                                <div className="track-artist">Artist</div>
-                            </div>
-                            <div className="song-length">0:00</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -255,3 +101,14 @@ class PlaylistShow extends React.Component {
 export default PlaylistShow;
 
 // "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8ae8e3eebfa8f1f4359349f3499a982a0dde4ab/ATC.mp3"
+
+{/* <div className="song-length">{this.state.playing ? this.state.time : this.state.timePosition > 0 ? this.state.time : this.state.timeDuration}</div> */}
+
+{/* <div className="track-row">
+    <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
+    <div className="track-info">
+        <div className="track-title">Title</div>
+        <div className="track-artist">Artist</div>
+    </div>
+    <div className="song-length">0:00</div>
+</div> */}
