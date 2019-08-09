@@ -30,7 +30,7 @@ class Search extends React.Component {
     }
 
     componentWillMount() {
-        debugger
+        
         this.props.fetchPlaylists();
     }
 
@@ -44,7 +44,7 @@ class Search extends React.Component {
     }
 
     render() {
-        debugger
+        
         // let filtered = this.props.playlists.filter(playlist => playlist.title === this.state.searchInput)
         // let filtered = this.props.playlists;
         let styled = this.state.results.map(playlist => {

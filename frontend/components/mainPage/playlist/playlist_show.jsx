@@ -40,6 +40,7 @@ class PlaylistShow extends React.Component {
 
 
     audio(i, song) {
+        this.state.playing = !this.state.playing
         this.props.recieveCurrentSong(song)
         // if (this.state.playing === false) {
             
@@ -83,7 +84,7 @@ class PlaylistShow extends React.Component {
                 </div>
             )
         })
-        debugger
+        
         return (
             <div className="playlist-content">
                 <div className="left-right">

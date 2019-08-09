@@ -20,7 +20,11 @@ POLLEN = EzDownload.open("https://seedie.s3.amazonaws.com/POLLEN.jpg")
 mintAcoustic = EzDownload.open("https://seedie.s3.amazonaws.com/mintAcoustic.jpg")
 
 # SongPic
-DeeJay = ExDownLoad.open("https://seedie.s3.amazonaws.com/dj.jpg")
+ATC = EzDownload.open("https://seedie.s3.amazonaws.com/ATC.jpg")
+DeeJay = EzDownload.open("https://seedie.s3.amazonaws.com/dj.jpg")
+ShowmeLove = EzDownload.open("https://seedie.s3.amazonaws.com/robinS.jpg")
+scatMan = EzDownload.open("https://seedie.s3.amazonaws.com/scatman.jpg")
+aaron = EzDownload.open("https://seedie.s3.amazonaws.com/arron.jpg")
 
 # songs
 Lalala = EzDownload.open("https://seedie.s3.amazonaws.com/ATC.mp3")
@@ -45,18 +49,19 @@ p5 = Playlist.create!(title: "POLLEN", user_id: 2)
 
 s1 = Song.create!(title: "Around the World (La La La La La) (Radio Version)", artist_name: "ATC", kind: "Legit")
     s1.track.attach(io: Lalala, filename: "ATC.mp3")
+    s1.photo.attach(io: ATC, filename: "ATC.jpg")
 s2 = Song.create!(title: "Better Off Alone", artist_name: "Alice DJ", kind: "Classic")
     s2.track.attach(io: betteroffalone, filename: "BetterOffAlone.mp3")
-    s2.photo.attach(io: betteroffalone, filename "The AliceDj")
+    s2.photo.attach(io: DeeJay, filename: "TheAliceDj")
 s3 = Song.create!(title: "Show Me Love", artist_name: "Robin S", kind: "Classic")
     s3.track.attach(io: ShowMeLove, filename: "ShowMeLove.mp3")
-    s4.track.attach(io: ShoeMeLove) filename: "ShowMeLove.mp3")
+    s3.photo.attach(io: ShowmeLove, filename: "ShowMeLove.jpg")
 s4 = Song.create!(title: "Scatman (Ski Ba Bop Ba Dop Bop)", artist_name: "Scatman", kind: "Scat")
     s4.track.attach(io: Scatman, filename: "Scatman.mp3")
-    s4.tract.attach("io: Scatman), filename: scatman.mp3"
+    s4.photo.attach(io: scatMan, filename: "scatMan.jpg")
 s5 = Song.create!(title: "Aaron Carter - That's How I Beat Shaq", artist_name: "Aaron Carter", kind: "Beats")
     s5.track.attach(io: HowIBeatShaq, filename: "AaronCarter.mp3")
-    s5.photo.attach?(io: HowIBeatShaq, filename: "aaron")
+    s5.photo.attach(io: aaron, filename: "aaron.jpg")
 
 PlaylistSong.create!(playlist_id: p1.id, song_id: s1.id)
 PlaylistSong.create!(playlist_id: p1.id, song_id: s2.id)

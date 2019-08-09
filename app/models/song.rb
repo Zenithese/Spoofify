@@ -10,7 +10,7 @@ class Song < ApplicationRecord
      through: :playlist_song,
      source: :playlist
 
-    # has_one_attached :photo
+    has_one_attached :photo
 
     has_one_attached :track
 

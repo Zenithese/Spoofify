@@ -26,10 +26,10 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         this.props.fetchSongs();
         if (this.sound) {
-            debugger
+            
             setInterval(() => this.setState({
                 duration: this.sound.duration,
                 time: this.songTime(this.sound.currentTime),
@@ -51,7 +51,7 @@ class Footer extends React.Component {
         //     this.setState({ playing: false });
         // }
         // } else if (this.state.playing === false) {
-        //     debugger
+        //     
         //     let playProm = this.sound.play();
         //     this.setState({ playing: true })
             // if (playProm !== undefined) {
@@ -63,14 +63,14 @@ class Footer extends React.Component {
     }
 
     audio() {
-        debugger
+        
         // if (this.props.presentSong.id !== )
         // else 
         if (this.state.playing === false) {
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            debugger
+            
             this.sound.pause();
             this.setState({ playing: false })
         }
@@ -136,11 +136,12 @@ class Footer extends React.Component {
                 song.trackUrl
             )
         })
+        
             return (
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
-                        <img src="https://seedie.s3.amazonaws.com/ATC.jpg"/>
+                        <img src={this.props.presentSong.photoUrl ? this.props.presentSong.photoUrl : "https://seedie.s3.amazonaws.com/ATC.jpg"}/>
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
