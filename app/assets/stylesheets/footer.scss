@@ -64,6 +64,10 @@
 
 .progress-time {
     padding-left: 4px;
+    color: rgb(153, 153, 153);
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 300;
 }
 
 .slider {
@@ -78,6 +82,7 @@
     -webkit-transition: .2s;
     transition: opacity .2s;
     cursor: pointer;
+    transform: translateY(-3.4px);
     
 }
 
@@ -89,7 +94,7 @@
     cursor: pointer;
     background: transparent;
     color: transparent;
-    box-shadow: -200px 0 0 200px rgb(29, 185, 84);
+    box-shadow: -300px 0 0 300px rgb(29, 185, 84);
     z-index: 2;
 }
 
