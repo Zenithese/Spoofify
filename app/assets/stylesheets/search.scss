@@ -97,10 +97,40 @@
     background-color: black;
     color: #bebebe;
     outline: none;
+    margin-top: 15px;
 }
 
 .clear-button:hover {
     transform: scale(1.08);
     color: white;
     border-color: white;
+}
+
+.main-playlists {
+    display: flex;
+    padding-left: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+.main-playlist {
+    margin: 8px;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.main-playlist-title {
+    text-align: center;
+    padding-top: 8px;
+}
+
+.main-playlist-image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+}
+
+.playlist-image {
+    width: 150px;
+    height: 150px;
 }

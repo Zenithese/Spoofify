@@ -76,6 +76,7 @@ class PlaylistShow extends React.Component {
                 </div>
             )
         })
+        debugger
         return (
             <div className="playlist-content">
                 <div className="left-right">
@@ -85,7 +86,7 @@ class PlaylistShow extends React.Component {
                                 <img className="left-content-image" src={this.props.playlist.photoUrl ? this.props.playlist.photoUrl : "/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/Sun.jpg"}/>
                             </div>
                             <div className="playlist-title">{this.props.playlist.title}</div>
-                            <div className="playlist-owner">owner</div>
+                            <div className="playlist-owner">{this.props.currentUser.username}</div>
                         </div>
                         <button onClick={() => this.audio()} className="play">{ this.state.playing ? "Pause" : "Play" }</button>
                     </div>

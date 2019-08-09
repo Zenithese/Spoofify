@@ -5,7 +5,7 @@ export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST"
 export const REMOVE_PLAYLIST = "REMOVE_PLAYLIST"
 
 const receieveAllPlaylist = (playlists) => {
-    
+    debugger
     return {
         type: RECEIVE_ALL_PLAYLISTS,
         playlists,
@@ -27,7 +27,7 @@ const removePlaylist = (playlist) => {
 }
 
 export const fetchPlaylists = () => dispatch => {
-    
+    debugger
     return APIUtil.fetchPlaylists().then(playlists => dispatch(receieveAllPlaylist(playlists)))
 }
 

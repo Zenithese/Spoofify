@@ -2,7 +2,7 @@ import React from 'react';
 import { } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
-import { recieveCurrentSong, pauseCurrentSong, clearCurrentSong } from '../../../actions/song_actions'
+// import { recieveCurrentSong, pauseCurrentSong, clearCurrentSong } from '../../../actions/song_actions'
 
 // import { connect } from 'react-redux';
 
@@ -30,11 +30,11 @@ class Footer extends React.Component {
         if (this.sound) {
             debugger
             setInterval(() => this.setState({
-                // duration: this.sound.duration,
+                duration: this.sound.duration,
                 time: this.songTime(this.sound.currentTime),
                 timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
                 timePosition: `${this.sound.currentTime}`,
-            }), 1000)
+            }), 0)
         }
             // this.props.recieveSong();
     }
@@ -63,6 +63,8 @@ class Footer extends React.Component {
 
     audio() {
         debugger
+        // if (this.props.presentSong.id !== )
+        // else 
         if (this.state.playing === false) {
             this.sound.play();
             this.setState({ playing: true })
