@@ -27,6 +27,7 @@ class Search extends React.Component {
             results: [],
         }
         this.handleChange = this.handleChange.bind(this);
+        this.searchQuery = this.searchQuery.bind(this);
     }
 
     componentWillMount() {
@@ -35,16 +36,19 @@ class Search extends React.Component {
     }
 
     handleChange(e) {
-        e.preventDefault();
+        // e.preventDefault();
+        debugger
         this.setState({ searchInput: e.target.value })
+        this.searchQuery();
     }
 
     searchQuery() {
-        this.state.results = this.props.playlists.filter(playlist => playlist.title.includes(this.state.searchInput))
+        debugger
+        this.setState({ results: this.props.playlists.filter(playlist => playlist.title.toUpperCase().includes(this.state.searchInput.toUpperCase())) })
     }
 
     render() {
-        
+        debugger
         // let filtered = this.props.playlists.filter(playlist => playlist.title === this.state.searchInput)
         // let filtered = this.props.playlists;
         let styled = this.state.results.map(playlist => {
@@ -57,6 +61,7 @@ class Search extends React.Component {
                 </Link>
             )
         })
+
         return (
             <div className="search-container">
                 <section className="search">
@@ -66,7 +71,7 @@ class Search extends React.Component {
                                 <input type="text" 
                                     className="search-input-box-input" 
                                     placeholder="Start typing..." 
-                                    onChange={this.handleChange}
+                                    onChange={(e) => this.handleChange(e)}
                                     />
                             </div>
                         </div>
@@ -79,8 +84,8 @@ class Search extends React.Component {
                                         <span>;)</span>
                                         <div className="main-playlists">
                                             {styled}
-                                            <button onClick={() => this.clearSearches()} className="clear-button">CLEAR RECENT SEARCHES</button>
                                         </div>
+                                        <button onClick={() => this.clearSearches()} className="clear-button">CLEAR RECENT SEARCHES</button>
                                     </a>
                                 </div>
                             </div> 

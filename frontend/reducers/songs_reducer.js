@@ -1,6 +1,7 @@
 import {
     RECEIVE_ALL_SONGS,
     RECEIVE_SONG,
+    SONG_ALIVE_OR_DEAD,    
 } from '../actions/song_actions';
 import merge from 'lodash/merge';
 

@@ -98,12 +98,14 @@
     color: #bebebe;
     outline: none;
     margin-top: 15px;
+    transform: translateY(-79px);
 }
 
 .clear-button:hover {
     transform: scale(1.08);
     color: white;
     border-color: white;
+    transform: translateY(-79px);
 }
 
 .main-playlists {

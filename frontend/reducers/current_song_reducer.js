@@ -1,5 +1,5 @@
 import { merge } from 'lodash'
-import { RECEIVE_CURRENT_SONG, CLEAR_CURRENT_SONG, PAUSE_CURRENT_SONG } from '../actions/song_actions'
+import { RECEIVE_CURRENT_SONG, CLEAR_CURRENT_SONG, SONG_ALIVE_OR_DEAD } from '../actions/song_actions'
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -11,7 +11,7 @@ export default (state = {}, action) => {
             return merge({}, newState, action.song)
         }
             
-        case PAUSE_CURRENT_SONG:
+        case SONG_ALIVE_OR_DEAD:
             return merge({}, state, { playing: false })
         case CLEAR_CURRENT_SONG:
             return {}

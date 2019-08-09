@@ -4,7 +4,7 @@ export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS"
 export const RECEIVE_SONG = "RECEIVE_SONG"
 export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG"
 export const CLEAR_CURRENT_SONG = "CLEAR_CURRENT_SONG"
-export const PAUSE_CURRENT_SONG = "PAUSE_CURRENT_SONG"
+export const SONG_ALIVE_OR_DEAD = "SONG_ALIVE_OR_DEAD"
 
 const receiveAllSongs = (songs) => {
     return {
@@ -28,9 +28,9 @@ export const recieveCurrentSong = (song) => {
     }
 }
 
-export const pauseCurrentSong = () => {
+export const Song_Alive_or_Dead = () => {
     return {
-        type: PAUSE_CURRENT_SONG,
+        type: SONG_ALIVE_OR_DEAD,
     }
 }
 
