@@ -32,11 +32,11 @@ class PlaylistShow extends React.Component {
         // this.props.recieveCurrentSong();
     }
 
-    componentDidUpdate() {
-        if (this.props.presentSong !== this.prevProps.presentSong) {
-            this.setState({ playing: !playing })
-        }
-    }
+    // componentDidUpdate() {
+    //     if (this.props.presentSong !== this.prevProps.presentSong) {
+    //         this.setState({ playing: !playing })
+    //     }
+    // }
 
 
     audio(i, song) {

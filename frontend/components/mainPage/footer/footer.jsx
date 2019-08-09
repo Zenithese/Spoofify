@@ -29,13 +29,12 @@ class Footer extends React.Component {
         
         this.props.fetchSongs();
         if (this.sound) {
-            
             setInterval(() => this.setState({
-                duration: this.sound.duration,
+                // duration: this.sound.duration,
                 time: this.songTime(this.sound.currentTime),
                 timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
                 timePosition: `${this.sound.currentTime}`,
-            }), 0)
+            }), 500)
         }
             // this.props.recieveSong();
     }
