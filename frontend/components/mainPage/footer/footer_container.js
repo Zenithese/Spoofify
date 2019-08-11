@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Footer from './footer';
-import { recieveCurrentSong, pauseCurrentSong, clearCurrentSong } from '../../../actions/song_actions'
+import { recieveCurrentSong, Song_Alive_or_Dead, clearCurrentSong } from '../../../actions/song_actions'
 import ui from '../../../reducers/ui_reducer';
 
 // const mapStateToProps = ({ session, entities: { users, songs } }) => {

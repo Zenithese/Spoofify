@@ -18,11 +18,15 @@ class Footer extends React.Component {
             timeDuration: "",
             timePosition: "",
             currentSong: 0,
+            presentSong: this.props.presentSong,
+            change: false,
             // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
         this.setTime = this.setTime.bind(this);
         this.audio = this.audio.bind(this);
+        this.nextSong = this.nextSong.bind(this)
+        this.sound = React.createRef();
     }
 
     componentDidMount() {
@@ -45,6 +49,11 @@ class Footer extends React.Component {
             // this.sound.play();
             // this.setState({ playing: true });
         }
+
+        if (this.state.change) {
+            this.audio();
+            this.setState({ change: false })
+        }
         // } else if (this.state.playing === true) {
         //     this.sound.pause();
         //     this.setState({ playing: false });
@@ -62,14 +71,15 @@ class Footer extends React.Component {
     }
 
     audio() {
-        
+        debugger
         // if (this.props.presentSong.id !== )
         // else 
         if (this.state.playing === false) {
+            debugger
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            
+            debugger
             this.sound.pause();
             this.setState({ playing: false })
         }
@@ -89,12 +99,17 @@ class Footer extends React.Component {
 
     nextSong() {
         if (this.state.playing === true) {
-            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: true });
+            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
+            debugger
+            // this.props.presentSong = this.props.songs[this.state.currentSong];
+            // this.sound = <audio src={this.state.presentSong.trackUrl}></audio>;
             this.audio()
-            this.props.presentSong = this.props.songs[this.state.currentSong];
         } else {
+            debugger
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
-            this.props.presentSong = this.props.songs[this.state.currentSong];
+            // this.props.presentSong = this.props.songs[this.state.currentSong];
+            
+            debugger
         }
     }
 
