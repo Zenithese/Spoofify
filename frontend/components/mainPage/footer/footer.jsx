@@ -20,6 +20,7 @@ class Footer extends React.Component {
             currentSong: 0,
             presentSong: this.props.presentSong,
             change: false,
+            duration: "",
             // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
@@ -37,7 +38,7 @@ class Footer extends React.Component {
         this.props.fetchSongs();
         if (this.sound) {
             setInterval(() => this.setState({
-                // duration: this.sound.duration,
+                duration: this.sound.duration,
                 time: this.songTime(this.sound.currentTime),
                 timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
                 timePosition: `${this.sound.currentTime}`,
@@ -55,16 +56,9 @@ class Footer extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.presentSong !== prevProps.presentSong) {
-            debugger
             let song = this.props.presentSong
-            debugger
-            // this.setState({ presentSong: this.state.songs[this.state.songs.indexof(song)] })
             this.setState({ presentSong: song })
-            debugger
             this.audio();
-            // this.stupid();
-
-            
         }
 
         if (this.state.change) {
@@ -72,27 +66,6 @@ class Footer extends React.Component {
             this.stupid();
             this.setState({ change: false })
         }
-
-        // this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-
-        // if (this.sound) {
-        //     if (this.state.timePosition >= this.state.timeDuration) {
-        //         this.nextSong();
-        //     }
-        // }
-        // } else if (this.state.playing === true) {
-        //     this.sound.pause();
-        //     this.setState({ playing: false });
-        // }
-        // } else if (this.state.playing === false) {
-        //     
-        //     let playProm = this.sound.play();
-        //     this.setState({ playing: true })
-            // if (playProm !== undefined) {
-            //     playProm.then(() => this.sound.pause()).catch(error => {})
-            // } 
-            // this.sound.play();
-            // this.setState({ playing: true })
      
     }
 
@@ -207,7 +180,7 @@ class Footer extends React.Component {
                     <div className="progress-bar">
                         <div className="progress-time">{this.state.time}</div>
                         <div className="progress-container">
-                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} step="0.00001"
+                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} 
                                 onChange={(e) => this.setTime(e.currentTarget.value)}
                             />
                         </div>
