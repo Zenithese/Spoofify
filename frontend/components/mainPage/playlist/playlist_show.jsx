@@ -41,7 +41,9 @@ class PlaylistShow extends React.Component {
 
     audio(i, song) {
         this.state.playing = !this.state.playing
+        debugger
         this.props.recieveCurrentSong(song)
+        debugger
         // if (this.state.playing === false) {
             
             // this.sounds[this.state.currentSong].pause();

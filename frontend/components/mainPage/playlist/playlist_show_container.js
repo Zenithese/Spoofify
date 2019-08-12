@@ -23,8 +23,8 @@ const msp = (state, props) => {
         playlist,
         // songs: playlist ? playlist.song_ids.map(id => state.entities.songs[id]).filter(song => song !== undefined) : [],
         songs,
-        presentSongId: ui.currentSongId,
-        presentSong: state.entities.songs[ui.currentSongId],
+        presentSong: state.ui.currentSongId,
+        // presentSong: state.entities.songs[ui.currentSongId],
         currentUser: state.entities.users[state.session.id],
     }
 }
