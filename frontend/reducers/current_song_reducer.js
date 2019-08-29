@@ -11,8 +11,11 @@ export default (state = {}, action) => {
             return merge({}, newState, action.song)
         }
             
-        case SONG_ALIVE_OR_DEAD:
+        case SONG_ALIVE_OR_DEAD: {
+            
             return merge({}, state, { playing: false })
+        }
+            
         case CLEAR_CURRENT_SONG:
             return {}
         default:

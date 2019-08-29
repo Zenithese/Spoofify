@@ -2,13 +2,14 @@ import React from 'react'
 import { closeModal } from '../../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../playlist/create_playlist'
+import AddSong from '../songs/add_song'
 // import { createPlaylist } from '../../util/playlist_api_util';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
-  let component = <CreatePlaylist />;
+  let component = modal === 'newPlaylist' ? <CreatePlaylist /> : <AddSong />
 
   return (
     <div className="modal-background" onClick={closeModal}>

@@ -11,3 +11,11 @@ export const fetchSong = (id) => {
         url: `/api/songs/${id}`
     })
 };
+
+// export const recieveSongForPlaylist = (songId) => {
+//     return $.ajax({
+//         method: 'POST',
+//         url: `/api/songs/${id}`,
+//         data: { songId }
+//     })
+// }

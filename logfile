@@ -1,0 +1,9 @@
+2019-08-24 17:41:13.597 EDT [4661] LOG:  listening on IPv6 address "::1", port 5432
+2019-08-24 17:41:13.597 EDT [4661] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-08-24 17:41:13.598 EDT [4661] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-08-24 17:41:13.611 EDT [4662] LOG:  database system was shut down at 2019-08-24 17:40:56 EDT
+2019-08-24 17:41:13.627 EDT [4661] LOG:  database system is ready to accept connections
+2019-08-24 17:41:42.085 EDT [4714] FATAL:  database "Spoofify_development" does not exist
+2019-08-24 17:46:22.326 EDT [5036] FATAL:  database "Spoofify_development" does not exist
+2019-08-24 17:47:21.693 EDT [5102] FATAL:  database "Spoofify_development" does not exist
+2019-08-24 17:47:30.563 EDT [5106] FATAL:  database "Spoofify_development" does not exist

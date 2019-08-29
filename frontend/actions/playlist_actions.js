@@ -2,9 +2,10 @@ import * as APIUtil from '../util/playlist_api_util';
 
 export const RECEIVE_ALL_PLAYLISTS = "RECEIVE_ALL_PLAYLISTS"
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST"
+export const RECEIVE_CURRENT_PLAYLIST = "RECEIVE_CURRENT_PLAYLIST"
 export const REMOVE_PLAYLIST = "REMOVE_PLAYLIST"
 
-const receieveAllPlaylist = (playlists) => {
+export const receieveAllPlaylist = (playlists) => {
     
     return {
         type: RECEIVE_ALL_PLAYLISTS,
@@ -12,14 +13,23 @@ const receieveAllPlaylist = (playlists) => {
     }
 }
 
-const receivePlaylist = (payload) => {
+export const receivePlaylist = (payload) => {
+    debugger
     return {
         type: RECEIVE_PLAYLIST,
         payload,
     }
 }
 
-const removePlaylist = (playlist) => {
+export const receiveCurrentPlaylist = (playlist) => {
+    debugger
+    return {
+        type: RECEIVE_CURRENT_PLAYLIST,
+        playlist,
+    }
+}
+
+export const removePlaylist = (playlist) => {
     return {
         type: REMOVE_PLAYLIST,
         playlistId: playlist.id,
@@ -32,6 +42,7 @@ export const fetchPlaylists = () => dispatch => {
 }
 
 export const fetchPlaylist = (id) => dispatch => {
+    debugger
     return APIUtil.fetchPlaylist(id).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 

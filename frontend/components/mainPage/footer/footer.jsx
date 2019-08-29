@@ -33,7 +33,7 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         // this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
         if (this.sound) {
@@ -70,6 +70,8 @@ class Footer extends React.Component {
     }
 
     handleClick() {
+        debugger
+        this.props.receiveCurrentPlaylist(this.props.playlist);
         this.stupid();
         this.audio();
     }
@@ -79,13 +81,13 @@ class Footer extends React.Component {
     }
 
     audio() {
-        debugger
+        
         if (this.state.playing === false) {
-            debugger
+            
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            debugger
+            
             this.sound.pause();
             this.setState({ playing: false })
         }
@@ -93,27 +95,31 @@ class Footer extends React.Component {
 
     previousSong() {
         if (this.state.playing === true) {
-            debugger
+            
             this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
-            debugger
+            
             // this.audio()
         } else {
-            debugger
+            
             this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
-            debugger
+            
         }
     }
 
     nextSong() {
+        debugger
         if (this.state.playing === true) {
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
+            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong
+])
+            this.props.Song_Alive_or_Dead(this.state.playing)
             
-            debugger
             // this.audio()
         } else {
-            debugger
+            
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
-            debugger
+            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+            this.props.Song_Alive_or_Dead(this.state.playing)
         }
     }
 

@@ -130,3 +130,10 @@
 .create:hover {
     transform: scale(1.1);
 }
+
+// addSong
+
+.addSong-playlist {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -122,15 +122,16 @@
     display: flex;
     justify-content: space-between;
     font-size: 15px;
+    background: linear-gradient(rgba(83, 32, 117, 1), #161616);
     // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 8, 0));
-    background: linear-gradient( rgba(83, 32, 117, 0.5),rgba(250, 234, 8, 0));
+    // background: linear-gradient( rgba(83, 32, 117, 0.5),rgba(250, 234, 8, 0));
     // background: linear-gradient( rgba(22, 2, 48, 0.7), transparent);
     font-weight: 666;
-    color: whitesmoke;
+    /* color: whitesmoke; */
     position: fixed;
     right: 0;
     left: 0;
-    top:0;
+    top: 0;
     z-index: 1;
 }
 

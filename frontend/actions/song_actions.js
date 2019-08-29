@@ -5,6 +5,7 @@ export const RECEIVE_SONG = "RECEIVE_SONG"
 export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG"
 export const CLEAR_CURRENT_SONG = "CLEAR_CURRENT_SONG"
 export const SONG_ALIVE_OR_DEAD = "SONG_ALIVE_OR_DEAD"
+export const RECEIVE_SONG_FOR_PLAYLIST = "RECEIVE_SONG_FOR_PLAYLIST"
 
 const receiveAllSongs = (songs) => {
     return {
@@ -28,15 +29,25 @@ export const recieveCurrentSong = (song) => {
     }
 }
 
-export const Song_Alive_or_Dead = () => {
+export const Song_Alive_or_Dead = (bool) => {
+    
     return {
         type: SONG_ALIVE_OR_DEAD,
+        bool,
     }
 }
 
 export const clearCurrentSong = () => {
     return {
-        CLEAR_CURRENT_SONG,
+        type: CLEAR_CURRENT_SONG,
+    }
+}
+
+export const receiveSongForPlaylist = (songId) => {
+    
+    return {
+        type: RECEIVE_SONG_FOR_PLAYLIST,
+        songId,
     }
 }
 

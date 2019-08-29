@@ -111,21 +111,27 @@
 .track-row {
     display: flex;
     height: 4.56em;
+    font-family: sans-serif;
     list-style-type: none;
     color: rgb(179, 179, 179);
     letter-spacing: 0.21px;
     justify-content: space-between;
     margin-right: 150px;
+    text-decoration: none;
 }
 
 .note-icon {
     padding-top: 8px;
+    margin-top: 15px;
 }
 
 .track-info {
-    position: absolute;
+    
     left: 55px;
     cursor: pointer;
+    margin-top: 15px;
+    position: absolute;
+    
 }
 
 .track_info:hover {

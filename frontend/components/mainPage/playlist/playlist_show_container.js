@@ -37,7 +37,8 @@ const mdp = (dispatch) => {
         clearCurrentSong: () => dispatch(clearCurrentSong()),
         fetchPlaylist: (playlist) => dispatch(fetchPlaylist(playlist)),
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
-        fetchSongs: () => dispatch(fetchSongs())
+        fetchSongs: () => dispatch(fetchSongs()),
+        Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool))
     }
 }
 
