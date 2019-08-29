@@ -54,10 +54,11 @@ class Footer extends React.Component {
             // this.props.recieveSong();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.presentSong !== prevProps.presentSong) {
+    componentDidUpdate(a = prevProps) {
+        if (this.props.presentSong !== a.presentSong) {
+            debugger
             let song = this.props.presentSong
-            this.setState({ presentSong: song })
+            this.setState({ presentSong: song }) // currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
             this.audio();
         }
 
@@ -97,12 +98,13 @@ class Footer extends React.Component {
         if (this.state.playing === true) {
             
             this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
-            
+            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
             // this.audio()
         } else {
             
             this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
-            
+            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+            this.audio()
         }
     }
 
@@ -110,8 +112,7 @@ class Footer extends React.Component {
         debugger
         if (this.state.playing === true) {
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
-            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong
-])
+            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
             this.props.Song_Alive_or_Dead(this.state.playing)
             
             // this.audio()
@@ -119,7 +120,9 @@ class Footer extends React.Component {
             
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
             this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-            this.props.Song_Alive_or_Dead(this.state.playing)
+            // this.props.Song_Alive_or_Dead(false)
+            this.audio()
+
         }
     }
 
