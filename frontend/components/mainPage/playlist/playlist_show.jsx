@@ -28,10 +28,10 @@ class PlaylistShow extends React.Component {
 
 
     audio(song) {
-        
+        debugger
         // this.setState({ song2Pass: song })
         this.state.playing = !this.state.playing
-        
+        this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
         this.props.Song_Alive_or_Dead(this.state.playing)
         

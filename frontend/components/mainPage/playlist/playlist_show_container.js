@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import {  } from '../../../actions/playlist_actions';
 import { withRouter } from 'react-router-dom'
-import { fetchPlaylist, deletePlaylist } from '../../../actions/playlist_actions'
+import { fetchPlaylist, deletePlaylist, receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { recieveCurrentSong, Song_Alive_or_Dead, clearCurrentSong } from '../../../actions/song_actions'
 import { fetchSongs } from '../../../actions/song_actions'
 import PlaylistShow from './playlist_show';
-import ui from '../../../reducers/ui_reducer';
 
 
 const msp = (state, props) => {
@@ -32,6 +30,7 @@ const msp = (state, props) => {
 const mdp = (dispatch) => {
     
     return {
+        receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
         pauseCurrentSong: () => dispatch(pauseCurrentSong()),
         clearCurrentSong: () => dispatch(clearCurrentSong()),

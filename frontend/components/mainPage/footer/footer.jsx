@@ -21,6 +21,7 @@ class Footer extends React.Component {
             presentSong: this.props.presentSong,
             change: false,
             duration: "",
+            // songImage: "",
             // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
@@ -72,9 +73,12 @@ class Footer extends React.Component {
 
     handleClick() {
         debugger
-        this.props.receiveCurrentPlaylist(this.props.playlist);
-        this.stupid();
-        this.audio();
+        if (this.props.songs.length) {
+            // this.props.receiveCurrentPlaylist(this.props.playlist)
+            // if (this.props.playlist.length < 0) { this.props.receiveCurrentPlaylist(this.props.playlist) };
+            this.stupid();
+            this.audio();
+        }
     }
 
     stupid() {
@@ -82,47 +86,51 @@ class Footer extends React.Component {
     }
 
     audio() {
-        
-        if (this.state.playing === false) {
-            
-            this.sound.play();
-            this.setState({ playing: true })
-        } else if (this.state.playing === true) {
-            
-            this.sound.pause();
-            this.setState({ playing: false })
-        }
+        debugger
+        // if (this.props.songs.length > 0) {
+            if (this.state.playing === false) {
+                
+                this.sound.play();
+                this.setState({ playing: true })
+            } else if (this.state.playing === true) {
+                
+                this.sound.pause();
+                this.setState({ playing: false })
+            }
+        // }
     }
 
     previousSong() {
-        if (this.state.playing === true) {
-            
-            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
-            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-            // this.audio()
-        } else {
-            
-            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
-            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-            this.audio()
+        if (this.props.songs.length) {
+            if (this.state.playing === true) {
+                
+                this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
+                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                // this.audio()
+            } else {
+                
+                this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
+                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                this.audio()
+            }
         }
     }
 
     nextSong() {
-        debugger
-        if (this.state.playing === true) {
-            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
-            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-            this.props.Song_Alive_or_Dead(this.state.playing)
-            
-            // this.audio()
-        } else {
-            
-            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
-            this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-            // this.props.Song_Alive_or_Dead(false)
-            this.audio()
-
+        if (this.props.songs.length) {
+            if (this.state.playing === true) {
+                this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
+                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                this.props.Song_Alive_or_Dead(this.state.playing)
+                
+                // this.audio()
+            } else {
+                
+                this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
+                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                // this.props.Song_Alive_or_Dead(false)
+                this.audio()
+            }
         }
     }
 
@@ -174,7 +182,7 @@ class Footer extends React.Component {
                             <a className="songInfo-track" href="">{ this.state.presentSong ? this.state.presentSong.title : this.props.songs[this.state.currentSong].title }</a>
                         </div>
                         <div className="songArtist" draggable="true">
-                            <a className="songInfo-artist" href="">{this.state.presentSong ? this.state.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name}</a>
+                            <a className="songInfo-artist" href="">{this.state.presentSong ? this.state.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</a>
                         </div>
                     </div>
                     <button className="likeSong"><FontAwesomeIcon icon={faHeart} /></button>
@@ -212,26 +220,5 @@ class Footer extends React.Component {
         )
     }
 }
-
-// const mapStateToProps = ({ session, entities: { users } }) => {
-
-//     return {
-//         currentUser: users[session.id]
-//     };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//     logout: () => dispatch(logout())
-// });
-
-// this.props.presentSong.trackUrl === undefined ? songUrl[this.state.currentSong] : this.props.presentSong.trackUrl
-
-// this.props.presentSong ? this.props.presentSong.photoUrl : this.props.songs[this.state.currentSong] ? this.props.songs[this.state.currentSong].photoUrl : "https://seedie.s3.amazonaws.com/ATC.jpg"
-
-// Object.values(this.props.presentSongId).length === 0 ? songUrl[this.state.currentSong] : Object.values(this.props.presentSongId).join('')
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Footer);
-
-// this.props.presentSong = this.props.songs[this.state.currentSong];
 
 export default Footer;
