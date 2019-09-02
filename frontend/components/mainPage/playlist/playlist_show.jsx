@@ -13,7 +13,7 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
 
@@ -28,7 +28,7 @@ class PlaylistShow extends React.Component {
 
 
     audio(song) {
-        debugger
+        
         // this.setState({ song2Pass: song })
         this.state.playing = !this.state.playing
         this.props.receiveCurrentPlaylist(this.props.songs)

@@ -14,7 +14,7 @@ export const receieveAllPlaylist = (playlists) => {
 }
 
 export const receivePlaylist = (payload) => {
-    debugger
+    
     return {
         type: RECEIVE_PLAYLIST,
         payload,
@@ -22,7 +22,7 @@ export const receivePlaylist = (payload) => {
 }
 
 export const receiveCurrentPlaylist = (playlist) => {
-    debugger
+    
     return {
         type: RECEIVE_CURRENT_PLAYLIST,
         playlist,
@@ -42,7 +42,7 @@ export const fetchPlaylists = () => dispatch => {
 }
 
 export const fetchPlaylist = (id) => dispatch => {
-    debugger
+    
     return APIUtil.fetchPlaylist(id).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 

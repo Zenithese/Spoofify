@@ -1,10 +1,7 @@
 import React from 'react';
 import { } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
-// import { recieveCurrentSong, pauseCurrentSong, clearCurrentSong } from '../../../actions/song_actions'
-
-// import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons';
 
 class Footer extends React.Component {
     constructor(props) {
@@ -17,11 +14,10 @@ class Footer extends React.Component {
             duration: "",
             timeDuration: "",
             timePosition: "",
-            currentSong: 0,
+            currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]),
             presentSong: this.props.presentSong,
             change: false,
             duration: "",
-            // songImage: "",
             // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
@@ -35,7 +31,6 @@ class Footer extends React.Component {
 
     componentDidMount() {
         
-        // this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
         if (this.sound) {
             setInterval(() => this.setState({
@@ -46,20 +41,16 @@ class Footer extends React.Component {
             }), 0)
 
             this.setState({ presentSong: this.props.presentSong })
-            
-            // if (this.props.presentSong) {
-            //     this.setState({ currentSong: this.state.songs.indexof(this.props.presentSong) })
-            // }
 
         }
-            // this.props.recieveSong();
     }
 
     componentDidUpdate(a = prevProps) {
         if (this.props.presentSong !== a.presentSong) {
             debugger
             let song = this.props.presentSong
-            this.setState({ presentSong: song }) // currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
+            this.setState({ presentSong: song })
+            this.setState({ currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
             this.audio();
         }
 
@@ -72,10 +63,8 @@ class Footer extends React.Component {
     }
 
     handleClick() {
-        debugger
+        
         if (this.props.songs.length) {
-            // this.props.receiveCurrentPlaylist(this.props.playlist)
-            // if (this.props.playlist.length < 0) { this.props.receiveCurrentPlaylist(this.props.playlist) };
             this.stupid();
             this.audio();
         }
@@ -86,31 +75,25 @@ class Footer extends React.Component {
     }
 
     audio() {
-        debugger
-        // if (this.props.songs.length > 0) {
-            if (this.state.playing === false) {
-                
-                this.sound.play();
-                this.setState({ playing: true })
-            } else if (this.state.playing === true) {
-                
-                this.sound.pause();
-                this.setState({ playing: false })
-            }
-        // }
+        if (this.state.playing === false) {
+            this.sound.play();
+            this.setState({ playing: true })
+        } else if (this.state.playing === true) {
+            
+            this.sound.pause();
+            this.setState({ playing: false })
+        }
     }
 
     previousSong() {
         if (this.props.songs.length) {
             if (this.state.playing === true) {
-                
-                this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
-                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-                // this.audio()
+                this.setState((prevProps) => ({ currentSong: prevProps.currentSong === 0 ? this.props.songs.length - 1 : (prevProps.currentSong - 1) % this.props.songs.length, playing: false, change: true }));
+                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length])
             } else {
-                
-                this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
-                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                let trackNum = this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length
+                this.setState({ currentSong: trackNum });
+                this.props.recieveCurrentSong(this.props.songs[trackNum])
                 this.audio()
             }
         }
@@ -119,16 +102,13 @@ class Footer extends React.Component {
     nextSong() {
         if (this.props.songs.length) {
             if (this.state.playing === true) {
-                this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
-                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
+                this.setState((prevProps) => ({ currentSong: (prevProps.currentSong + 1) % this.props.songs.length, playing: false, change: true }));
+                this.props.recieveCurrentSong(this.props.songs[(this.state.currentSong + 1) % this.props.songs.length])
                 this.props.Song_Alive_or_Dead(this.state.playing)
-                
-                // this.audio()
             } else {
-                
-                this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
-                this.props.recieveCurrentSong(this.props.songs[this.state.currentSong])
-                // this.props.Song_Alive_or_Dead(false)
+                let trackNum = (this.state.currentSong + 1) % this.props.songs.length
+                this.setState({ currentSong: trackNum });
+                this.props.recieveCurrentSong(this.props.songs[trackNum])
                 this.audio()
             }
         }
@@ -153,14 +133,12 @@ class Footer extends React.Component {
     }
 
     toggleMute() {
-        // let volumeLevel = document.getElementById("volume-level")
         if (this.sound.volume > 0) {
             this.setState({ previousVolume: this.sound.volume, volume: 0 })
             this.sound.volume = 0
         } else {
             this.setState({ volume: this.state.previousVolume * 100 })
             this.sound.volume = this.state.previousVolume
-            // volumeLevel.value = this.sound.volume * 100
         }
     }
 
@@ -175,14 +153,14 @@ class Footer extends React.Component {
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
-                        <img src={this.state.presentSong ? this.state.presentSong.photoUrl : this.props.songs[this.state.currentSong].photoUrl }/>
+                        <img src={this.props.presentSong ? this.props.presentSong.photoUrl : this.props.songs[this.state.currentSong].photoUrl }/>
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
-                            <a className="songInfo-track" href="">{ this.state.presentSong ? this.state.presentSong.title : this.props.songs[this.state.currentSong].title }</a>
+                            <a className="songInfo-track" href="">{ this.props.presentSong ? this.props.presentSong.title : this.props.songs[this.state.currentSong].title }</a>
                         </div>
                         <div className="songArtist" draggable="true">
-                            <a className="songInfo-artist" href="">{this.state.presentSong ? this.state.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</a>
+                            <a className="songInfo-artist" href="">{this.props.presentSong ? this.props.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</a>
                         </div>
                     </div>
                     <button className="likeSong"><FontAwesomeIcon icon={faHeart} /></button>

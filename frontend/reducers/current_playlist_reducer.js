@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_PLAYLIST } from '../actions/playlist_actions'
 
 export default (state = [], action) => {
     Object.freeze(state);
-    debugger
+    
     switch (action.type) {
         case RECEIVE_CURRENT_PLAYLIST: {
             let newState = []
