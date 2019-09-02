@@ -47,7 +47,7 @@ class Footer extends React.Component {
 
     componentDidUpdate(a = prevProps) {
         if (this.props.presentSong !== a.presentSong) {
-            debugger
+            
             let song = this.props.presentSong
             this.setState({ presentSong: song })
             this.setState({ currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
