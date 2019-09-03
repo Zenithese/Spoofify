@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import { connect } from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { openModal } from '../../../actions/modal_actions';
@@ -20,11 +20,11 @@ class NavCol extends React.Component {
             <div className="nav">
                 <h1 className="nav-header">Spoofify</h1>
                 <ul className="nav-group-container">
-                    <li className="nav-group"><Link to="/" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faHome} className="faBoys" /> &nbsp; Home</Link></li>
+                    <li className="nav-group"><NavLink to="/home" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faHome} className="faBoys" /> &nbsp; Home</NavLink></li>
                     <br/>
-                    <li className="nav-group"><Link exact to="/search" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faSearch} className="faBoys" /> &nbsp;&nbsp;Search</Link></li>
+                    <li className="nav-group"><NavLink to="/search" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faSearch} className="faBoys" /> &nbsp;&nbsp;Search</NavLink></li>
                     <br/>
-                    <li className="nav-group"><Link className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faBook} className="faBoys" /> &nbsp;&nbsp; Library</Link></li>
+                    <li className="nav-group"><NavLink to="/library" className="navLinks">&nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faBook} className="faBoys" /> &nbsp;&nbsp; Library</NavLink></li>
                 </ul>
 
                 <div className="playlist">

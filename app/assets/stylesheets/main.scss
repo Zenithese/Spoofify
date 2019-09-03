@@ -7,7 +7,8 @@
     // background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
     // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
     background: rgb(22, 22, 22);
-    color: aliceblue
+    color: aliceblue;
+    overflow-x: hidden;
 }
 
 .main-container {
@@ -18,6 +19,11 @@
 
 .main-nav-content {
     position: relative;
+    display: flex;
+    // justify-content: space-between;
+    text-align: center;
+    // margin-left: 15%;
+    // width: 50vw;
 }
 
 .main-container {
@@ -25,12 +31,14 @@
 }
 
 .featured {
+    position: relative;
     list-style: none;
-    text-align: center;
     letter-spacing: 0.09em;
     font-size: 12px;
     font-family: sans-serif;
     color :aliceblue;
+    margin: 10px;
+    text-decoration: none;
 }
 
 .featured:hover {
@@ -39,15 +47,14 @@
 
 
 
-.featured:active::after {
+.featured.active::after {
     content: "";
     display: block;
     position: absolute;
-    top: 18px;
-    left: 27.1pc;
-    bottom: 0px;
-    width: 40px;
-    height: 3px;
+    top: 15px;
+    left: 25%;
+    width: 33px;
+    height: 2px;
     background-color: #1ed760;
 }
 
@@ -65,9 +72,11 @@
 }
 
 .main-playlist {
-    margin: 8px;
+    margin: 10px;
     text-decoration: none;
     color: aliceblue;
+    width: 19%;
+    min-width: 150px;
 }
 
 .main-playlist-title {
@@ -76,12 +85,14 @@
 }
 
 .main-playlist-image {
-    width: 150px;
-    height: 150px;
-    border: 2px solid black;
+    // width: 100%;
+    // height: 85%;
+    // border: 2px solid black;
 }
 
 .playlist-image {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
 }

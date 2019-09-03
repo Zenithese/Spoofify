@@ -63,16 +63,27 @@
 //     color: rgb(29, 185, 84);
 // }
 
-.nav-group:active::before {
+.navLinks.active::before {
     content: "";
     display: block;
     position: absolute;
-    top: 0;
+    top: -5px;
     bottom: 0px;
     width: 4px;
     height: 30px;
     background-color: #1ed760;
 }
+
+// .anl:active:before {
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0px;
+//     width: 4px;
+//     height: 30px;
+//     background-color: #1ed760;
+// }
 
 .playlist {
     margin-left: 17px;
