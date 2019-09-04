@@ -24,6 +24,13 @@ class PlaylistShow extends React.Component {
 
     }
 
+    handleDelete() {
+
+        this.props.deletePlaylist(this.props.playlist.id)
+        this.props.history.push("/library/playlist")
+
+    }
+
     audio(song) {
         
         this.state.playing = !this.state.playing
@@ -51,6 +58,23 @@ class PlaylistShow extends React.Component {
                 </div>
             )
         })
+
+        let button = < button onClick={() => this.handleDelete()} className="add-button">DELETE</button>
+        if (this.props.playlist.title === "Chillin' On A Dirt Road") {
+            button = null
+        }
+        if (this.props.playlist.title === "Anti Pop") {
+            button = null
+        }
+        if (this.props.playlist.title === "Chill Out Classics") {
+            button = null
+        }
+        if (this.props.playlist.title === "mint Acoustic") {
+            button = null
+        }
+        if (this.props.playlist.title === "POLLEN") {
+            button = null
+        }
         
         return (
             <div className="playlist-content">
@@ -63,7 +87,10 @@ class PlaylistShow extends React.Component {
                             <div className="playlist-title">{this.props.playlist.title}</div>
                             <div className="playlist-owner">{this.props.currentUser.username}</div>
                         </div>
-                        <button onClick={() => this.audio(this.state.song2Pass)} className="play">{ this.state.playing ? "Pause" : "Play" }</button>
+                        <div className="playlist-buttons">
+                            <button onClick={() => this.audio(this.state.song2Pass)} className="play">{ this.state.playing ? "Pause" : "Play" }</button>
+                            {button}
+                        </div>
                     </div>
                     <div className="right">
                         {songs}

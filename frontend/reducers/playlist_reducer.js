@@ -20,11 +20,12 @@ const PlaylistReducer = (state = {}, action) => {
             return merge({}, state, { [action.payload.playlist.id]: action.payload.playlist })
         }
             
-        case REMOVE_PLAYLIST:
+        case REMOVE_PLAYLIST: {
+            
             let newState = merge({}, state)
             delete newState[action.playlistId]
             return newState
-
+        }
         case REMOVE_PLAYLISTSONG: {
             const playlist = merge({}, state[action.playlistsong.playlist_id])
             playlist.song_ids = playlist.song_ids.filter(song_id => {

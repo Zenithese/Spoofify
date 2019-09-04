@@ -137,3 +137,11 @@
 .track_info:hover {
     
 }
+
+.playlist-buttons {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+}
