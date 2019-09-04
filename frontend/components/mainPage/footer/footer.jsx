@@ -41,6 +41,12 @@ class Footer extends React.Component {
                 time: this.songTime(this.sound.currentTime),
                 timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
                 timePosition: `${this.sound.currentTime}`,
+            }, () => {
+                    if(this.state.time >= this.state.timeDuration && this.state.playing === true) {
+                    this.setState((prevProps) => ({ currentSong: (prevProps.currentSong + 1) % this.props.songs.length, playing: false, change: true }));
+                    this.props.recieveCurrentSong(this.props.songs[(this.state.currentSong + 1) % this.props.songs.length])
+                    this.props.Song_Alive_or_Dead(this.state.playing)
+                }
             }), 0)
 
             this.setState({ presentSong: this.props.presentSong })
