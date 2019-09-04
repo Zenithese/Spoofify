@@ -10,6 +10,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  # def likes
+  #   @user = User.find(params[:id])
+  #   render 
+  # end
+
 
   private
 

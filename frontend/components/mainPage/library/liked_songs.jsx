@@ -3,19 +3,31 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom'
+import { fetchLikes } from '../../../actions/like_actions'
 
 const mapStateToProps = (state) => {
-
+    let currentUser = state.entities.users[state.session.id]
+    let likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
+    let songs = Object.values(state.entities.songs).filter(song => likes.includes(song.id))
     return {
-        currentUser: state.entities.users[state.session.id],
-        songs: Object.values(state.entities.songs),
+        currentUser,
+        songs,
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchLikes: () => dispatch(fetchLikes())
+    }
+}
+
 class LikedSongs extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchLikes();
+    }
+
     render (){
-        
         let songsToRender = this.props.songs.map(song => {
             return (
                 <Link className="track-row">
@@ -43,4 +55,4 @@ class LikedSongs extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, null)(LikedSongs);
+export default connect(mapStateToProps, mapDispatchToProps)(LikedSongs);

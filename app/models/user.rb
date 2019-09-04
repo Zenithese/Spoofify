@@ -12,6 +12,11 @@ class User < ApplicationRecord
   has_many :playlists,
     foreign_key: :user_id
 
+  has_many :likes
+
+  has_many :liked_songs,
+    through: :likes,
+    source: :song
     
 #   has_many :songs,
 #     through: :playlist,

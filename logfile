@@ -7,3 +7,7 @@
 2019-08-24 17:46:22.326 EDT [5036] FATAL:  database "Spoofify_development" does not exist
 2019-08-24 17:47:21.693 EDT [5102] FATAL:  database "Spoofify_development" does not exist
 2019-08-24 17:47:30.563 EDT [5106] FATAL:  database "Spoofify_development" does not exist
+2019-09-03 20:14:44.846 EDT [55752] ERROR:  syntax error at or near "[" at character 66
+2019-09-03 20:14:44.846 EDT [55752] STATEMENT:  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND ([object Object]) LIMIT $2
+2019-09-03 20:18:42.494 EDT [55752] ERROR:  column likes.like_id does not exist at character 65
+2019-09-03 20:18:42.494 EDT [55752] STATEMENT:  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."like_id" = $2 LIMIT $3

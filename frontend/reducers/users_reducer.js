@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_ALL_LIKES } from '../actions/like_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);

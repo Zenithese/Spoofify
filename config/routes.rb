@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     # resources :searches, only: [:index]
     resources :playlistsongs, only: [:create, :destroy]
     # resources :libraries, only: [:index]
+    resources :likes, only: [:index, :create, :destroy]
 
   end
 

@@ -18,6 +18,7 @@ class Footer extends React.Component {
             presentSong: this.props.presentSong,
             change: false,
             duration: "",
+            like: this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong",
             // songHistory: [],
         }
         this.setVolume = this.setVolume.bind(this);
@@ -27,11 +28,13 @@ class Footer extends React.Component {
         this.sound = React.createRef();
         this.setState = this.setState.bind(this)
         this.stupid = this.stupid.bind(this)
+        this.like = this.like.bind(this)
     }
 
     componentDidMount() {
         
         this.props.fetchSongs();
+        this.props.fetchLikes();
         if (this.sound) {
             setInterval(() => this.setState({
                 duration: this.sound.duration,
@@ -60,6 +63,16 @@ class Footer extends React.Component {
             this.setState({ change: false })
         }
      
+    }
+
+    like() {
+        
+        let hmm = this.props.likes.includes(this.props.presentSong.id);
+        hmm ? 
+        this.props.deleteLike({ id: this.props.presentSong.id })
+        : this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.presentSong.id })
+        this.setState({ like: hmm ? "likedSong" : "likeSong" })
+
     }
 
     handleClick() {
@@ -163,7 +176,7 @@ class Footer extends React.Component {
                             <a className="songInfo-artist" href="">{this.props.presentSong ? this.props.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</a>
                         </div>
                     </div>
-                    <button className="likeSong"><FontAwesomeIcon icon={faHeart} /></button>
+                        <button className={this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong"} onClick={() => this.like()}><FontAwesomeIcon icon={faHeart} /></button>
                 </div>
 
                 <div className="footer-center">

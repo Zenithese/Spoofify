@@ -176,8 +176,17 @@
     outline: none;
 }
 
-.likeSong:hover {
+.likedSong {
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
     color: rgb(29, 185, 84);
+    background-color: transparent;
+    text-decoration: none;
+    line-height: 2;
+    font-family: sans-serif;
+    letter-spacing: 0.04em;
+    outline: none;
 }
 
 .previous {

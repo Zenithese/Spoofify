@@ -11,6 +11,7 @@ require 'open-uri'
 Playlist.destroy_all
 Song.destroy_all
 PlaylistSong.destroy_all
+Like.destroy_all
 
 #playlistPic
 ChillingOnADirtRoad = EzDownload.open("https://seedie.s3.amazonaws.com/ChillingOnADirtRoad.jpg")
