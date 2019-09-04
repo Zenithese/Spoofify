@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { fetchPlaylist, deletePlaylist, receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { recieveCurrentSong, Song_Alive_or_Dead, clearCurrentSong } from '../../../actions/song_actions'
+import { deletePlaylistsong } from '../../../actions/playlist_song_actions'
 import { fetchSongs } from '../../../actions/song_actions'
 import PlaylistShow from './playlist_show';
 
 
 const msp = (state, props) => {
-    
+    debugger
     let playlist = state.entities.playlists[props.match.params.playlistId] || { title: "", song_ids: [] }
     let songs = [];
     playlist.song_ids.forEach(id => {
@@ -19,10 +20,8 @@ const msp = (state, props) => {
     
     return {
         playlist,
-        // songs: playlist ? playlist.song_ids.map(id => state.entities.songs[id]).filter(song => song !== undefined) : [],
         songs,
         presentSong: state.ui.currentSongId,
-        // presentSong: state.entities.songs[ui.currentSongId],
         currentUser: state.entities.users[state.session.id],
     }
 }
@@ -32,6 +31,7 @@ const mdp = (dispatch) => {
     return {
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
+        deletePlaylistsong: (song) => dispatch(deletePlaylistsong(song)),
         pauseCurrentSong: () => dispatch(pauseCurrentSong()),
         clearCurrentSong: () => dispatch(clearCurrentSong()),
         fetchPlaylist: (playlist) => dispatch(fetchPlaylist(playlist)),

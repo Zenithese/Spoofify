@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom'
 import { fetchLikes } from '../../../actions/like_actions'
+import { recieveCurrentSong, Song_Alive_or_Dead, receiveSongForPlaylist } from '../../../actions/song_actions'
+import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
+import { openModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
     
@@ -18,14 +21,42 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchLikes: () => dispatch(fetchLikes())
+        fetchLikes: () => dispatch(fetchLikes()),
+        openModal: (modal) => dispatch(openModal(modal)),
+        recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
+        Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
+        receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
+        receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
     }
 }
 
 class LikedSongs extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            playing: false,
+        }
+    }
 
     componentDidMount() {
         this.props.fetchLikes();
+    }
+
+    handleSubmit(songId) {
+
+        this.props.receiveSongForPlaylist(songId)
+        this.props.openModal('addSong');
+
+    }
+
+    audio(song) {
+        
+        this.state.playing = !this.state.playing
+        this.props.receiveCurrentPlaylist(this.props.songs)
+        this.props.recieveCurrentSong(song)
+        this.props.Song_Alive_or_Dead(this.state.playing)
+
     }
 
     render (){
@@ -39,7 +70,7 @@ class LikedSongs extends React.Component {
                             <div className="track-artist">{song.artist_name}</div>
                         </div>
                     </Link>
-                    {/* <button onClick={() => this.handleSubmit(song.id)} className="add-button">ADD</button> */}
+                    <button onClick={() => this.handleSubmit(song.id)} className="add-button">ADD</button>
                     {/* <audio ref={(s) => this.sound = s} src={song.trackUrl} /> */}
                     {/* <button onClick={() => this.audio(this.state.song2Pass)} className="play">{this.state.playing ? "Pause" : "Play"}</button> */}
                 </Link>
@@ -47,7 +78,7 @@ class LikedSongs extends React.Component {
         })
 
         return (
-            < div className="main-content" >
+            < div className="search-body" >
                 <div className="song-results">
                     {songsToRender}
                 </div>

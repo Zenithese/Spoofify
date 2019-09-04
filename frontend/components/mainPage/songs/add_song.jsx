@@ -20,15 +20,9 @@ class AddSong extends React.Component {
         
         e.preventDefault();
         // if (!this.props.playlists[e.currentTarget.hash.split('#/')[1] - 1].song_ids.includes(this.state.songId)) { this.props.playlists[e.currentTarget.hash.split('#/')[1] - 1].song_ids.push(this.state.songId) }
-        this.props.createPlaylistsong({ playlist_id: this.props.playlists[e.currentTarget.hash.split('#/')[1] - 1].id, song_id: this.props.songId})
+        this.props.createPlaylistsong({ playlist_id: e.currentTarget.hash.split('#/')[1], song_id: this.props.songId})
         
         this.props.closeModal()
-    }
-
-    handleChange() {
-        // return e => {
-        //     this.setState({ title: e.target.value })
-        // }
     }
 
     render() {

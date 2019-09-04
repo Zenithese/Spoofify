@@ -44,7 +44,6 @@ export const clearCurrentSong = () => {
 }
 
 export const receiveSongForPlaylist = (songId) => {
-    
     return {
         type: RECEIVE_SONG_FOR_PLAYLIST,
         songId,

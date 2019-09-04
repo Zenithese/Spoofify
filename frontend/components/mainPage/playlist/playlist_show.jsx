@@ -7,7 +7,6 @@ class PlaylistShow extends React.Component {
         super(props) 
         this.state = {
             playing: false,
-            // song2Pass: this.props.songs[0],
         }
         this.sounds = [];
     }
@@ -17,19 +16,16 @@ class PlaylistShow extends React.Component {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
 
-        // this.props.recieveCurrentSong();
     }
 
-    // componentDidUpdate() {
-    //     if (this.props.presentSong !== this.prevProps.presentSong) {
-    //         this.setState({ playing: !playing })
-    //     }
-    // }
+    handleClick(ids) {
+        
+        this.props.deletePlaylistsong(ids)
 
+    }
 
     audio(song) {
         
-        // this.setState({ song2Pass: song })
         this.state.playing = !this.state.playing
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
@@ -37,17 +33,21 @@ class PlaylistShow extends React.Component {
         
     }
 
+    
     render () {
         
         let songs = this.props.songs.map( (song, i) => {
             return (
                 <div className="track-row">
-                    <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-                    <div onClick={() => this.audio(song)} className="track-info">
-                        <div className="track-title">{song.title}</div>
-                        <div className="track-artist">{song.artist_name}</div>
+                    <div className="track-row">
+                        <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
+                        <div onClick={() => this.audio(song)} className="track-info">
+                            <div className="track-title">{song.title}</div>
+                            <div className="track-artist">{song.artist_name}</div>
+                        </div>
+                        <audio ref={(s) => this.sounds.push(s)} src={song.trackUrl} />
                     </div>
-                    <audio ref={(s) => this.sounds.push(s)} src={song.trackUrl} />
+                    <button onClick={() => this.handleClick([song.id, this.props.playlist.id])} className="add-button">REMOVE</button>
                 </div>
             )
         })
