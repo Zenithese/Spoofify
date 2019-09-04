@@ -8,7 +8,7 @@ import PlaylistShow from './playlist_show';
 
 
 const msp = (state, props) => {
-    debugger
+    
     let playlist = state.entities.playlists[props.match.params.playlistId] || { title: "", song_ids: [] }
     let songs = [];
     playlist.song_ids.forEach(id => {

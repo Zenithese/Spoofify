@@ -31,7 +31,7 @@ const PlaylistReducer = (state = {}, action) => {
                 return song_id !== action.playlistsong.song_id
             })
             const newState = Object.assign({}, state, {[playlist.id]: playlist})
-            debugger
+            
             return newState
         }
         default:
