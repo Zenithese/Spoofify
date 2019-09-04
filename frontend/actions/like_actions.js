@@ -14,7 +14,7 @@ export const receieveAllLikes = (likes) => {
 }
 
 export const receiveLike = (like) => {
-
+    
     return {
         type: RECEIVE_LIKE,
         like,

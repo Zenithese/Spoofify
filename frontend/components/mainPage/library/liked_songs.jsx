@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { fetchLikes } from '../../../actions/like_actions'
 
 const mapStateToProps = (state) => {
+    
     let currentUser = state.entities.users[state.session.id]
     let likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
     let songs = Object.values(state.entities.songs).filter(song => likes.includes(song.id))

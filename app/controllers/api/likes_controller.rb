@@ -14,6 +14,7 @@ class Api::LikesController < ApplicationController
         
         @like = current_user.likes.find_by(song_id: params[:id])
         @like.destroy
+        render("api/likes/show.json.jbuilder")
     end
 
     private
