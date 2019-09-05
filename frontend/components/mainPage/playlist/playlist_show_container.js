@@ -19,8 +19,9 @@ const msp = (state, props) => {
     });
     
     return {
-        playlist,
         songs,
+        playlist,
+        playing: state.ui.playing,
         presentSong: state.ui.currentSongId,
         currentUser: state.entities.users[state.session.id],
     }

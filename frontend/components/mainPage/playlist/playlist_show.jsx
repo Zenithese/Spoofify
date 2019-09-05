@@ -32,7 +32,7 @@ class PlaylistShow extends React.Component {
     }
 
     audio(song) {
-        
+        debugger
         this.state.playing = !this.state.playing
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
@@ -88,7 +88,7 @@ class PlaylistShow extends React.Component {
                             <div className="playlist-owner">{this.props.currentUser.username}</div>
                         </div>
                         <div className="playlist-buttons">
-                            <button onClick={() => this.audio(this.state.song2Pass)} className="play">{ this.state.playing ? "Pause" : "Play" }</button>
+                            <button onClick={() => this.audio(this.props.presentSong.id === undefined ? this.props.songs[0] : this.props.presentSong)} className="play">{this.props.playing ? (typeof this.props.playing === 'object' ? "Play" : "Pause") : "Play" }</button>
                             {button}
                         </div>
                     </div>
