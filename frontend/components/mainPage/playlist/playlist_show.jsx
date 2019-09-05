@@ -32,7 +32,7 @@ class PlaylistShow extends React.Component {
     }
 
     audio(song) {
-        debugger
+        
         this.state.playing = !this.state.playing
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)

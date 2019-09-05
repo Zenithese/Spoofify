@@ -34,7 +34,7 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         this.props.fetchSongs();
         this.props.fetchLikes();
         if (this.sound) {
@@ -47,7 +47,6 @@ class Footer extends React.Component {
                     if(this.state.time >= this.state.timeDuration && this.state.playing === true) {
                     this.setState((prevProps) => ({ currentSong: (prevProps.currentSong + 1) % this.props.songs.length, playing: false, change: true }));
                     this.props.recieveCurrentSong(this.props.songs[(this.state.currentSong + 1) % this.props.songs.length])
-                    // this.props.Song_Alive_or_Dead(this.state.playing)
                 }
             }), 0)
 
@@ -73,7 +72,7 @@ class Footer extends React.Component {
                 this.stupid();
                 this.setState({ change: false })
             }
-            
+
         }
 
         if (this.state.engage === false) { this.setState({ engage: true }) }
@@ -81,7 +80,7 @@ class Footer extends React.Component {
     }
 
     like() {
-        debugger
+        
         let hmm = this.props.likes.includes(this.props.presentSong.id);
         hmm ? 
         this.props.deleteLike({ id: this.props.presentSong.id })
@@ -91,7 +90,7 @@ class Footer extends React.Component {
     }
 
     handleClick() {
-        debugger
+        
         if (this.props.songs.length) {
             
             this.audio();
@@ -102,7 +101,7 @@ class Footer extends React.Component {
     }
 
     stupid() {
-        debugger
+        
         this.setState({ presentSong: this.props.songs[this.state.currentSong] })
     }
 
@@ -112,7 +111,7 @@ class Footer extends React.Component {
     }
 
     audio() {
-        debugger
+        
         if (this.state.playing === false) {
             this.sound.play();
             this.setState({ playing: true })
@@ -124,7 +123,7 @@ class Footer extends React.Component {
     }
 
     previousSong() {
-        debugger
+        
         if (this.props.songs.length) {
             if (this.state.playing === true) {
                 this.setState((prevProps) => ({ currentSong: prevProps.currentSong === 0 ? this.props.songs.length - 1 : (prevProps.currentSong - 1) % this.props.songs.length, playing: false, change: true }));
@@ -139,12 +138,11 @@ class Footer extends React.Component {
     }
 
     nextSong() {
-        debugger
+        
         if (this.props.songs.length) {
             if (this.state.playing === true) {
                 this.setState((prevProps) => ({ currentSong: (prevProps.currentSong + 1) % this.props.songs.length, playing: false, change: true }));
                 this.props.recieveCurrentSong(this.props.songs[(this.state.currentSong + 1) % this.props.songs.length])
-                // this.props.Song_Alive_or_Dead(this.state.playing)
             } else {
                 let trackNum = (this.state.currentSong + 1) % this.props.songs.length
                 this.setState({ currentSong: trackNum });
@@ -183,12 +181,12 @@ class Footer extends React.Component {
     }
 
     render () {
-        let songUrl = this.props.songs.map( song => {
-            return (
-                song.trackUrl
-            )
-        })
-        
+            let songUrl = this.props.songs.map( song => {
+                return (
+                    song.trackUrl
+                )
+            })
+            
             return (
             <footer className="footer">
                 <div className="footer-left">
@@ -213,13 +211,13 @@ class Footer extends React.Component {
                         <button onClick={() => this.nextSong()} className="forward"><FontAwesomeIcon icon={faStepForward} /></button>
                     </div>
                     <div className="progress-bar">
-                        <div className="progress-time">{this.state.time}</div>
+                        <div className="progress-time">{this.props.presentSong.id ? this.state.time : null}</div>
                         <div className="progress-container">
                             <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} 
                                 onChange={(e) => this.setTime(e.currentTarget.value)}
                             />
                         </div>
-                        <div className="progress-time">{(this.state.timeDuration)}</div>
+                        <div className="progress-time">{this.state.timeDuration === 'NaN:NaN' ? null : this.state.timeDuration}</div>
                     </div>
                 </div>
 
