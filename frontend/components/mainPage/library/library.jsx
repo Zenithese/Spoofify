@@ -33,7 +33,7 @@ class Library extends React.Component {
                         <Route path="/library/playlist" component={LibraryPlaylist} />
                         <Route path="/library/LikedSongs" component={LikedSongs} />
                     </Switch>
-                    <Redirect from="/library" to="/library/playlist" />
+                    <Redirect from="/library" to="/library/LikedSongs" />
                 </div>
 
             </div>

@@ -36,7 +36,7 @@ class Main extends React.Component {
                 <div className="main-container">
                     <div className="main-nav">
                         <ul className="main-nav-content">
-                            <li className="featured">FEATURED</li>
+                            {/* <li className="featured">FEATURED</li> */}
                         </ul>
                     </div>
 
