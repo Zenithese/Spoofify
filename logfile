@@ -11,3 +11,7 @@
 2019-09-03 20:14:44.846 EDT [55752] STATEMENT:  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND ([object Object]) LIMIT $2
 2019-09-03 20:18:42.494 EDT [55752] ERROR:  column likes.like_id does not exist at character 65
 2019-09-03 20:18:42.494 EDT [55752] STATEMENT:  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."like_id" = $2 LIMIT $3
+2019-09-14 20:10:15.862 EDT [4661] LOG:  received smart shutdown request
+2019-09-14 20:10:15.865 EDT [4661] LOG:  background worker "logical replication launcher" (PID 4668) exited with exit code 1
+2019-09-14 20:10:15.866 EDT [4663] LOG:  shutting down
+2019-09-14 20:10:15.879 EDT [4661] LOG:  database system is shut down
