@@ -82,7 +82,7 @@ class PlaylistShow extends React.Component {
                     <div className="left">
                         <div className="left-content">
                             <div className="left-content-image-container">
-                                <img className="left-content-image" src={this.props.playlist.photoUrl ? this.props.playlist.photoUrl : "/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/Sun.jpg"}/>
+                                <img className="left-content-image" src={this.props.playlist.photoUrl}/>
                             </div>
                             <div className="playlist-title">{this.props.playlist.title}</div>
                             <div className="playlist-owner">{this.props.currentUser.username}</div>
