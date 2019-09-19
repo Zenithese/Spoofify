@@ -87,9 +87,9 @@ class Search extends React.Component {
 
     render() {
         
-        let playlistToRender = this.state.playlistResults.map(playlist => {
+        let playlistToRender = this.state.playlistResults.map((playlist, i) => {
             return (
-                <Link to={`/${playlist.id}`} className="main-playlist">
+                <Link to={`/${playlist.id}`} className="main-playlist" key={i}>
                     <div className="main-playlist-image">
                         <img className="playlist-image" src={playlist.photoUrl} />
                     </div>
@@ -102,19 +102,17 @@ class Search extends React.Component {
 
         // let search = playlistToRender.length || songsToRender.length
 
-        let songsToRender = this.state.songResults.map(song => {
+        let songsToRender = this.state.songResults.map((song, i) => {
             return (
-                <Link className="track-row">
-                    <Link onClick={() => this.audio(song)} className="track-row">
+                <Link className="track-row" key={i}>
+                    <Link className="track-row">
                         <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                        <div className="track-info">
+                        <div onClick={() => this.audio(song)}className="track-info">
                             <div className="track-title">{song.title}</div>
                             <div className="track-artist">{song.artist_name}</div>
                         </div>
                     </Link>
                     <button onClick={() => this.handleSubmit(song.id)} className="add-button">ADD</button>
-                    {/* <audio ref={(s) => this.sound = s} src={song.trackUrl} /> */}
-                    {/* <button onClick={() => this.audio(this.state.song2Pass)} className="play">{this.state.playing ? "Pause" : "Play"}</button> */}
                 </Link>
             )
         })

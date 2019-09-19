@@ -16,12 +16,12 @@ class Main extends React.Component {
 
     render () {
 
-        let playlists = this.props.playlists.map(playlist => {
+        let playlists = this.props.playlists.map((playlist, i) => {
             // if (!playlist.photoUrl) {
             //     playlist.photoUrl = "/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/Sun.jpg"
             // }
             return (
-                <Link to={`/${playlist.id}`} className="main-playlist">
+                <Link to={`/${playlist.id}`} className="main-playlist" key={i}>
                     <div className="main-playlist-image">
                         <img className="playlist-image" src={playlist.photoUrl} />
                     </div>

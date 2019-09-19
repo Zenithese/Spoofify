@@ -213,7 +213,7 @@ class Footer extends React.Component {
                     <div className="progress-bar">
                         <div className="progress-time">{this.props.presentSong.id ? this.state.time : null}</div>
                         <div className="progress-container">
-                            <input className="slider" type="range" min="0" max={this.state.duration} value={this.state.timePosition} 
+                            <input className="slider" type="range" min="0" max={this.state.duration || ''} value={this.state.timePosition} 
                                 onChange={(e) => this.setTime(e.currentTarget.value)}
                             />
                         </div>

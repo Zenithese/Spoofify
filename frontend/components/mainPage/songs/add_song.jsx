@@ -30,7 +30,7 @@ class AddSong extends React.Component {
 
         let playlists = this.props.playlists.map((playlist, i) => {
             return (
-                <Link to={`/${playlist.id}`} onClick={this.handleSubmit} className="main-playlist" alt={`${i}`}>
+                <Link to={`/${playlist.id}`} onClick={this.handleSubmit} className="main-playlist" key={i}>
                     <div className="main-playlist-image">
                         <img className="playlist-image" src={playlist.photoUrl}/>
                     </div>

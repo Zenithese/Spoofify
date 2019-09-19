@@ -60,20 +60,18 @@ class LikedSongs extends React.Component {
     }
 
     render (){
-        let songsToRender = this.props.songs.map(song => {
+        let songsToRender = this.props.songs.map((song, i) => {
             return (
-                <Link className="track-row">
-                    <Link onClick={() => this.audio(song)} className="track-row">
+                <div className="track-row" key={i}>
+                    <div className="track-row">
                         <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                        <div className="track-info">
+                        <div onClick={() => this.audio(song)} className="track-info">
                             <div className="track-title">{song.title}</div>
                             <div className="track-artist">{song.artist_name}</div>
                         </div>
-                    </Link>
+                    </div>
                     <button onClick={() => this.handleSubmit(song.id)} className="add-button">ADD</button>
-                    {/* <audio ref={(s) => this.sound = s} src={song.trackUrl} /> */}
-                    {/* <button onClick={() => this.audio(this.state.song2Pass)} className="play">{this.state.playing ? "Pause" : "Play"}</button> */}
-                </Link>
+                </div>
             )
         })
 

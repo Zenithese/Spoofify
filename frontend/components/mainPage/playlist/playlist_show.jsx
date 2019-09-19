@@ -45,7 +45,7 @@ class PlaylistShow extends React.Component {
         
         let songs = this.props.songs.map( (song, i) => {
             return (
-                <div className="track-row">
+                <div className="track-row" key={i}>
                     <div className="track-row">
                         <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
                         <div onClick={() => this.audio(song)} className="track-info">
