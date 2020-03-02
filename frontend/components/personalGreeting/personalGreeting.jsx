@@ -47,7 +47,6 @@ class PersonalGreeting extends React.Component {
 
         const dropDown = this.state.visible ? (
             <ul  className="dropdown"  >
-                <a className="dropdown-title">Account</a>
                 <li className="dropdown-content">
                     <a className="dropdown-logout" onClick={this.props.logout}>Log Out</a>
                 </li>
