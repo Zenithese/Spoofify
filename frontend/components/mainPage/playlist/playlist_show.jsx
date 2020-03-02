@@ -42,6 +42,22 @@ class PlaylistShow extends React.Component {
 
     
     render () {
+        let removeButton = <button onClick={() => this.handleClick([song.id, this.props.playlist.id])} className="add-button">REMOVE</button>
+        if (this.props.playlist.title === "Chillin' On A Dirt Road") {
+            removeButton = null
+        }
+        if (this.props.playlist.title === "Anti Pop") {
+            removeButton = null
+        }
+        if (this.props.playlist.title === "Chill Out Classics") {
+            removeButton = null
+        }
+        if (this.props.playlist.title === "mint Acoustic") {
+            removeButton = null
+        }
+        if (this.props.playlist.title === "POLLEN") {
+            removeButton = null
+        }
         
         let songs = this.props.songs.map( (song, i) => {
             return (
@@ -54,8 +70,8 @@ class PlaylistShow extends React.Component {
                         </div>
                         <audio ref={(s) => this.sounds.push(s)} src={song.trackUrl} />
                     </div>
-                    <button onClick={() => this.handleClick([song.id, this.props.playlist.id])} className="add-button">REMOVE</button>
-                </div>
+                    {removeButton}
+                    </div>
             )
         })
 
