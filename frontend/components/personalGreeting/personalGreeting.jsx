@@ -55,8 +55,7 @@ class PersonalGreeting extends React.Component {
 
         return (
             <hgroup className="header-group">
-
-                <h2 className="header-name">{this.props.currentUser.username}</h2>
+                <h2 className="header-name"></h2>
                 <button onClick={this.handleClick} tabIndex="0" onBlur={this.falsifyVisible} className="header-dropdown" >
                     <a className="icon" >Profile &nbsp;<FontAwesomeIcon id="id" className={this.state.visible ? "caret" : ""} icon={faAngleUp} /></a>
                     {dropDown}
