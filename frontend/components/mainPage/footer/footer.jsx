@@ -28,8 +28,8 @@ class Footer extends React.Component {
         this.nextSong = this.nextSong.bind(this)
         this.sound = React.createRef();
         this.setState = this.setState.bind(this)
-        this.stupid = this.stupid.bind(this)
-        this.stupider = this.stupider.bind(this)
+        this.setSong = this.setSong.bind(this)
+        this.verify = this.verify.bind(this)
         this.like = this.like.bind(this)
     }
 
@@ -69,7 +69,7 @@ class Footer extends React.Component {
 
             if (this.state.change) {
                 this.audio();
-                this.stupid();
+                this.setSong();
                 this.setState({ change: false })
             }
 
@@ -94,18 +94,18 @@ class Footer extends React.Component {
         if (this.props.songs.length) {
             
             this.audio();
-            this.stupid();
-            this.stupider();
+            this.setSong();
+            this.verify();
 
         }
     }
 
-    stupid() {
+    setSong() {
         
         this.setState({ presentSong: this.props.songs[this.state.currentSong] })
     }
 
-    stupider() {
+    verify() {
         this.setState({ engage: false })
         this.props.Song_Alive_or_Dead(!this.state.playing)
     }
