@@ -11,9 +11,10 @@
 }
 
 .search {
-    position: absolute;
-    left: 230px;
-    top: 62px;
+    margin-left: 230px;
+    margin-top: 62px;
+    margin-right: 15px;
+    display: flex;
 }
 
 .searched {
@@ -28,7 +29,8 @@
 }
 
 .search-body {
-    
+    margin-top: 85px;
+    width: 100%;
 }
 
 .search-input-box {
@@ -65,10 +67,6 @@
     padding: 0 32px;
     margin: 0 auto;
     max-width: 1480px;
-}
-
-.search-body {
-    width: 88vw;
 }
 
 .add-button {

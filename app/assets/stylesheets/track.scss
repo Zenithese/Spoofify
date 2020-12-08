@@ -1,0 +1,98 @@
+.track {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.track:hover {
+  background-color: gray;
+}
+
+.track:hover .track-info-left .track-artist {
+  color: white;
+}
+
+
+.track:hover .track-info-right .track-like {
+  opacity: 1;
+}
+
+.track:hover .track-info-right .track-time {
+  color: white;
+}
+
+
+.track:hover .track-info-right .track-actions {
+  opacity: 1;
+}
+
+.track:hover .track-img-container .track-status {
+  opacity: 1;
+}
+
+.track-img-container {
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.track-img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.track-status {
+  z-index: 2;
+  position: relative;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  opacity: 0;
+}
+
+.track-info-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-info-left {
+  margin-left: 16px;
+}
+
+.track-title {
+  font-weight: bold;
+}
+
+.track-artist {
+  color: gray;
+}
+
+.track-info-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 16px;
+}
+
+.track-like {
+  margin-right: 16px;
+  opacity: 0;
+}
+
+.track-time {
+  color: gray;
+}
+
+.track-actions {
+  margin-left: 16px;
+  opacity: 0;
+}
