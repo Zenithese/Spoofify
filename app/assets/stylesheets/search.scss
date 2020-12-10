@@ -31,6 +31,7 @@
 .search-body {
     margin-top: 85px;
     width: 100%;
+    margin-bottom: 100px;
 }
 
 .search-input-box {
@@ -39,7 +40,6 @@
     position: fixed;
     background-color: #282828;
     padding: 16px;
-    // top: 0;
     z-index: 1;
 }
 
@@ -141,42 +141,6 @@
     border-color: white;
     transform: translateY(-79px);
 }
-
-// .main-playlists {
-//     display: flex;
-//     padding-left: 20px;
-//     flex-wrap: wrap;
-//     margin-bottom: 100px;
-// }
-
-// .search-playlist-header {
-//     font-family: sans-serif;
-//     font-size: 36px;
-//     padding-left: 30px;
-//     color: aliceblue;
-// }
-
-// .main-playlist {
-//     margin: 8px;
-//     text-decoration: none;
-//     color: aliceblue;
-// }
-
-// .main-playlist-title {
-//     text-align: center;
-//     padding-top: 8px;
-// }
-
-// .main-playlist-image {
-//     width: 150px;
-//     height: 150px;
-//     border: 2px solid black;
-// }
-
-// .playlist-image {
-//     width: 150px;
-//     height: 150px;
-// }
 
 .song-results {
     position: relative;

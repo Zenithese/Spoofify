@@ -92,7 +92,6 @@ class Footer extends React.Component {
     handleClick() {
         
         if (this.props.songs.length) {
-            
             this.audio();
             this.setSong();
             this.verify();

@@ -1,8 +1,14 @@
 import React from 'react'
 
-export default function Track({ album, name, artist }) {
+export default function Track({ album, name, artist, audio }) {
+    // const track = {
+    //     photoUrl: album.images[2].url,
+    //     title: name,
+    //     artist_name: artist[0].name,
+    //     trackUrl: trackUrl
+    // }
     return (
-        <div className="track">
+        <div className="track" onClick={audio}>
             <div className="track-img-container">
                 <img className="track-img" src={album.images[2].url}></img>
                 <div className="track-status">▶</div>

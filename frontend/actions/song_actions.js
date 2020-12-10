@@ -22,7 +22,6 @@ const receiveSong = (song) => {
 }
 
 export const recieveCurrentSong = (song) => {
-    
     return {
         type: RECEIVE_CURRENT_SONG,
         song,
@@ -30,7 +29,6 @@ export const recieveCurrentSong = (song) => {
 }
 
 export const Song_Alive_or_Dead = (bool) => {
-    
     return {
         type: SONG_ALIVE_OR_DEAD,
         bool,

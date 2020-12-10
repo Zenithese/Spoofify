@@ -16,6 +16,7 @@ class Search extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.searchQuery = this.searchQuery.bind(this);
+        this.audio = this.audio.bind(this);
     }
 
     componentWillMount() {
@@ -44,18 +45,25 @@ class Search extends React.Component {
     }
 
     audio(song) {
+        console.log("audio")
         this.state.playing = !this.state.playing
         this.props.recieveCurrentSong(song)
         this.props.Song_Alive_or_Dead(this.state.playing)
         this.props.receiveCurrentPlaylist(this.props.songs)
-
     }
 
     render() {
         let tracks = this.state.songResults.length ?
             this.state.songResults.map((track, i) => {
+                const song = {
+                    id: track.id,
+                    photoUrl: track.album.images[2].url,
+                    title: track.name,
+                    artist_name: track.artists[0].name,
+                    trackUrl: track.preview_url
+                }
                 return (
-                    <Track album={track.album} name={track.name} artist={track.artists} key={i} />
+                    <Track audio={() => this.audio(song)} trackUrl={track.preview_url} album={track.album} name={track.name} artist={track.artists} key={i} />
                 )
             }) : null
 
