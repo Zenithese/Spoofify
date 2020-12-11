@@ -1,0 +1,64 @@
+.context-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.contextmenu {
+  min-width: 160px;
+  max-width: fit-content;
+  padding: 4px;
+  max-height: 18px;
+}
+
+.contextmenu:hover {
+  background-color: gray;
+}
+
+.selector {
+  min-width: 160px;
+  max-width: fit-content;
+  padding: 4px;
+  max-height: 18px;
+}
+
+.selector:hover {
+  background-color: gray;
+}
+
+.contextmenu + .nested-context {
+  display: none;
+}
+
+.selector .more-context .nested-context {
+  display: none;
+}
+
+.more-context {
+  display: flex;
+  flex-direction: row;
+  max-height: 26px;
+  max-width: 0px;
+}
+
+.right-reveal {
+  position: absolute;
+  min-width: 160px;
+  max-width: fit-content;
+  padding: 4px;
+  background-color: #282828;
+  box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+  border-radius: 4px;
+  max-height: calc(100vh - 24px);
+}
+
+.left-reveal {
+  position: absolute;
+  right: 168px;
+  min-width: 160px;
+  max-width: fit-content;
+  padding: 4px;
+  background-color: #282828;
+  box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+  border-radius: 4px;
+  max-height: calc(100vh - 24px);
+}

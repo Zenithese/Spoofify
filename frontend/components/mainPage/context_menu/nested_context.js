@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ContextMenu from './context_menu'
 
-export default function NestedContext({ text, array, parentClassName, openContexts, num, setOpenContexts, update, setUpdate }) {
+export default function NestedContext({ text, array, parentClassName, openContexts, num, setOpenContexts, update, setUpdate, directionReveal }) {
 
     const [className, setClassName] = useState("contextmenu")
 
@@ -36,7 +36,7 @@ export default function NestedContext({ text, array, parentClassName, openContex
                 {text + " =>"}
             </div>
             <div className="nested-context" >
-                <ContextMenu array={array} parentClassName={className} />
+                <ContextMenu array={array} parentClassName={className} directionReveal={directionReveal} />
             </div>
         </div>
     )
