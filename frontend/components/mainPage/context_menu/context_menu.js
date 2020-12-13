@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from 'react';
 import NestedContext from './nested_context';
 
@@ -12,7 +13,7 @@ export default function ContextMenu({ array, parentClassName, directionReveal })
     }, [num])
 
     const list = array.map((item, i) => {
-        // if (item.type === "hr") return <div className="contextmenu" key={i}><hr/></div>
+        // if (item.type === "hr") return <div style={{"height": "4px"}} key={i}/>
         if (item.type === "li") return <div className="contextmenu" key={i}>{item.text}</div>
         if (item.type === "li with context") {
             num++
@@ -32,6 +33,8 @@ export default function ContextMenu({ array, parentClassName, directionReveal })
     })
 
     return (
-        <div className={directionReveal}>{list}</div>
+        <div className={directionReveal}>
+            {list}
+        </div>
     )
 }

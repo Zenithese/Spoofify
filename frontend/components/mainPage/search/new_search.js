@@ -68,7 +68,7 @@ class Search extends React.Component {
             }) : null
 
         return (
-            <div className="search-container">
+            <div className="search-container" onContextMenu={(e) => rightClick(e)}>
                 <section className="search">
                     <div className="search-header">
                         <div className="search-input-box">

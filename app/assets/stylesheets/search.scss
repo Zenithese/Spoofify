@@ -1,20 +1,20 @@
 .search-container {
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
     position: absolute;
     bottom: 0%;
     // background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
     // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
-    background: rgb(22, 22, 22);
-    color: aliceblue
+    color: aliceblue;
+    background-color: #161616;
 }
 
 .search {
     margin-left: 230px;
     margin-top: 62px;
-    margin-right: 15px;
+    padding-right: 15px;
     display: flex;
+    background-color: #161616;
 }
 
 .searched {

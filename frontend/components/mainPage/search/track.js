@@ -1,14 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import ContextMenu from '../context_menu/context_menu';
 
 export default function Track({ album, name, artist, audio }) {
-    // const track = {
-    //     photoUrl: album.images[2].url,
-    //     title: name,
-    //     artist_name: artist[0].name,
-    //     trackUrl: trackUrl
-    // }
+
     return (
-        <div className="track" onClick={audio}>
+        <div className="track" onClick={audio} >
             <div className="track-img-container">
                 <img className="track-img" src={album.images[2].url}></img>
                 <div className="track-status">▶</div>
@@ -27,5 +23,12 @@ export default function Track({ album, name, artist, audio }) {
         </div>
     )
 }
+
+// const track = {
+//     photoUrl: album.images[2].url,
+//     title: name,
+//     artist_name: artist[0].name,
+//     trackUrl: trackUrl
+// }
 
 // &#9616;&#9616; pause symbol
