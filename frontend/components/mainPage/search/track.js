@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ContextMenu from '../context_menu/context_menu';
 
-export default function Track({ album, name, artist, audio }) {
+export default function Track({ album, name, artist, audio, handleSubmit }) {
 
     return (
         <div className="track" onClick={audio} >
@@ -17,7 +17,7 @@ export default function Track({ album, name, artist, audio }) {
                 <div className="track-info-right">
                     <div className="track-like">♡</div>
                     <div className="track-time">5:50</div>
-                    <div className="track-actions">...</div>
+                    <div className="track-actions" onClick={handleSubmit}>...</div>
                 </div>
             </div>
         </div>

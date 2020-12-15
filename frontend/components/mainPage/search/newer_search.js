@@ -43,9 +43,9 @@ export default function Search(props) {
         props.fetchPlaylists();
     }, [])
 
-    const handleSubmit = (songId) => {
-        e.preventDefault();
-        props.receiveSongForPlaylist(songId)
+    const handleSubmit = (song) => {
+        props.createSong(song)
+        props.receiveSongForPlaylist(song.id)
         props.openModal('addSong');
     }
 
@@ -59,7 +59,13 @@ export default function Search(props) {
         auth()
             .then(res => search(res.data.access_token, query, "track", "US")
                 .then(res => {
-                    setSongResults(res.data.tracks.items)
+                    const availableTracks = [];
+                    res.data.tracks.items.forEach(track => {
+                        if (track.album.images[2].url && track.preview_url) {
+                            availableTracks.push(track)
+                        }
+                    });
+                    setSongResults(availableTracks)
                 })
             )
     }
@@ -76,14 +82,15 @@ export default function Search(props) {
     const tracks = songResults.length ?
         songResults.map((track, i) => {
             const song = {
-                id: track.id,
-                photoUrl: track.album.images[2].url,
+                spotify_id: track.id,
+                image_url: track.album.images[2].url,
                 title: track.name,
                 artist_name: track.artists[0].name,
-                trackUrl: track.preview_url
+                track_url: track.preview_url,
+                kind: "spotify_sample"
             }
             return (
-                <Track audio={() => audio(song)} trackUrl={track.preview_url} album={track.album} name={track.name} artist={track.artists} key={i} />
+                <Track audio={() => audio(song)} handleSubmit={() => handleSubmit(song)} trackUrl={track.preview_url} album={track.album} name={track.name} artist={track.artists} key={i} />
             )
         }) : null
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_175511) do
+ActiveRecord::Schema.define(version: 2020_12_14_214718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(version: 2019_09_03_175511) do
     t.string "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "spotify_id"
+    t.string "track_url"
+    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|

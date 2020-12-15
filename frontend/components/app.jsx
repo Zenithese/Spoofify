@@ -35,7 +35,7 @@ const App = () => {
 
     const rightClick = (e) => {
         e.preventDefault()
-        console.log(e.clientX, e.clientY)
+        console.log(e.target)
         if (e.clientX < 260 || e.clientY < 147) return
         setDisplay("block")
         setParentClassName("contextmenu")

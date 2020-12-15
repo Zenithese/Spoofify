@@ -9,32 +9,8 @@ export default function ContextRoot({top, left, directionReveal, parentClassName
             type: "li with context",
             array: [
                 {
-                    text: "Add to Playlist",
-                    type: "li with context",
-                    array: [
-                        {
-                            type: "li",
-                            text: "Playlist 2"
-                        },
-                        {
-                            type: "li",
-                            text: "Playlist 3"
-                        },
-                        {
-                            type: "li",
-                            text: "Playlist 4"
-                        }
-                    ]
-                },
-                {
-                    text: "Add to Playlist",
-                    type: "li with context",
-                    array: [
-                        {
-                            type: "li",
-                            text: "Playlist 5"
-                        }
-                    ]
+                    type: "li",
+                    text: "New Playlist"
                 },
             ]
         },

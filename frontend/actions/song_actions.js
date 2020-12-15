@@ -55,3 +55,7 @@ export const fetchSongs = () => dispatch => {
 export const fetchSong = (song) => dispatch => {
     return APIUtil.fetchSong(song).then(song => dispatch(receiveSong(song)))
 }
+
+export const createSong = (song) => dispatch => {
+    return APIUtil.createSong(song).then(song => dispatch(receiveSong(song)))
+}
