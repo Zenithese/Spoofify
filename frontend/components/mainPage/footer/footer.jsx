@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons';
@@ -18,9 +18,8 @@ class Footer extends React.Component {
             currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]),
             presentSong: this.props.presentSong,
             change: false,
-            duration: "",
             like: this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong",
-            // songHistory: [],
+            spotifyLike: false,
         }
         this.setVolume = this.setVolume.bind(this);
         this.setTime = this.setTime.bind(this);
@@ -34,7 +33,6 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        
         this.props.fetchSongs();
         this.props.fetchLikes();
         if (this.sound) {
@@ -49,48 +47,50 @@ class Footer extends React.Component {
                     this.props.recieveCurrentSong(this.props.songs[(this.state.currentSong + 1) % this.props.songs.length])
                 }
             }), 0)
-
             this.setState({ presentSong: this.props.presentSong })
-
         }
     }
 
     componentDidUpdate(a = prevProps) {
-
-        if (this.state.engage === true) {
-
+        if (this.props.spotifySong !== a.spotifySong) {
+            this.props.recieveCurrentSong(this.props.spotifySong)
+            this.setState({ engage: false })
+        }
+        if (this.state.spotifyLike) {
+            this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.spotifySong.id })
+            this.setState({ like: "likedSong" })
+            this.setState({ spotifyLike: false })
+        }
+        if (this.state.engage) {
             if (this.props.presentSong !== a.presentSong) {
-
                 let song = this.props.presentSong
                 this.setState({ presentSong: song })
                 this.setState({ currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
                 this.audio();
             }
-
             if (this.state.change) {
                 this.audio();
                 this.setSong();
                 this.setState({ change: false })
             }
-
         }
-
         if (this.state.engage === false) { this.setState({ engage: true }) }
-     
     }
 
     like() {
-        
-        let hmm = this.props.likes.includes(this.props.presentSong.id);
-        hmm ? 
-        this.props.deleteLike({ id: this.props.presentSong.id })
-        : this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.presentSong.id })
-        this.setState({ like: hmm ? "likedSong" : "likeSong" })
-
+        if (!this.props.presentSong.id) {
+            this.props.createSong(this.props.presentSong);
+            this.setState({ spotifyLike: true })
+            return
+        }
+        const isLiked = this.props.likes.includes(this.props.presentSong.id);
+        isLiked ?
+            this.props.deleteLike({ id: this.props.presentSong.id })
+            : this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.presentSong.id })
+        this.setState({ like: isLiked ? "likedSong" : "likeSong" })
     }
 
     handleClick() {
-        
         if (this.props.songs.length) {
             this.audio();
             this.setSong();
@@ -100,7 +100,6 @@ class Footer extends React.Component {
     }
 
     setSong() {
-        
         this.setState({ presentSong: this.props.songs[this.state.currentSong] })
     }
 
@@ -110,19 +109,16 @@ class Footer extends React.Component {
     }
 
     audio() {
-        
         if (this.state.playing === false) {
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
-            
             this.sound.pause();
             this.setState({ playing: false })
         }
     }
 
     previousSong() {
-        
         if (this.props.songs.length) {
             if (this.state.playing === true) {
                 this.setState((prevProps) => ({ currentSong: prevProps.currentSong === 0 ? this.props.songs.length - 1 : (prevProps.currentSong - 1) % this.props.songs.length, playing: false, change: true }));
@@ -137,7 +133,6 @@ class Footer extends React.Component {
     }
 
     nextSong() {
-        
         if (this.props.songs.length) {
             if (this.state.playing === true) {
                 this.setState((prevProps) => ({ currentSong: (prevProps.currentSong + 1) % this.props.songs.length, playing: false, change: true }));
@@ -182,7 +177,7 @@ class Footer extends React.Component {
     render () {
             let songUrl = this.props.songs.map( song => {
                 return (
-                    song.trackUrl
+                    song.track_url
                 )
             })
             
@@ -190,7 +185,7 @@ class Footer extends React.Component {
             <footer className="footer">
                 <div className="footer-left">
                     <span className="currentSong" draggable="true">
-                        <img src={this.props.presentSong ? this.props.presentSong.photoUrl : this.props.songs[this.state.currentSong].photoUrl }/>
+                        <img src={this.props.presentSong ? this.props.presentSong.image_url : this.props.songs[this.state.currentSong].image_url }/>
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
@@ -230,7 +225,7 @@ class Footer extends React.Component {
                         </div>
                     </div>
                 </div>
-                    <audio ref={(s) => this.sound = s} src={Object.values(this.props.presentSong).length === 0 ? songUrl[this.state.currentSong] : this.props.presentSong.trackUrl} />
+                    <audio ref={(s) => this.sound = s} src={Object.values(this.props.presentSong).length === 0 ? songUrl[this.state.currentSong] : this.props.presentSong.track_url} />
             </footer>
         )
     }

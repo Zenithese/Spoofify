@@ -43,10 +43,17 @@ export default function Search(props) {
         props.fetchPlaylists();
     }, [])
 
+    useEffect(() => {
+        props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id })
+    }, [props.spotifySong])
+
     const handleSubmit = (song) => {
         props.createSong(song)
-        props.receiveSongForPlaylist(song.id)
         props.openModal('addSong');
+    }
+
+    const handleLike = (song) => {
+        props.createSong(song)
     }
 
     const handleChange = (e) => {
@@ -59,26 +66,21 @@ export default function Search(props) {
         auth()
             .then(res => search(res.data.access_token, query, "track", "US")
                 .then(res => {
-                    const availableTracks = [];
-                    res.data.tracks.items.forEach(track => {
-                        if (track.album.images[2].url && track.preview_url) {
-                            availableTracks.push(track)
-                        }
-                    });
+                    const availableTracks = res.data.tracks.items.filter(track => track.album.images[2].url && track.preview_url);
                     setSongResults(availableTracks)
                 })
             )
     }
 
-    const audio = (song) => {
-        console.log("audio")
+    const audio = (e, song) => {
+        if (!e.target.className && e.target.__reactEventHandlers$x2zdvk7x0cm.fill == "currentColor") return
         props.recieveCurrentSong(song)
         props.Song_Alive_or_Dead(!playing)
         props.receiveCurrentPlaylist(props.songs)
         setPlaying(!playing)
     }
 
-    
+
     const tracks = songResults.length ?
         songResults.map((track, i) => {
             const song = {
@@ -90,7 +92,16 @@ export default function Search(props) {
                 kind: "spotify_sample"
             }
             return (
-                <Track audio={() => audio(song)} handleSubmit={() => handleSubmit(song)} trackUrl={track.preview_url} album={track.album} name={track.name} artist={track.artists} key={i} />
+                <Track
+                    audio={(e) => audio(e, song)}
+                    handleSubmit={() => handleSubmit(song)}
+                    track_url={song.track_url}
+                    album={song.image_url}
+                    name={song.title}
+                    artist={song.artist_name}
+                    handleLike={() => handleLike(song)}
+                    key={i}
+                />
             )
         }) : null
 

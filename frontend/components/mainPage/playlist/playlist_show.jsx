@@ -68,7 +68,7 @@ class PlaylistShow extends React.Component {
                             <div className="track-title">{song.title}</div>
                             <div className="track-artist">{song.artist_name}</div>
                         </div>
-                        <audio ref={(s) => this.sounds.push(s)} src={song.trackUrl} />
+                        <audio ref={(s) => this.sounds.push(s)} src={song.track_url} />
                     </div>
                     {removeButton}
                     </div>

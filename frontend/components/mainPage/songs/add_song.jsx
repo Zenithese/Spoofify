@@ -10,8 +10,6 @@ class AddSong extends React.Component {
         super(props);
         this.state = {
             user_id: this.props.curretUserId,
-            // photoUrl: '',
-            songId: this.props.songId,
         };
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -19,9 +17,7 @@ class AddSong extends React.Component {
     handleSubmit(e) {
         console.log(this.props.songId)
         e.preventDefault();
-        // if (!this.props.playlists[e.currentTarget.hash.split('#/')[1] - 1].song_ids.includes(this.state.songId)) { this.props.playlists[e.currentTarget.hash.split('#/')[1] - 1].song_ids.push(this.state.songId) }
         this.props.createPlaylistsong({ playlist_id: e.currentTarget.hash.split('#/')[1], song_id: this.props.songId})
-        
         this.props.closeModal()
     }
 
@@ -60,11 +56,10 @@ class AddSong extends React.Component {
 }
 
 const mapStateToProps = state => {
-    
     return {
-    curretUserId: state.session.id,
-    playlists: Object.values(state.entities.playlists),
-    songId: state.ui.addSong
+        curretUserId: state.session.id,
+        playlists: Object.values(state.entities.playlists),
+        songId: state.ui.spotifySong.id,
     }
 
 }

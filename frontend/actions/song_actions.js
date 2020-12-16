@@ -14,7 +14,7 @@ const receiveAllSongs = (songs) => {
     }
 }
 
-const receiveSong = (song) => {
+const receiveSong = ({song}) => {
     return {
         type: RECEIVE_SONG,
         song,

@@ -22,7 +22,7 @@ const msp = (state, props) => {
         songs,
         playlist,
         playing: state.ui.playing,
-        presentSong: state.ui.currentSongId,
+        presentSong: state.ui.currentSONG,
         currentUser: state.entities.users[state.session.id],
     }
 }

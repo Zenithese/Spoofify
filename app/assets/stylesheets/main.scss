@@ -4,30 +4,29 @@
     overflow-y: scroll;
     position: absolute;
     bottom: 0%;
-    // background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
-    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
     background: rgb(22, 22, 22);
     color: aliceblue;
     overflow-x: hidden;
 }
 
 .main-container {
-    position: absolute;
-    left: 230px;
-    top: 62px;
+    margin-left: 230px;
+    margin-top: 62px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #161616;
+}
+
+.like-body {
+    width: 100%;
+    margin-bottom: 100px;
 }
 
 .main-nav-content {
     position: relative;
     display: flex;
-    // justify-content: space-between;
     text-align: center;
-    // margin-left: 15%;
-    // width: 50vw;
-}
-
-.main-container {
-    
 }
 
 .featured {
@@ -43,9 +42,7 @@
 
 .featured:hover {
     cursor: pointer;
-}
-
-
+} 
 
 .featured.active::after {
     content: "";

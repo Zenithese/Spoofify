@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom'
-import { fetchLikes } from '../../../actions/like_actions'
+import { fetchLikes, createLike, deleteLike } from '../../../actions/like_actions'
 import { recieveCurrentSong, Song_Alive_or_Dead, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
+import Track from '../search/track';
 
 const mapStateToProps = (state) => {
-    
     let currentUser = state.entities.users[state.session.id]
     let likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
     let songs = Object.values(state.entities.songs).filter(song => likes.includes(song.id))
@@ -27,6 +27,8 @@ const mapDispatchToProps = dispatch => {
         Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
         receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
+        // createLike: (like) => dispatch(createLike(like)),
+        deleteLike: (id) => dispatch(deleteLike(id)),
     }
 }
 
@@ -50,35 +52,38 @@ class LikedSongs extends React.Component {
 
     }
 
-    audio(song) {
-        
-        this.state.playing = !this.state.playing
+    audio(e, song) {
+        if (!e.target.className && e.target.__reactEventHandlers$x2zdvk7x0cm.fill == "currentColor") return
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(this.state.playing)
+        this.props.Song_Alive_or_Dead(!this.state.playing)
+        this.setState({ playling: !this.state.playing })
+    }
 
+    unlike(id) {
+        this.props.deleteLike({ id: id })
     }
 
     render (){
-        let songsToRender = this.props.songs.map((song, i) => {
+        const tracks = this.props.songs.map((track, i) => {
             return (
-                <div className="track-row" key={i}>
-                    <div className="track-row">
-                        <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys" /></div>
-                        <div onClick={() => this.audio(song)} className="track-info">
-                            <div className="track-title">{song.title}</div>
-                            <div className="track-artist">{song.artist_name}</div>
-                        </div>
-                    </div>
-                    <button onClick={() => this.handleSubmit(song.id)} className="add-button">ADD</button>
-                </div>
+                <Track 
+                    audio={(e) => this.audio(e, track)} 
+                    handleSubmit={() => this.handleSubmit(track.id)} 
+                    track_url={track.track_url} 
+                    album={track.image_url} 
+                    name={track.title} 
+                    artist={track.artist_name} 
+                    handleLike={() => this.unlike(track.id)}
+                    key={i}
+                />
             )
         })
 
         return (
-            < div className="search-body" >
+            <div className="like-body" >
                 <div className="song-results">
-                    {songsToRender}
+                    {tracks}
                 </div>
             </div >
         )
