@@ -8,6 +8,7 @@ export default function Search(props) {
     const [query, setQuery] = useState("");
     const [songResults, setSongResults] = useState([]);
     const [playing, setPlaying] = useState(false);
+    const [newLike, setNewLike] = useState(false);
 
     // const [top, setTop] = useState("0px");
     // const [left, setLeft] = useState("0px");
@@ -44,8 +45,11 @@ export default function Search(props) {
     }, [])
 
     useEffect(() => {
-        props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id })
-    }, [props.spotifySong])
+        if (newLike) {
+            props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id });
+            setNewLike(false);
+        }
+    }, [props.spotifySong, newLike])
 
     const handleSubmit = (song) => {
         props.createSong(song)
@@ -53,6 +57,7 @@ export default function Search(props) {
     }
 
     const handleLike = (song) => {
+        setNewLike(true);
         props.createSong(song)
     }
 
@@ -73,7 +78,8 @@ export default function Search(props) {
     }
 
     const audio = (e, song) => {
-        if (!e.target.className && e.target.__reactEventHandlers$x2zdvk7x0cm.fill == "currentColor") return
+        if (e.target.className === "track-actions") return;
+        if (!e.target.className && e.target.__reactEventHandlers$x2zdvk7x0cm.fill == "currentColor") return;
         props.recieveCurrentSong(song)
         props.Song_Alive_or_Dead(!playing)
         props.receiveCurrentPlaylist(props.songs)
