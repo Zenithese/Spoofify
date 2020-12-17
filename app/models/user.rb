@@ -21,10 +21,6 @@ class User < ApplicationRecord
   has_many :liked_songs,
     through: :likes,
     source: :song
-    
-#   has_many :songs,
-#     through: :playlist,
-#     source: :song
 
   def self.find_by_username(username, password)
     user = User.find_by(username: username)
