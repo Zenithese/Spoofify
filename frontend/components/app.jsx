@@ -57,14 +57,12 @@ const App = () => {
             <Switch>
                 <ProtectedRoute exact path="/search" component={SearchContainer} />
                 <ProtectedRoute exact path="/:playlistId" component={PlaylistShowContainer} />
-                {/* <ProtectedRoute exact path="/library" component={LibraryContainer} /> */}
                 <ProtectedRoute exact path="/" component={MainContainer} />
             </Switch> 
             
             <ProtectedRoute path="/" component={PersonalGreeting} />
             <ProtectedRoute path="/" component={NavColContainer}/>
             <ProtectedRoute path="/" component={FooterContainer}/>
-            {/* <ProtectedRoute path="/browse" component={PersonalGreeting}/> */}
             <Route exact path="/" component={GreetingContainer} />
             <Route path="/home" component={MainContainer} />
             <Route path="/library" component={LibraryContainer} />

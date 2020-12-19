@@ -48,7 +48,7 @@ class Search extends React.Component {
         console.log("audio")
         this.state.playing = !this.state.playing
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(this.state.playing)
+        this.props.songPlayback(this.state.playing)
         this.props.receiveCurrentPlaylist(this.props.songs)
     }
 

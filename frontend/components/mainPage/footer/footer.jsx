@@ -105,7 +105,7 @@ class Footer extends React.Component {
 
     verify() {
         this.setState({ engage: false })
-        this.props.Song_Alive_or_Dead(!this.state.playing)
+        this.props.songPlayback(!this.state.playing)
     }
 
     audio() {

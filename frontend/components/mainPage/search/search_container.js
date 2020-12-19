@@ -3,7 +3,7 @@ import { } from '../../../actions/playlist_actions';
 import { withRouter } from 'react-router-dom'
 import { fetchPlaylists } from '../../../actions/playlist_actions'
 import { clearSearches, fetchResults } from '../../../actions/search_actions'
-import { recieveCurrentSong, Song_Alive_or_Dead, receiveSongForPlaylist, createSong } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSong } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
 import { createLike } from '../../../actions/like_actions'
@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => {
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
-        Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
+        songPlayback: (bool) => dispatch(songPlayback(bool)),
         fetchPlaylists: () => dispatch(fetchPlaylists()),
         clearSearches: () => dispatch(clearSearches()),
         fetchResults: () => dispatch(fetchResults()),

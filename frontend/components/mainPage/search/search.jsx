@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { fetchPlaylists } from '../../../actions/playlist_actions'
 import { clearSearches, fetchResults } from '../../../actions/search_actions'
-import { recieveCurrentSong, Song_Alive_or_Dead, receiveSongForPlaylist } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { openModal } from '../../../actions/modal_actions';
@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
     receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
     receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
     recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
-    Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
+    songPlayback: (bool) => dispatch(songPlayback(bool)),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     clearSearches: () => dispatch(clearSearches()),
     fetchResults: () => dispatch(fetchResults()),
@@ -80,7 +80,7 @@ class Search extends React.Component {
         
         this.state.playing = !this.state.playing
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(this.state.playing)
+        this.props.songPlayback(this.state.playing)
         this.props.receiveCurrentPlaylist(this.props.songs)
         
     }

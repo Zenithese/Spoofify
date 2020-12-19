@@ -1,6 +1,4 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import Track from '../search/track'
 
 class PlaylistShow extends React.Component {
@@ -13,7 +11,7 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchPlaylist(this.props.match.params.playlistId);
+        this.props.fetchPlaylists();
         this.props.fetchSongs();
         this.props.fetchLikes();
     }
@@ -33,7 +31,7 @@ class PlaylistShow extends React.Component {
         if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(!this.state.playing)
+        this.props.songPlayback(!this.state.playing)
         this.setState({ playling: !this.state.playing })
     }
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Footer from './footer';
-import { recieveCurrentSong, Song_Alive_or_Dead, clearCurrentSong, createSong } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, clearCurrentSong, createSong } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from  '../../../actions/playlist_actions'
 import { fetchLikes, createLike, deleteLike } from '../../../actions/like_actions'
 
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
     recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
-    Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
+    songPlayback: (bool) => dispatch(songPlayback(bool)),
     pauseCurrentSong: () => dispatch(pauseCurrentSong()),
     clearCurrentSong: () => dispatch(clearCurrentSong()),
     fetchSongs: () => dispatch(fetchSongs()),

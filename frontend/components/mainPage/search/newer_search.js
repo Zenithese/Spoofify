@@ -52,7 +52,7 @@ export default function Search(props) {
         if (e.target.className === "track-like") return;
         if (e.target.className === "track-unliked") return;
         props.recieveCurrentSong(song)
-        props.Song_Alive_or_Dead(!playing)
+        props.songPlayback(!playing)
         props.receiveCurrentPlaylist(props.songs)
         setPlaying(!playing)
     }

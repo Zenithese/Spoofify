@@ -11,17 +11,13 @@ const PlaylistReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_ALL_PLAYLISTS: {
-            
             return action.playlists
         }
-            
         case RECEIVE_PLAYLIST: {
-            
+            debugger
             return merge({}, state, { [action.payload.playlist.id]: action.payload.playlist })
-        }
-            
+        }   
         case REMOVE_PLAYLIST: {
-            
             let newState = merge({}, state)
             delete newState[action.playlistId]
             return newState
@@ -32,7 +28,6 @@ const PlaylistReducer = (state = {}, action) => {
                 return song_id !== action.playlistsong.song_id
             })
             const newState = Object.assign({}, state, {[playlist.id]: playlist})
-            
             return newState
         }
         default:

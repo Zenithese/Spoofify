@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom'
 import { fetchLikes, createLike, deleteLike } from '../../../actions/like_actions'
-import { recieveCurrentSong, Song_Alive_or_Dead, receiveSongForPlaylist } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
 import Track from '../search/track';
@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
         fetchLikes: () => dispatch(fetchLikes()),
         openModal: (modal) => dispatch(openModal(modal)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
-        Song_Alive_or_Dead: (bool) => dispatch(Song_Alive_or_Dead(bool)),
+        songPlayback: (bool) => dispatch(songPlayback(bool)),
         receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         // createLike: (like) => dispatch(createLike(like)),
@@ -56,7 +56,7 @@ class LikedSongs extends React.Component {
         if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(!this.state.playing)
+        this.props.songPlayback(!this.state.playing)
         this.setState({ playling: !this.state.playing })
     }
 
