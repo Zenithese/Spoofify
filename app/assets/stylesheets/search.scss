@@ -31,12 +31,13 @@
 }
 
 .search-input-box {
+    top: 58px;
     right: 0;
     left: 230px;
     position: fixed;
     background-color: #282828;
     padding: 16px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .search-input-box-input {

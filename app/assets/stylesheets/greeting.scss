@@ -5,8 +5,6 @@
     margin: 0;
 }
 
-
-
 .title {
     font-family: Circular, Helvetica, Arial, sans-serif;
     padding-left: 42px;
@@ -14,8 +12,6 @@
 
 .login-signup {
     font-family: Circular, Helvetica, Arial, sans-serif;
-    // position: relative;
-    // left: 87%;
     z-index: 2;
     align-items: center;
     width: 200px;
@@ -57,10 +53,8 @@
 
 .greeting h2{
     color: white;
-    // font-weight: bolder;
     letter-spacing: -0.04em;
     line-height: 1.15;
-    // margin-top: 0;
     margin: auto;
     font-size: 80px;
 }
@@ -108,13 +102,8 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('bubbles.svg');
-    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
     background-position: center;
-    // background-repeat: no-repeat;
     background-size: cover;
-    // left: 0;
-    // right: 0;
-    // top: 0;
     z-index: 0;
 }
 
@@ -123,16 +112,12 @@
     justify-content: space-between;
     font-size: 15px;
     background: linear-gradient(rgba(83, 32, 117, 1), #161616);
-    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 8, 0));
-    // background: linear-gradient( rgba(83, 32, 117, 0.5),rgba(250, 234, 8, 0));
-    // background: linear-gradient( rgba(22, 2, 48, 0.7), transparent);
     font-weight: 666;
-    /* color: whitesmoke; */
     position: fixed;
     right: 0;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .header-group-2 {
@@ -177,17 +162,12 @@
 .dropdown {
     position: absolute;
     top: 49%;
-    // left: 0;
-    right: 10px;
+    right: 9px;
     z-index: 5;
-    // display: none;
-    // float: left;
     min-width: 160px;
-    // min-height: 160px;
     padding: 5px 0;
     margin: 23px 177px 0;
     list-style: none;
-    // font-size: 16px;
     text-align: left;
     background-color: #FFF;
     border: 1px solid #ccc;
@@ -240,10 +220,6 @@
     font-family: sans-serif;
     letter-spacing: 0.04em;
 }
-
-// Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
-// rgb(30, 215, 96)
 
 
 
