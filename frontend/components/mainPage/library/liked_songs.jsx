@@ -46,14 +46,14 @@ class LikedSongs extends React.Component {
     }
 
     handleSubmit(songId) {
-
         this.props.receiveSongForPlaylist(songId)
         this.props.openModal('addSong');
-
     }
 
     audio(e, song) {
-        if (!e.target.className && e.target.__reactEventHandlers$x2zdvk7x0cm.fill == "currentColor") return
+        if (e.target.className === "track-actions") return;
+        if (e.target.className === "track-like") return;
+        if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
         this.props.Song_Alive_or_Dead(!this.state.playing)
@@ -75,6 +75,7 @@ class LikedSongs extends React.Component {
                     name={track.title} 
                     artist={track.artist_name} 
                     handleLike={() => this.unlike(track.id)}
+                    likeStyle={true}
                     key={i}
                 />
             )

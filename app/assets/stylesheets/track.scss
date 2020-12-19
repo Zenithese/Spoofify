@@ -20,6 +20,10 @@
   opacity: 1;
 }
 
+.track:hover .track-info-right .track-unliked {
+  opacity: 1;
+}
+
 .track:hover .track-info-right .track-time {
   color: white;
 }
@@ -98,6 +102,21 @@
   outline: none;
 }
 
+.track-unliked {
+  margin-right: 16px;
+  opacity: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+  line-height: 2;
+  font-family: sans-serif;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
 .track-time {
   color: gray;
 }
@@ -105,4 +124,5 @@
 .track-actions {
   margin-left: 16px;
   opacity: 0;
+  padding-bottom: 9px;
 }

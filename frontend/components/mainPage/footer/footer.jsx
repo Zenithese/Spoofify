@@ -189,13 +189,17 @@ class Footer extends React.Component {
                     </span>
                     <div className="songInfo" draggable="true">
                         <div className="songName">
-                            <a className="songInfo-track" href="">{ this.props.presentSong ? this.props.presentSong.title : this.props.songs[this.state.currentSong].title }</a>
+                            <div className="songInfo-track">{ this.props.presentSong ? this.props.presentSong.title : this.props.songs[this.state.currentSong].title }</div>
                         </div>
                         <div className="songArtist" draggable="true">
-                            <a className="songInfo-artist" href="">{this.props.presentSong ? this.props.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</a>
+                            <div className="songInfo-artist">{this.props.presentSong ? this.props.presentSong.artist_name : this.props.songs[this.state.currentSong].artist_name }</div>
                         </div>
                     </div>
-                        <button className={this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong"} onClick={() => this.like()}><FontAwesomeIcon icon={faHeart} /></button>
+                        <button 
+                        className={this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong"} 
+                        onClick={() => this.like()}>
+                            { this.props.presentSong.id ? <FontAwesomeIcon icon={faHeart} /> : null}
+                        </button>
                 </div>
 
                 <div className="footer-center">

@@ -5,8 +5,6 @@
     overflow-x: hidden;
     position: absolute;
     bottom: 0%;
-    // background: linear-gradient( rgba(3, 0, 36, 0.5), rgb(22, 2, 48));
-    // background: linear-gradient( rgba(153, 0, 255, 0.5),rgba(250, 234, 4, 0.5)), image-url('ATC.jpg');
     background: rgb(22, 22, 22);
     color: white
 }
@@ -16,32 +14,21 @@
     left: 230px;
     right: 0%;
     display: flex;
-    // flex-direction: column;
-    // flex-wrap: wrap;
     position: absolute;
     font-family: sans-serif;
 }
 
 .left {
     width: 25%;
-    // height: -webkit-fill-available;
-    float: left;
-    position: fixed;
-    margin: auto;
     margin-top: 0;
     padding-left: 34px;
     padding-right: 8px;
-    border: 0;
-    vertical-align: baseline;
     text-align: center;
     max-width: 320px;
 }
 
 .left-content-image-container {
-    // border: 2px solid black;
     width: 100%;
-    // max-width: 238.75px;
-    // height: 238.75px;
     max-width: 320px;
     max-height: 320px;
     
@@ -98,14 +85,9 @@
 
 .right {
     width: 75%;
-    // float: left;
-    position: relative;
     padding-left: 8px;
     padding-right: 8px;
-    margin: auto;
-    margin-top: 0;
-    border: 0;
-    left: 250px;
+    padding-bottom: 100px;
 }
 
 .track-row {
@@ -126,15 +108,10 @@
 }
 
 .track-info {
-    
     left: 55px;
     cursor: pointer;
     margin-top: 15px;
     position: absolute;
-    
-}
-
-.track_info:hover {
     
 }
 

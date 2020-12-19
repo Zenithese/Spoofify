@@ -3,9 +3,10 @@ import ContextMenu from '../context_menu/context_menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 
-export default function Track({ album, name, artist, audio, handleSubmit, handleLike }) {
+export default function Track({ album, name, artist, audio, handleSubmit, handleLike, likeStyle }) {
 
-    const like = handleLike ? <button className="track-like" onClick={handleLike}><FontAwesomeIcon icon={faHeart} /></button> : <div className="track-like">♡</div>
+    // const like = handleLike ? <button className="track-like" onClick={handleLike}><FontAwesomeIcon icon={faHeart} /></button> : <div className="track-like">♡</div>
+    const like = handleLike ? <div className={likeStyle ? "track-like" : "track-unliked"} onClick={handleLike}>{likeStyle ? "♥" : "♡"}</div> : <div className="track-like">♡</div>
 
     return (
         <div className="track" onClick={audio} >

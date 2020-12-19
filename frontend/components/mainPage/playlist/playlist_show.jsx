@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
+import Track from '../search/track'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
@@ -12,32 +13,39 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
-        
         // this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.fetchSongs();
-
+        this.props.fetchLikes();
     }
 
     handleClick(ids) {
-        
         this.props.deletePlaylistsong(ids)
-
     }
 
     handleDelete() {
-
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/library/playlist")
-
     }
 
-    audio(song) {
-        
-        this.state.playing = !this.state.playing
+    audio(e, song) {
+        if (e.target.className === "track-actions") return;
+        if (e.target.className === "track-like") return;
+        if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.Song_Alive_or_Dead(this.state.playing)
-        
+        this.props.Song_Alive_or_Dead(!this.state.playing)
+        this.setState({ playling: !this.state.playing })
+    }
+
+    handleLike(trackId) {
+        const isLiked = this.props.likes.includes(trackId);
+        isLiked ?
+            this.props.deleteLike({ id: trackId })
+            : this.props.createLike({ user_id: this.props.currentUser.id, song_id: trackId })
+    }
+
+    handleLikeStyle(trackId) {
+        return this.props.likes.includes(trackId)
     }
 
     
@@ -59,19 +67,19 @@ class PlaylistShow extends React.Component {
             removeButton = null
         }
         
-        let songs = this.props.songs.map( (song, i) => {
+        const tracks = this.props.songs.map((track, i) => {
             return (
-                <div className="track-row" key={i}>
-                    <div className="track-row">
-                        <div className="note-icon"><FontAwesomeIcon icon={faMusic} className="faBoys"/></div>
-                        <div onClick={() => this.audio(song)} className="track-info">
-                            <div className="track-title">{song.title}</div>
-                            <div className="track-artist">{song.artist_name}</div>
-                        </div>
-                        <audio ref={(s) => this.sounds.push(s)} src={song.track_url} />
-                    </div>
-                    {removeButton}
-                    </div>
+                <Track
+                    audio={(e) => this.audio(e, track)}
+                    handleSubmit={() => this.handleSubmit(track.id)}
+                    track_url={track.track_url}
+                    album={track.image_url}
+                    name={track.title}
+                    artist={track.artist_name}
+                    handleLike={() => this.handleLike(track.id)}
+                    likeStyle={this.handleLikeStyle(track.id)}
+                    key={i}
+                />
             )
         })
 
@@ -109,7 +117,7 @@ class PlaylistShow extends React.Component {
                         </div>
                     </div>
                     <div className="right">
-                        {songs}
+                        {tracks}
                     </div>
                 </div>
             </div>
