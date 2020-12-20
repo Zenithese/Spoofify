@@ -8,17 +8,20 @@ export default function Search(props) {
     const [query, setQuery] = useState("");
     const [songResults, setSongResults] = useState([]);
     const [playing, setPlaying] = useState(false);
-    const [newLike, setNewLike] = useState([false, undefined]);
+    const [newLike, setNewLike] = useState(false);
 
     useEffect(() => {
         props.fetchPlaylists();
     }, [])
 
     useEffect(() => {
-        if (newLike[0] && newLike[1] !== props.spotifySong.id) {
-            props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id });
-            setNewLike([false, undefined]);
+        if (newLike) {
+            props.likes.includes(props.spotifySong.id) ?
+                props.deleteLike({ id: props.spotifySong.id })
+                : props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id });
+            setNewLike(false);
         }
+        props.fetchLikes();
     }, [props.spotifySong])
 
     const handleSubmit = (song) => {
@@ -27,7 +30,7 @@ export default function Search(props) {
     }
 
     const handleLike = (song) => {
-        setNewLike([true, props.spotifySong.id]);
+        setNewLike(true);
         props.createSong(song)
     }
 
@@ -57,10 +60,13 @@ export default function Search(props) {
         setPlaying(!playing)
     }
 
+    const handleLikeStyle = (trackId) => {
+        return props.likes.includes(trackId)
+    }
 
     const tracks = songResults.length ?
         songResults.map((track, i) => {
-            const song = {
+            const song = props.songs[track.id] ? props.songs[track.id] : {
                 spotify_id: track.id,
                 image_url: track.album.images[2].url,
                 title: track.name,
@@ -77,7 +83,7 @@ export default function Search(props) {
                     name={song.title}
                     artist={song.artist_name}
                     handleLike={() => handleLike(song)}
-                    likeStyle={true}
+                    likeStyle={handleLikeStyle(song.id)}
                     key={i}
                 />
             )

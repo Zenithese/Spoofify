@@ -70,19 +70,15 @@ class Search extends React.Component {
     }
 
     searchQuery() {
-        
         this.setState({ playlistResults: this.props.playlists.filter(playlist => playlist.title.toUpperCase().includes(this.state.searchInput.toUpperCase())) })
         this.setState({ songResults: this.props.songs.filter(song => song.title.toUpperCase().includes(this.state.searchInput.toUpperCase())) })
-
     }
 
     audio(song) {
-        
         this.state.playing = !this.state.playing
         this.props.recieveCurrentSong(song)
         this.props.songPlayback(this.state.playing)
         this.props.receiveCurrentPlaylist(this.props.songs)
-        
     }
 
     render() {

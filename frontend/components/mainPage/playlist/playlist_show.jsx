@@ -64,22 +64,6 @@ class PlaylistShow extends React.Component {
         if (this.props.playlist.title === "POLLEN") {
             removeButton = null
         }
-        
-        const tracks = this.props.songs.map((track, i) => {
-            return (
-                <Track
-                    audio={(e) => this.audio(e, track)}
-                    handleSubmit={() => this.handleSubmit(track.id)}
-                    track_url={track.track_url}
-                    album={track.image_url}
-                    name={track.title}
-                    artist={track.artist_name}
-                    handleLike={() => this.handleLike(track.id)}
-                    likeStyle={this.handleLikeStyle(track.id)}
-                    key={i}
-                />
-            )
-        })
 
         let button = < button onClick={() => this.handleDelete()} className="add-button">DELETE</button>
         if (this.props.playlist.title === "Chillin' On A Dirt Road") {
@@ -97,6 +81,22 @@ class PlaylistShow extends React.Component {
         if (this.props.playlist.title === "POLLEN") {
             button = null
         }
+        
+        const tracks = this.props.songs.map((track, i) => {
+            return (
+                <Track
+                    audio={(e) => this.audio(e, track)}
+                    handleSubmit={() => this.handleSubmit(track.id)}
+                    track_url={track.track_url}
+                    album={track.image_url}
+                    name={track.title}
+                    artist={track.artist_name}
+                    handleLike={() => this.handleLike(track.id)}
+                    likeStyle={this.handleLikeStyle(track.id)}
+                    key={i}
+                />
+            )
+        })
         
         return (
             <div className="playlist-content">

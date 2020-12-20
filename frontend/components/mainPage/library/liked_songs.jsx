@@ -10,9 +10,14 @@ import { openModal } from '../../../actions/modal_actions';
 import Track from '../search/track';
 
 const mapStateToProps = (state) => {
-    let currentUser = state.entities.users[state.session.id]
-    let likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
-    let songs = Object.values(state.entities.songs).filter(song => likes.includes(song.id))
+    const numberedSongs = [];
+    const obj = state.entities.songs;
+    for (const key in obj) {
+        if (Number(key)) numberedSongs.push(obj[key]);
+    };
+    const currentUser = state.entities.users[state.session.id]
+    const likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
+    const songs = numberedSongs.filter(song => likes.includes(song.id))
     return {
         currentUser,
         songs,

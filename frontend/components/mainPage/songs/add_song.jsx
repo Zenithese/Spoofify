@@ -15,16 +15,14 @@ class AddSong extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log(this.props.songId)
         e.preventDefault();
         this.props.createPlaylistsong({ playlist_id: e.currentTarget.hash.split('#/')[1], song_id: this.props.songId})
         this.props.closeModal()
     }
 
     render() {
-        
 
-        let playlists = this.props.playlists.map((playlist, i) => {
+        const playlists = this.props.playlists.map((playlist, i) => {
             return (
                 <Link to={`/${playlist.id}`} onClick={this.handleSubmit} className="main-playlist" key={i}>
                     <div className="main-playlist-image">

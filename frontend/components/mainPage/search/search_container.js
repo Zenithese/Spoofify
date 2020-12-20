@@ -6,17 +6,20 @@ import { clearSearches, fetchResults } from '../../../actions/search_actions'
 import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSong } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
-import { createLike } from '../../../actions/like_actions'
+import { createLike, deleteLike, fetchLikes } from '../../../actions/like_actions'
 import Search from './newer_search';
 
 
 const mapStateToProps = (state, ownProps) => {
+    const currentUser = state.entities.users[state.session.id]
+    const likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
     return {
-        currentUser: state.entities.users[state.session.id],
+        likes,
+        currentUser,
         playlists: Object.values(state.entities.playlists),
-        songs: Object.values(state.entities.songs),
+        songs: state.entities.songs,
         searchInput: ownProps.searchInput,
-        spotifySong: state.ui.spotifySong
+        spotifySong: state.ui.spotifySong,
     };
 };
 
@@ -31,7 +34,9 @@ const mapDispatchToProps = dispatch => {
         fetchResults: () => dispatch(fetchResults()),
         openModal: (modal) => dispatch(openModal(modal)),
         createSong: (song) => dispatch(createSong(song)),
-        createLike: (id) => dispatch(createLike(id))
+        createLike: (id) => dispatch(createLike(id)),
+        deleteLike: (id) => dispatch(deleteLike(id)),
+        fetchLikes: () => dispatch(fetchLikes()),
     }
 };
 
