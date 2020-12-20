@@ -9,7 +9,7 @@ export default function Track({ album, name, artist, audio, handleSubmit, handle
     const like = handleLike ? <div className={likeStyle ? "track-like" : "track-unliked"} onClick={handleLike}>{likeStyle ? "♥" : "♡"}</div> : <div className="track-like">♡</div>
 
     return (
-        <div className="track" onClick={audio} >
+        <div className="track" onDoubleClick={audio} >
             <div className="track-img-container">
                 <img className="track-img" src={album}></img>
                 <div className="track-status">▶</div>
