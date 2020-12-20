@@ -6,14 +6,12 @@ const likesReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_ALL_LIKES:
             return action.likes
-        case RECEIVE_LIKE: {
+        case RECEIVE_LIKE:
             return merge({}, state, {[action.like.song_id]: action.like})
-        }
-        case REMOVE_LIKE: {
+        case REMOVE_LIKE:
             const newLikes = merge({}, state)
             delete newLikes[action.like.song_id]
             return newLikes
-        }
         default:
             return state;
     }
