@@ -24,7 +24,7 @@ const msp = (state, props) => {
         playing: state.ui.playing,
         presentSong: state.ui.currentSONG,
         currentUser: state.entities.users[state.session.id],
-        likes: Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id),
+        likes: state.entities.likes,
     }
 }
 

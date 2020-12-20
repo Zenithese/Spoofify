@@ -6,13 +6,12 @@ import { fetchLikes, createLike, deleteLike } from '../../../actions/like_action
 
 
 const mapStateToProps = (state) => {
-    let currentUser = state.entities.users[state.session.id]
     return {
         songs: state.ui.currentPlaylist || Object.values(state.entities.songs),
         presentSong: state.ui.currentSONG,
         currentPlaylist: state.ui.currentPlaylist,
-        currentUser,
-        likes: Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id),
+        currentUser: state.entities.users[state.session.id],
+        likes: state.entities.likes,
         spotifySong: state.ui.spotifySong,
     }
 }

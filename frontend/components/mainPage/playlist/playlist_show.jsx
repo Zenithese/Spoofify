@@ -36,14 +36,13 @@ class PlaylistShow extends React.Component {
     }
 
     handleLike(trackId) {
-        const isLiked = this.props.likes.includes(trackId);
-        isLiked ?
+        this.props.likes[trackId] ?
             this.props.deleteLike({ id: trackId })
             : this.props.createLike({ user_id: this.props.currentUser.id, song_id: trackId })
     }
 
     handleLikeStyle(trackId) {
-        return this.props.likes.includes(trackId)
+        return this.props.likes[trackId]
     }
 
     

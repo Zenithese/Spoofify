@@ -11,11 +11,9 @@ import Search from './newer_search';
 
 
 const mapStateToProps = (state, ownProps) => {
-    const currentUser = state.entities.users[state.session.id]
-    const likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
     return {
-        likes,
-        currentUser,
+        likes: state.entities.likes,
+        currentUser: state.entities.users[state.session.id],
         playlists: Object.values(state.entities.playlists),
         songs: state.entities.songs,
         searchInput: ownProps.searchInput,

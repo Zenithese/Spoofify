@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
         if (Number(key)) numberedSongs.push(obj[key]);
     };
     const currentUser = state.entities.users[state.session.id]
-    const likes = Object.values(state.entities.likes).filter(like => like.user_id === currentUser.id).map(like => like.song_id)
-    const songs = numberedSongs.filter(song => likes.includes(song.id))
+    const likes = state.entities.likes
+    const songs = numberedSongs.filter(song => likes[song.id])
     return {
         currentUser,
         songs,

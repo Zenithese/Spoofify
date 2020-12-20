@@ -15,13 +15,13 @@ export default function Search(props) {
     }, [])
 
     useEffect(() => {
+        props.fetchLikes();
         if (newLike) {
-            props.likes.includes(props.spotifySong.id) ?
+            props.likes[props.spotifySong.id] ?
                 props.deleteLike({ id: props.spotifySong.id })
                 : props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id });
             setNewLike(false);
         }
-        props.fetchLikes();
     }, [props.spotifySong])
 
     const handleSubmit = (song) => {
@@ -61,7 +61,7 @@ export default function Search(props) {
     }
 
     const handleLikeStyle = (trackId) => {
-        return props.likes.includes(trackId)
+        return props.likes[trackId]
     }
 
     const tracks = songResults.length ?

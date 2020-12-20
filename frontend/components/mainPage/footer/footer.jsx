@@ -18,7 +18,7 @@ class Footer extends React.Component {
             currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]),
             presentSong: this.props.presentSong,
             change: false,
-            like: this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong",
+            like: this.props.likes[this.props.presentSong.id] ? "likedSong" : "likeSong",
             spotifyLike: false,
         }
         this.setVolume = this.setVolume.bind(this);
@@ -83,7 +83,7 @@ class Footer extends React.Component {
             this.setState({ spotifyLike: true })
             return
         }
-        const isLiked = this.props.likes.includes(this.props.presentSong.id);
+        const isLiked = this.props.likes[this.props.presentSong.id];
         isLiked ?
             this.props.deleteLike({ id: this.props.presentSong.id })
             : this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.presentSong.id })
@@ -196,7 +196,7 @@ class Footer extends React.Component {
                         </div>
                     </div>
                         <button 
-                        className={this.props.likes.includes(this.props.presentSong.id) ? "likedSong" : "likeSong"} 
+                        className={this.props.likes[this.props.presentSong.id] ? "likedSong" : "likeSong"} 
                         onClick={() => this.like()}>
                             { this.props.presentSong.id ? <FontAwesomeIcon icon={faHeart} /> : null}
                         </button>

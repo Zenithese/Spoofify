@@ -1,5 +1,7 @@
 @likes.each do |like|
-    json.set! like.id do
-        json.extract! like, :id, :user_id, :song_id
+    if like.user_id === current_user[:id]
+        json.set! like.song_id do
+            json.extract! like, :id, :user_id, :song_id
+        end
     end
 end
