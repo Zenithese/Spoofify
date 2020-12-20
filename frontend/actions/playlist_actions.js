@@ -6,7 +6,6 @@ export const RECEIVE_CURRENT_PLAYLIST = "RECEIVE_CURRENT_PLAYLIST"
 export const REMOVE_PLAYLIST = "REMOVE_PLAYLIST"
 
 export const receieveAllPlaylist = (playlists) => {
-    
     return {
         type: RECEIVE_ALL_PLAYLISTS,
         playlists,
@@ -14,7 +13,6 @@ export const receieveAllPlaylist = (playlists) => {
 }
 
 export const receivePlaylist = (payload) => {
-    
     return {
         type: RECEIVE_PLAYLIST,
         payload,
@@ -22,7 +20,6 @@ export const receivePlaylist = (payload) => {
 }
 
 export const receiveCurrentPlaylist = (playlist) => {
-    
     return {
         type: RECEIVE_CURRENT_PLAYLIST,
         playlist,
@@ -30,7 +27,6 @@ export const receiveCurrentPlaylist = (playlist) => {
 }
 
 export const removePlaylist = (playlist) => {
-    
     return {
         type: REMOVE_PLAYLIST,
         playlistId: playlist.id,
@@ -38,12 +34,10 @@ export const removePlaylist = (playlist) => {
 }
 
 export const fetchPlaylists = () => dispatch => {
-    
     return APIUtil.fetchPlaylists().then(playlists => dispatch(receieveAllPlaylist(playlists)))
 }
 
 export const fetchPlaylist = (id) => dispatch => {
-    
     return APIUtil.fetchPlaylist(id).then(playlist => dispatch(receivePlaylist(playlist)))
 }
 
@@ -56,6 +50,5 @@ export const updatePlaylist = (playlist) => dispatch => {
 }
 
 export const deletePlaylist = (playlist) => dispatch => {
-    
     return APIUtil.deletePlaylist(playlist).then(playlistId => dispatch(removePlaylist(playlistId)))
 }
