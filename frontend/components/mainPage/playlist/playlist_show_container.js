@@ -9,9 +9,8 @@ import { fetchLikes, createLike, deleteLike } from '../../../actions/like_action
 
 
 const msp = (state, props) => {
-    let currentUser = state.entities.users[state.session.id]
-    let playlist = state.entities.playlists[props.match.params.playlistId] || { title: "", song_ids: [] }
-    let songs = [];
+    const playlist = state.entities.playlists[props.match.params.playlistId] || { title: "", song_ids: [] }
+    const songs = [];
     playlist.song_ids.forEach(id => {
         const song = state.entities.songs[id];
         if (song !== undefined) {

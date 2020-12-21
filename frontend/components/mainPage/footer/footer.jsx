@@ -99,7 +99,6 @@ class Footer extends React.Component {
 
     audio(newSong) {
         if (this.state.playing === false || newSong) {
-            console.log("newSong")
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {
@@ -166,6 +165,7 @@ class Footer extends React.Component {
 
     render () {
             let songUrl = this.props.songs.map( song => {
+                // console.log(song)
                 return (
                     song.track_url
                 )

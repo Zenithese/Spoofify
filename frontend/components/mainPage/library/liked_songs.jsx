@@ -4,7 +4,7 @@ import { fetchLikes, createLike, deleteLike } from '../../../actions/like_action
 import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
-import Track from '../track/track';
+import Track from '../track/track_container';
 
 const mapStateToProps = (state) => {
     const numberedSongs = [];
@@ -46,14 +46,6 @@ class LikedSongs extends React.Component {
         this.props.openModal('addSong');
     }
 
-    audio(e, song) {
-        if (e.target.className === "track-actions") return;
-        if (e.target.className === "track-like") return;
-        if (e.target.className === "track-unliked") return;
-        this.props.receiveCurrentPlaylist(this.props.songs)
-        this.props.recieveCurrentSong(song)
-    }
-
     unlike(id) {
         this.props.deleteLike({ id: id })
     }
@@ -62,7 +54,7 @@ class LikedSongs extends React.Component {
         const tracks = this.props.songs.map((track, i) => {
             return (
                 <Track 
-                    audio={(e) => this.audio(e, track)} 
+                    song={track} 
                     handleSubmit={() => this.handleSubmit(track.id)} 
                     track_url={track.track_url} 
                     album={track.image_url} 

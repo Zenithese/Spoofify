@@ -1,5 +1,5 @@
 import React from 'react'
-import Track from '../track/track'
+import Track from '../track/track_container'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
@@ -20,14 +20,6 @@ class PlaylistShow extends React.Component {
     handleDelete() {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/library/playlist")
-    }
-
-    audio(e, song) {
-        if (e.target.className === "track-actions") return;
-        if (e.target.className === "track-like") return;
-        if (e.target.className === "track-unliked") return;
-        this.props.receiveCurrentPlaylist(this.props.songs)
-        this.props.recieveCurrentSong(song)
     }
 
     handleLike(trackId) {
@@ -79,7 +71,7 @@ class PlaylistShow extends React.Component {
         const tracks = this.props.songs.map((track, i) => {
             return (
                 <Track
-                    audio={(e) => this.audio(e, track)}
+                    song={track}
                     handleSubmit={() => this.handleSubmit(track.id)}
                     track_url={track.track_url}
                     album={track.image_url}

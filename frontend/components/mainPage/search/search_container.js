@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { fetchPlaylists } from '../../../actions/playlist_actions'
 import { clearSearches, fetchResults } from '../../../actions/search_actions'
-import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSpotifySong } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSpotifySong, fetchSongs } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
 import { createLike, deleteLike, fetchLikes } from '../../../actions/like_actions'
@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
         songs: state.entities.songs,
         searchInput: ownProps.searchInput,
         spotifySong: state.ui.spotifySong,
+        currentSong: state.ui.currentSONG,
     };
 };
 
@@ -34,6 +35,7 @@ const mapDispatchToProps = dispatch => {
         createLike: (id) => dispatch(createLike(id)),
         deleteLike: (id) => dispatch(deleteLike(id)),
         fetchLikes: () => dispatch(fetchLikes()),
+        fetchSongs: () => dispatch(fetchSongs()),
     }
 };
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Track from '../track/track';
+import React, { useState, useEffect } from 'react';
+import Track from '../track/track_container';
 import { auth, search } from '../../../util/spotify_api_util';
 
 export default function Search(props) {
@@ -13,13 +13,14 @@ export default function Search(props) {
     }, [])
 
     useEffect(() => {
-        props.fetchLikes();
         if (newLike) {
             props.likes[props.spotifySong.id] ?
                 props.deleteLike({ id: props.spotifySong.id })
                 : props.createLike({ user_id: props.currentUser.id, song_id: props.spotifySong.id });
             setNewLike(false);
         }
+        props.fetchLikes();
+        props.fetchSongs();
     }, [props.spotifySong])
 
     const handleSubmit = (song, rightClicked) => {
@@ -29,7 +30,7 @@ export default function Search(props) {
 
     const handleLike = (song) => {
         setNewLike(true);
-        props.createSong(song)
+        props.createSpotifySong(song);
     }
 
     const handleChange = (e) => {
@@ -46,14 +47,6 @@ export default function Search(props) {
                     setSongResults(availableTracks)
                 })
             )
-    }
-
-    const audio = (e, song) => {
-        if (e.target.className === "track-actions") return;
-        if (e.target.className === "track-like") return;
-        if (e.target.className === "track-unliked") return;
-        props.recieveCurrentSong(song);
-        props.receiveCurrentPlaylist(props.songs);
     }
 
     const handleLikeStyle = (trackId) => {
@@ -73,7 +66,7 @@ export default function Search(props) {
             return (
                 <Track
                     onContextMenu={() => handleSubmit(song, true)}
-                    audio={(e) => audio(e, song)}
+                    song={song}
                     handleSubmit={() => handleSubmit(song)}
                     track_url={song.track_url}
                     album={song.image_url}

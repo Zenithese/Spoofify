@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function Track({ album, name, artist, audio, handleSubmit, handleLike, likeStyle, songId, onContextMenu }) {
+export default function Track({ album, name, artist, handleSubmit, handleLike, likeStyle, songId, onContextMenu, song, recieveCurrentSong, receiveCurrentPlaylist, songs }) {
+
+    const audio = (e, song) => {
+        if (e.target.className === "track-actions") return;
+        if (e.target.className === "track-like") return;
+        if (e.target.className === "track-unliked") return;
+        recieveCurrentSong(song);
+        receiveCurrentPlaylist(songs);
+    }
 
     return (
-        <div className="track" onContextMenu={onContextMenu} onDoubleClick={audio} data-contextable={true} data-songid={songId}>
+        <div className="track" onContextMenu={onContextMenu} onDoubleClick={(e) => audio(e, song)} data-contextable={true} data-songid={songId}>
             <div className="track-img-container" data-contextable={true} data-songid={songId}>
                 <img className="track-img" src={album} data-contextable={true} data-songid={songId}></img>
                 <div className="track-status" data-contextable={true} data-songid={songId}>▶</div>
