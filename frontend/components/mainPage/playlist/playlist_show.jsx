@@ -4,9 +4,6 @@ import Track from '../track/track'
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props) 
-        this.state = {
-            playing: false,
-        }
         this.sounds = [];
     }
 
@@ -31,8 +28,6 @@ class PlaylistShow extends React.Component {
         if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.songPlayback(!this.state.playing)
-        this.setState({ playling: !this.state.playing })
     }
 
     handleLike(trackId) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Track from '../track/track';
 import { auth, search } from '../../../util/spotify_api_util';
 
@@ -6,7 +6,6 @@ export default function Search(props) {
 
     const [query, setQuery] = useState("");
     const [songResults, setSongResults] = useState([]);
-    const [playing, setPlaying] = useState(false);
     const [newLike, setNewLike] = useState(false);
 
     useEffect(() => {
@@ -53,10 +52,8 @@ export default function Search(props) {
         if (e.target.className === "track-actions") return;
         if (e.target.className === "track-like") return;
         if (e.target.className === "track-unliked") return;
-        props.recieveCurrentSong(song)
-        props.songPlayback(!playing)
-        props.receiveCurrentPlaylist(props.songs)
-        setPlaying(!playing)
+        props.recieveCurrentSong(song);
+        props.receiveCurrentPlaylist(props.songs);
     }
 
     const handleLikeStyle = (trackId) => {

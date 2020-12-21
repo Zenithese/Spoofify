@@ -1,8 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink } from 'react-router-dom'
 import { fetchLikes, createLike, deleteLike } from '../../../actions/like_actions'
 import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
@@ -29,7 +26,6 @@ const mapDispatchToProps = dispatch => {
         fetchLikes: () => dispatch(fetchLikes()),
         openModal: (modal) => dispatch(openModal(modal)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),
-        songPlayback: (bool) => dispatch(songPlayback(bool)),
         receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         deleteLike: (id) => dispatch(deleteLike(id)),
@@ -39,9 +35,6 @@ const mapDispatchToProps = dispatch => {
 class LikedSongs extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            playing: false,
-        }
     }
 
     componentDidMount() {
@@ -59,8 +52,6 @@ class LikedSongs extends React.Component {
         if (e.target.className === "track-unliked") return;
         this.props.receiveCurrentPlaylist(this.props.songs)
         this.props.recieveCurrentSong(song)
-        this.props.songPlayback(!this.state.playing)
-        this.setState({ playling: !this.state.playing })
     }
 
     unlike(id) {

@@ -51,10 +51,6 @@ class Footer extends React.Component {
     }
 
     componentDidUpdate(a = prevProps) {
-        // if (this.props.spotifySong !== a.spotifySong) {
-        //     this.props.recieveCurrentSong(this.props.spotifySong)
-        //     this.setState({ engage: false })
-        // }
         if (this.state.spotifyLike) {
             this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.spotifySong.id })
             this.setState({ like: "likedSong" })
@@ -62,15 +58,10 @@ class Footer extends React.Component {
         }
         if (this.state.engage) {
             if (this.props.presentSong !== a.presentSong) {
-                let song = this.props.presentSong
-                this.setState({ presentSong: song })
-                this.setState({ currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) })
-                this.audio();
-            }
-            if (this.state.change) {
-                this.audio();
-                this.setSong();
-                this.setState({ change: false })
+                const song = this.props.presentSong;
+                this.setState({ presentSong: song });
+                this.setState({ currentSong: _.findIndex(this.props.songs, this.props.songs.filter(el => el.id === this.props.presentSong.id)[0]) });
+                this.props.presentSong.track_url !== a.presentSong.track_url ? this.audio(true) : this.audio(false)
             }
         }
         if (this.state.engage === false) { this.setState({ engage: true }) }
@@ -106,8 +97,9 @@ class Footer extends React.Component {
         this.props.songPlayback(!this.state.playing)
     }
 
-    audio() {
-        if (this.state.playing === false) {
+    audio(newSong) {
+        if (this.state.playing === false || newSong) {
+            console.log("newSong")
             this.sound.play();
             this.setState({ playing: true })
         } else if (this.state.playing === true) {

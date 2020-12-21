@@ -21,7 +21,6 @@ const msp = (state, props) => {
     return {
         songs,
         playlist,
-        playing: state.ui.playing,
         presentSong: state.ui.currentSONG,
         currentUser: state.entities.users[state.session.id],
         likes: state.entities.likes,
@@ -37,7 +36,6 @@ const mdp = (dispatch) => {
         fetchPlaylists: (playlist) => dispatch(fetchPlaylists(playlist)),
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
         fetchSongs: () => dispatch(fetchSongs()),
-        songPlayback: (bool) => dispatch(songPlayback(bool)),
         createLike: (like) => dispatch(createLike(like)),
         deleteLike: (id) => dispatch(deleteLike(id)),
         fetchLikes: () => dispatch(fetchLikes()),
