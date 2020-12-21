@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import ContextMenu from './context_menu'
 
-export default function NestedContext({ text, array, parentClassName, openContexts, num, setOpenContexts, update, setUpdate, directionReveal }) {
+export default function NestedContext({ text, array, parentClassName, openContexts, num, setOpenContexts, update, setUpdate, directionReveal, handleSubmit }) {
 
     const [className, setClassName] = useState("contextmenu")
 
@@ -34,10 +34,10 @@ export default function NestedContext({ text, array, parentClassName, openContex
     return (
         <div className="more-context" onMouseOver={() => onHover()}>
             <div className={className} onMouseOver={() => onHover()} onMouseLeave={(e) => onLeave(e)}>
-                {text + " =>"}
+                <div id="contextmenu-text">{text + " =>"}</div>
             </div>
             <div className="nested-context" >
-                <ContextMenu array={array} parentClassName={className} directionReveal={directionReveal} />
+                <ContextMenu array={array} parentClassName={className} directionReveal={directionReveal} handleSubmit={handleSubmit} />
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import { fetchLikes, createLike, deleteLike } from '../../../actions/like_action
 import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
-import Track from '../search/track';
+import Track from '../track/track';
 
 const mapStateToProps = (state) => {
     const numberedSongs = [];
@@ -82,6 +82,7 @@ class LikedSongs extends React.Component {
                     handleLike={() => this.unlike(track.id)}
                     likeStyle={true}
                     key={i}
+                    songId={track.id}
                 />
             )
         })

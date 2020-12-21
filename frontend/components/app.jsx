@@ -6,10 +6,9 @@ import FooterContainer from './mainPage/footer/footer_container';
 import MainContainer from './mainPage/main/main_container';
 import SearchContainer from './mainPage/search/search_container';
 import Modal from './mainPage/modal/modal';
-import CreatePlaylist from './mainPage/playlist/create_playlist'
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PersonalGreeting from './personalGreeting/personalGreeting';
 import PlaylistShowContainer from './mainPage/playlist/playlist_show_container';
 import LibraryContainer from './mainPage/library/library_container';
@@ -24,6 +23,7 @@ const App = () => {
     const [directionReveal, setDirectionReveal] = useState("right-reveal");
     const [parentClassName, setParentClassName] = useState("new-location");
     const [display, setDisplay] = useState("none");
+    const [songId, setSongId] = useState(undefined)
 
     useEffect(() => {
         setParentClassName("new-location")
@@ -35,8 +35,8 @@ const App = () => {
 
     const rightClick = (e) => {
         e.preventDefault()
-        console.log(e.target)
-        if (e.clientX < 260 || e.clientY < 147) return
+        if (!e.target.dataset.contextable) return
+        setSongId(e.target.dataset.songid)
         setDisplay("block")
         setParentClassName("contextmenu")
         if (e.clientX > window.innerWidth / 2) {
@@ -69,7 +69,7 @@ const App = () => {
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignUpFormContainer} />
 
-            <ContextRoot top={top} left={left} directionReveal={directionReveal} parentClassName={parentClassName} display={display} />
+            <ContextRoot top={top} left={left} directionReveal={directionReveal} parentClassName={parentClassName} display={display} songId={songId} />
             
         </div>
     )

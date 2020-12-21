@@ -6,11 +6,33 @@
 .contextmenu {
   min-width: 160px;
   max-width: fit-content;
-  padding: 4px;
-  max-height: 18px;
-  border-top: solid #282828 4px;
-  border-bottom: solid #282828 4px;
   border-radius: 4px;
+  // padding: 4px;
+  // max-height: 18px;
+  // border-top: solid #282828 4px;
+  // border-bottom: solid #282828 4px;
+}
+
+#psuedo {
+  position: relative;
+  padding: 12px;
+  padding-right: 8px;
+}
+
+#contextmenu-text {
+  position: relative;
+  padding: 12px;
+  padding-right: 8px;
+}
+
+#psuedo::before{
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
 }
 
 .highlight {
@@ -25,19 +47,17 @@
 .selector {
   min-width: 160px;
   max-width: fit-content;
-  padding: 4px;
-  max-height: 18px;
   border-radius: 4px;
-  border-top: solid #282828 4px;
-  border-bottom: solid #282828 4px;
+  // padding: 4px;
+  // max-height: 18px;
+  // border-top: solid #282828 4px;
+  // border-bottom: solid #282828 4px;
 }
 
 .selector:hover {
   background-color: gray;
   border-radius: 4px;
 }
-
-
 
 .contextmenu + .nested-context {
   display: none;
@@ -66,7 +86,7 @@
 
 .left-reveal {
   position: absolute;
-  right: 168px;
+  right: 160px;
   min-width: 160px;
   max-width: fit-content;
   background-color: #282828;

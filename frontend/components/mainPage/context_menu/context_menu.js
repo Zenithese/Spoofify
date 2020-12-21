@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { useState, useEffect } from 'react';
 import NestedContext from './nested_context';
 
-export default function ContextMenu({ array, parentClassName, directionReveal }) {
+export default function ContextMenu({ array, parentClassName, directionReveal, handleSubmit }) {
 
     const [openContexts, setOpenContexts] = useState([]);
     const [update, setUpdate] = useState(true);
@@ -13,21 +13,35 @@ export default function ContextMenu({ array, parentClassName, directionReveal })
     }, [num])
 
     const list = array.map((item, i) => {
-        // if (item.type === "hr") return <div style={{"height": "4px"}} key={i}/>
-        if (item.type === "li") return <div className="contextmenu" key={i}>{item.text}</div>
-        if (item.type === "li with context") {
+        const { id, title, type, text, array, style } = item
+        if (type === "li with context") {
             num++
             return (
                 <NestedContext
-                    text={item.text}
-                    array={item.array}
+                    text={text}
+                    array={array}
                     parentClassName={parentClassName}
-                    key={i} openContexts={openContexts}
+                    key={i} 
+                    openContexts={openContexts}
                     setOpenContexts={setOpenContexts}
                     num={num - 1}
                     update={update}
                     setUpdate={setUpdate}
-                    directionReveal={directionReveal} />
+                    directionReveal={directionReveal}
+                    handleSubmit={handleSubmit}
+                />
+            )
+        } else if (style) {
+            return (
+                <div className="contextmenu" key={i}>
+                    <div id={style}>{title}</div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="contextmenu" key={i} onClick={(e) => handleSubmit(e, id)}>
+                    <div id="contextmenu-text">{title}</div>
+                </div>
             )
         }
     })

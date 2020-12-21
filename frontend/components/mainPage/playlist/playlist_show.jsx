@@ -1,5 +1,5 @@
 import React from 'react'
-import Track from '../search/track'
+import Track from '../track/track'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
