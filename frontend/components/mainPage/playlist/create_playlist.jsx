@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../../actions/modal_actions';
+import { closeModal } from '../../../actions/modal_actions';
 import { createPlaylist } from '../../../actions/playlist_actions'
 
 class CreatePlaylist extends React.Component {
@@ -9,7 +9,6 @@ class CreatePlaylist extends React.Component {
         this.state = {
             title: '',
             user_id: this.props.curretUserId,
-            // photoUrl: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -30,11 +29,8 @@ class CreatePlaylist extends React.Component {
 
         return (
             <div className="create-playlist">
-
                 <button className="close" onClick={this.props.closeModal}>x</button>
-
                 <h1 className="create-playlist-header">Create new playlist</h1>
-
                 <form className="create-playlist-form">
                     <div className="create-playlist-input">
                         <div className="lock">

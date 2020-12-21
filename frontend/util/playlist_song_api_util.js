@@ -1,5 +1,4 @@
 export const createPlaylistsong = playlistsong => {
-    
     return $.ajax({
         method: 'post',
         url: "api/playlistsongs",
@@ -9,7 +8,6 @@ export const createPlaylistsong = playlistsong => {
 
 
 export const deletePlaylistsong = id => {
-    
     return $.ajax({
         method: 'delete',
         url: `api/playlistsongs/${id}`,

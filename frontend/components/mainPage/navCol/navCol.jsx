@@ -11,11 +11,7 @@ const mapDispatchToProps = dispatch => ({
 
 class NavCol extends React.Component {
 
-
     render () {
-        // let userplaylist = this.props.playlists.map(playlist => {
-        //     return <playlist></playlist>
-        // })
         return (
             <div className="nav">
                 <h1 className="nav-header">Spoofify</h1>

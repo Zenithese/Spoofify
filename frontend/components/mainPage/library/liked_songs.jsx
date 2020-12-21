@@ -32,7 +32,6 @@ const mapDispatchToProps = dispatch => {
         songPlayback: (bool) => dispatch(songPlayback(bool)),
         receiveSongForPlaylist: (songId) => dispatch(receiveSongForPlaylist(songId)),
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
-        // createLike: (like) => dispatch(createLike(like)),
         deleteLike: (id) => dispatch(deleteLike(id)),
     }
 }
@@ -40,7 +39,6 @@ const mapDispatchToProps = dispatch => {
 class LikedSongs extends React.Component {
     constructor(props){
         super(props)
-
         this.state = {
             playing: false,
         }

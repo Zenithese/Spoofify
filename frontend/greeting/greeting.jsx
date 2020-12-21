@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PersonalGreeting2 from '../components/personalGreeting/personalGreeting2'
 
-
-
-
 const Greeting = ({ currentUser, logout }) => {
-    
     const sessionLinks = () => (
         <div className="totality">
            <div className="navbar">
@@ -27,6 +23,5 @@ const Greeting = ({ currentUser, logout }) => {
 
     return currentUser ? <PersonalGreeting2 currentUser={currentUser} logout={logout} /> : sessionLinks();
 };
-
 
 export default Greeting;

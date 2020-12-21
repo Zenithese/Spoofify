@@ -7,7 +7,6 @@ import { fetchSongs } from './actions/song_actions'
 import { createPlaylistsong } from './util/playlist_song_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
-
     let store;
     if (window.currentUser) {
         const preloadedState = {

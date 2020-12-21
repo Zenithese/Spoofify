@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = ({ session, entities: { users } }) => {
-
     return {
         currentUser: users[session.id]
     };
@@ -21,8 +19,6 @@ class PersonalGreeting extends React.Component {
         this.state = {
             visible: false,
         }
-
-       
 
         this.handleClick = this.handleClick.bind(this);
         this.falsifyVisible = this.falsifyVisible.bind(this);
@@ -44,7 +40,6 @@ class PersonalGreeting extends React.Component {
     }
 
     render() {
-
         const dropDown = this.state.visible ? (
             <ul  className="dropdown"  >
                 <li className="dropdown-content">
@@ -64,7 +59,5 @@ class PersonalGreeting extends React.Component {
         )
     }
 }
-
-// export default PersonalGreeting;
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalGreeting);

@@ -12,14 +12,12 @@ class Library extends React.Component {
     }
 
     componentDidMount() {
-
         this.props.fetchPlaylists();
     }
 
     
 
     render() {
-
         return (
             <div className="main">
                 <div className="main-container">
@@ -35,7 +33,6 @@ class Library extends React.Component {
                     </Switch>
                     <Redirect from="/library" to="/library/LikedSongs" />
                 </div>
-
             </div>
         )
     }

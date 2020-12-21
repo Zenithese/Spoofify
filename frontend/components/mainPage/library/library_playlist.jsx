@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
-
     return {
         currentUser: state.entities.users[state.session.id],
         playlists: Object.values(state.entities.playlists),
@@ -11,9 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 class LibraryPlaylist extends React.Component {
-
     render() {
-
         let playlists = this.props.playlists.map((playlist, i) => {
             return (
                 <Link to={`/${playlist.id}`} className="main-playlist" key={i}>

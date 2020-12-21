@@ -1,5 +1,3 @@
-
-
 export const fetchResults = (search) => {
     return $.ajax({
         method: 'GET',

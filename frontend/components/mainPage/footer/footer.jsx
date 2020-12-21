@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { } from 'react-router-dom';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons';
 
@@ -95,7 +94,6 @@ class Footer extends React.Component {
             this.audio();
             this.setSong();
             this.verify();
-
         }
     }
 

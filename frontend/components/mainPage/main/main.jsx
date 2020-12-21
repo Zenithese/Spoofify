@@ -6,20 +6,15 @@ import { } from '@fortawesome/free-solid-svg-icons'
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        
     }
 
     componentDidMount() {
-        
         this.props.fetchPlaylists();
     }
 
     render () {
 
         let playlists = this.props.playlists.map((playlist, i) => {
-            // if (!playlist.photoUrl) {
-            //     playlist.photoUrl = "/Users/justin/Desktop/FullStackPro/Spoofify/app/assets/images/Sun.jpg"
-            // }
             return (
                 <Link to={`/${playlist.id}`} className="main-playlist" key={i}>
                     <div className="main-playlist-image">

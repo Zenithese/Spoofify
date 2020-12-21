@@ -29,7 +29,6 @@ const msp = (state, props) => {
 }
 
 const mdp = (dispatch) => {
-    
     return {
         receiveCurrentPlaylist: (playlist) => dispatch(receiveCurrentPlaylist(playlist)),
         recieveCurrentSong: (song) => dispatch(recieveCurrentSong(song)),

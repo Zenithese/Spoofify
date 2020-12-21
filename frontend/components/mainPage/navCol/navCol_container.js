@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import NavCol from './navCol';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
-
     return {
         currentUser: users[session.id]
     };
