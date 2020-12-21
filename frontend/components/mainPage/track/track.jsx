@@ -15,7 +15,7 @@ export default function Track({ album, name, artist, audio, handleSubmit, handle
                 </div>
                 <div className="track-info-right" data-contextable={true} data-songid={songId}>
                     <div className={likeStyle ? "track-like" : "track-unliked"} onClick={handleLike} data-contextable={true} data-songid={songId}>{likeStyle ? "♥" : "♡"}</div>
-                    <div className="track-time" data-contextable={true} data-songid={songId}>5:50</div>
+                    <div className="track-time" data-contextable={true} data-songid={songId}>0:30</div>
                     <div className="track-actions" onClick={handleSubmit} data-contextable={true} data-songid={songId}>...</div>
                 </div>
             </div>

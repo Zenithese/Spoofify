@@ -52,10 +52,10 @@ class Footer extends React.Component {
     }
 
     componentDidUpdate(a = prevProps) {
-        if (this.props.spotifySong !== a.spotifySong) {
-            this.props.recieveCurrentSong(this.props.spotifySong)
-            this.setState({ engage: false })
-        }
+        // if (this.props.spotifySong !== a.spotifySong) {
+        //     this.props.recieveCurrentSong(this.props.spotifySong)
+        //     this.setState({ engage: false })
+        // }
         if (this.state.spotifyLike) {
             this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.props.spotifySong.id })
             this.setState({ like: "likedSong" })

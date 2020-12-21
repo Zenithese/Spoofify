@@ -24,7 +24,7 @@ export default function Search(props) {
     }, [props.spotifySong])
 
     const handleSubmit = (song, rightClicked) => {
-        props.createSong(song)
+        props.createSpotifySong(song)
         if (!rightClicked) props.openModal('addSong');
     }
 

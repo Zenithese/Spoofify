@@ -2,6 +2,7 @@ import * as APIUtil from '../util/song_api_util';
 
 export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS"
 export const RECEIVE_SONG = "RECEIVE_SONG"
+export const RECEIVE_SPOTIFY_SONG = "RECEIVE_SPOTIFY_SONG"
 export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG"
 export const CLEAR_CURRENT_SONG = "CLEAR_CURRENT_SONG"
 export const SONG_PLAYBACK = "SONG_PLAYBACK"
@@ -17,6 +18,13 @@ const receiveAllSongs = (songs) => {
 const receiveSong = ({song}) => {
     return {
         type: RECEIVE_SONG,
+        song,
+    }
+}
+
+const receiveSpotifySong = ({song}) => {
+    return {
+        type: RECEIVE_SPOTIFY_SONG,
         song,
     }
 }
@@ -58,4 +66,8 @@ export const fetchSong = (song) => dispatch => {
 
 export const createSong = (song) => dispatch => {
     return APIUtil.createSong(song).then(song => dispatch(receiveSong(song)))
+}
+
+export const createSpotifySong = (song) => dispatch => {
+    return APIUtil.createSong(song).then(song => dispatch(receiveSpotifySong(song)))
 }

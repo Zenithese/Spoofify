@@ -10,6 +10,7 @@ const SongsReducer = (state = [], action) => {
         case RECEIVE_ALL_SONGS: 
             return action.songs
         case RECEIVE_SONG:
+            debugger
             return merge([], state, {[action.song.id]: action.song})
         default:
             return state

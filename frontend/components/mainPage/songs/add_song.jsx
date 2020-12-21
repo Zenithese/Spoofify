@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchPlaylists } from '../../../actions/playlist_actions';
 import { createPlaylistsong } from '../../../actions/playlist_song_actions'
-import { openModal, closeModal } from '../../../actions/modal_actions';
+import { closeModal } from '../../../actions/modal_actions';
 
 class AddSong extends React.Component {
     constructor(props) {

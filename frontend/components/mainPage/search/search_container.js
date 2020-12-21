@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { } from '../../../actions/playlist_actions';
 import { withRouter } from 'react-router-dom'
 import { fetchPlaylists } from '../../../actions/playlist_actions'
 import { clearSearches, fetchResults } from '../../../actions/search_actions'
-import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSong } from '../../../actions/song_actions'
+import { recieveCurrentSong, songPlayback, receiveSongForPlaylist, createSpotifySong } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
 import { createLike, deleteLike, fetchLikes } from '../../../actions/like_actions'
@@ -31,7 +30,7 @@ const mapDispatchToProps = dispatch => {
         clearSearches: () => dispatch(clearSearches()),
         fetchResults: () => dispatch(fetchResults()),
         openModal: (modal) => dispatch(openModal(modal)),
-        createSong: (song) => dispatch(createSong(song)),
+        createSpotifySong: (song) => dispatch(createSpotifySong(song)),
         createLike: (id) => dispatch(createLike(id)),
         deleteLike: (id) => dispatch(deleteLike(id)),
         fetchLikes: () => dispatch(fetchLikes()),
