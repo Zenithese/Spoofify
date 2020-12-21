@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Track from '../track/track';
-import ContextRoot from '../context_menu/context_root'
 import { auth, search } from '../../../util/spotify_api_util';
 
 export default function Search(props) {
@@ -24,9 +23,9 @@ export default function Search(props) {
         }
     }, [props.spotifySong])
 
-    const handleSubmit = (song) => {
+    const handleSubmit = (song, rightClicked) => {
         props.createSong(song)
-        props.openModal('addSong');
+        if (!rightClicked) props.openModal('addSong');
     }
 
     const handleLike = (song) => {
@@ -76,6 +75,7 @@ export default function Search(props) {
             }
             return (
                 <Track
+                    onContextMenu={() => handleSubmit(song, true)}
                     audio={(e) => audio(e, song)}
                     handleSubmit={() => handleSubmit(song)}
                     track_url={song.track_url}
@@ -85,7 +85,7 @@ export default function Search(props) {
                     handleLike={() => handleLike(song)}
                     likeStyle={handleLikeStyle(song.id)}
                     key={i}
-                    data={"DATA"}
+                    songId={song.id}
                 />
             )
         }) : null

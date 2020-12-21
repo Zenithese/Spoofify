@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import ContextMenu from '../context_menu/context_menu';
+import React from 'react';
 
-export default function Track({ album, name, artist, audio, handleSubmit, handleLike, likeStyle, songId }) {
+export default function Track({ album, name, artist, audio, handleSubmit, handleLike, likeStyle, songId, onContextMenu }) {
 
     return (
-        <div className="track" onDoubleClick={audio} data-contextable={true} data-songid={songId}>
+        <div className="track" onContextMenu={onContextMenu} onDoubleClick={audio} data-contextable={true} data-songid={songId}>
             <div className="track-img-container" data-contextable={true} data-songid={songId}>
                 <img className="track-img" src={album} data-contextable={true} data-songid={songId}></img>
                 <div className="track-status" data-contextable={true} data-songid={songId}>▶</div>

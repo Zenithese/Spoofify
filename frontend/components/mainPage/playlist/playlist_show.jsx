@@ -93,6 +93,7 @@ class PlaylistShow extends React.Component {
                     handleLike={() => this.handleLike(track.id)}
                     likeStyle={this.handleLikeStyle(track.id)}
                     key={i}
+                    songId={track.id}
                 />
             )
         })

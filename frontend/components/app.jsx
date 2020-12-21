@@ -14,9 +14,15 @@ import PlaylistShowContainer from './mainPage/playlist/playlist_show_container';
 import LibraryContainer from './mainPage/library/library_container';
 import ContextRoot from './mainPage/context_menu/context_root';
 import {useState, useEffect} from 'react'
+import { connect } from 'react-redux';
 
+const mapStateToProps = (state) => {
+    return {
+        spotifySongId: state.ui.spotifySong.id,
+    };
+};
 
-const App = () => {
+const App = ({ spotifySongId }) => {
 
     const [top, setTop] = useState("0px");
     const [left, setLeft] = useState("0px");
@@ -28,6 +34,10 @@ const App = () => {
     useEffect(() => {
         setParentClassName("new-location")
     }, [parentClassName])
+
+    useEffect(() => {
+        setSongId(spotifySongId)
+    }, [spotifySongId])
 
     const handleClick = () => {
         setDisplay("none")
@@ -75,4 +85,4 @@ const App = () => {
     )
 };
 
-export default App;
+export default connect(mapStateToProps, null)(App);
