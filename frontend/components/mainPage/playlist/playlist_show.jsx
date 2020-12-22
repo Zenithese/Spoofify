@@ -13,6 +13,10 @@ class PlaylistShow extends React.Component {
         this.props.fetchLikes();
     }
 
+    handleSubmit(song) {
+
+    }
+
     handleClick(ids) {
         this.props.deletePlaylistsong(ids)
     }

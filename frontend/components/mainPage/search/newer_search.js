@@ -23,9 +23,8 @@ export default function Search(props) {
         props.fetchSongs();
     }, [props.spotifySong])
 
-    const handleSubmit = (song, rightClicked) => {
+    const handleSubmit = (song) => {
         props.createSpotifySong(song)
-        if (!rightClicked) props.openModal('addSong');
     }
 
     const handleLike = (song) => {
@@ -61,7 +60,7 @@ export default function Search(props) {
                 title: track.name,
                 artist_name: track.artists[0].name,
                 track_url: track.preview_url,
-                kind: "spotify_sample"
+                kind: "spotify_sample",
             }
             return (
                 <Track

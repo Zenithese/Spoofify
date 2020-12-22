@@ -41,9 +41,8 @@ class LikedSongs extends React.Component {
         this.props.fetchLikes();
     }
 
-    handleSubmit(songId) {
-        this.props.receiveSongForPlaylist(songId)
-        this.props.openModal('addSong');
+    handleSubmit(song) {
+        
     }
 
     unlike(id) {

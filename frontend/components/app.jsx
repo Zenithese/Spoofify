@@ -1,3 +1,4 @@
+import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
@@ -6,14 +7,13 @@ import FooterContainer from './mainPage/footer/footer_container';
 import MainContainer from './mainPage/main/main_container';
 import SearchContainer from './mainPage/search/search_container';
 import Modal from './mainPage/modal/modal';
-import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import { Route, Switch } from 'react-router-dom';
 import PersonalGreeting from './personalGreeting/personalGreeting';
 import PlaylistShowContainer from './mainPage/playlist/playlist_show_container';
 import LibraryContainer from './mainPage/library/library_container';
 import ContextRoot from './mainPage/context_menu/context_root';
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -30,6 +30,7 @@ const App = ({ spotifySongId }) => {
     const [parentClassName, setParentClassName] = useState("new-location");
     const [display, setDisplay] = useState("none");
     const [songId, setSongId] = useState(undefined);
+    const [newSpotifySong, setNewSpotifySong] = useState([false, null]);
 
     useEffect(() => {
         setParentClassName("new-location")
@@ -37,9 +38,23 @@ const App = ({ spotifySongId }) => {
 
     useEffect(() => {
         setSongId(spotifySongId)
+        if (newSpotifySong[0]) {
+            newSpotifySong[1].target.dataset.songid = spotifySongId
+            rightClick(newSpotifySong[1])
+            setNewSpotifySong([false, null])
+        }
     }, [spotifySongId])
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        if (e.target.className === "track-actions") {
+            if (e.target.dataset.songid) {
+                rightClick(e)
+                return
+            }
+            e.persist()
+            setNewSpotifySong([true, e])
+            return
+        }
         setDisplay("none")
     }    
 
@@ -62,7 +77,7 @@ const App = ({ spotifySongId }) => {
     }
 
     return (
-        <div id="app" onClick={() => handleClick()} onContextMenu={(e) => rightClick(e)}>
+        <div id="app" onClick={(e) => handleClick(e)} onContextMenu={(e) => rightClick(e)}>
             <Modal />
             
             <Switch>

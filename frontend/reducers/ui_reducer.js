@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 import spotifySong from './spotify_song_reducer'
 import modal from './modal_reducer';
 import currentSONG from './current_song_reducer'
@@ -13,5 +12,5 @@ export default combineReducers({
     currentPlaylist,
     addSong,
     playing,
-    spotifySong
+    spotifySong,
 });
