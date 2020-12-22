@@ -15,8 +15,6 @@ class Library extends React.Component {
         this.props.fetchPlaylists();
     }
 
-    
-
     render() {
         return (
             <div className="main" id="scroll-container">

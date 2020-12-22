@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { fetchLikes, createLike, deleteLike } from '../../../actions/like_actions'
-import { recieveCurrentSong, songPlayback, receiveSongForPlaylist } from '../../../actions/song_actions'
+import { fetchLikes, deleteLike } from '../../../actions/like_actions'
+import { recieveCurrentSong, receiveSongForPlaylist } from '../../../actions/song_actions'
 import { receiveCurrentPlaylist } from '../../../actions/playlist_actions'
 import { openModal } from '../../../actions/modal_actions';
 import Track from '../track/track_container';
