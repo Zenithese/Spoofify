@@ -27,7 +27,7 @@ class Main extends React.Component {
 
 
         return (
-            <div className="main" >
+            <div className="main">
                 <div className="main-container">
                     <div className="main-nav">
                         <ul className="main-nav-content">
