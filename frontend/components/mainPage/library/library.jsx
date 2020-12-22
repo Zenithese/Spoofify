@@ -19,7 +19,7 @@ class Library extends React.Component {
 
     render() {
         return (
-            <div className="main">
+            <div className="main" id="scroll-container">
                 <div className="main-container">
                     <div className="main-nav">
                         <ul className="main-nav-content">

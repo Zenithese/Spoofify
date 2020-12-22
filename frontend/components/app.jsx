@@ -13,7 +13,7 @@ import PersonalGreeting from './personalGreeting/personalGreeting';
 import PlaylistShowContainer from './mainPage/playlist/playlist_show_container';
 import LibraryContainer from './mainPage/library/library_container';
 import ContextRoot from './mainPage/context_menu/context_root';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -29,7 +29,7 @@ const App = ({ spotifySongId }) => {
     const [directionReveal, setDirectionReveal] = useState("right-reveal");
     const [parentClassName, setParentClassName] = useState("new-location");
     const [display, setDisplay] = useState("none");
-    const [songId, setSongId] = useState(undefined)
+    const [songId, setSongId] = useState(undefined);
 
     useEffect(() => {
         setParentClassName("new-location")
@@ -49,13 +49,14 @@ const App = ({ spotifySongId }) => {
         setSongId(e.target.dataset.songid)
         setDisplay("block")
         setParentClassName("contextmenu")
-        if (e.clientX > window.innerWidth / 2) {
-            setDirectionReveal("left-reveal")
-            setTop(e.pageY + "px")
-            setLeft(e.clientX + 163 + "px")
+        const scrollPx = document.getElementById("scroll-container").getBoundingClientRect().top
+        if (e.clientX > (window.innerWidth / 4) * 3) {
+            e.clientY > (window.innerHeight / 4) * 3 ? setDirectionReveal("left-reveal bottom") : setDirectionReveal("left-reveal")
+            setTop(e.clientY - scrollPx + "px")
+            setLeft(e.clientX + 160 + "px")
         } else {
-            setDirectionReveal("right-reveal")
-            setTop(e.pageY + "px")
+            e.clientY > (window.innerHeight / 4) * 3 ? setDirectionReveal("right-reveal bottom") : setDirectionReveal("right-reveal")
+            setTop(e.clientY - scrollPx + "px")
             setLeft(e.clientX + 5 + "px")
         }
     }

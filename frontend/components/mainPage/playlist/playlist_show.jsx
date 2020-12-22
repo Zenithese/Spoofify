@@ -86,7 +86,7 @@ class PlaylistShow extends React.Component {
         })
         
         return (
-            <div className="playlist-content">
+            <div className="playlist-content" id="scroll-container">
                 <div className="left-right">
                     <div className="left">
                         <div className="left-content">

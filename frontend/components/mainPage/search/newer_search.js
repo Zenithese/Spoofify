@@ -81,7 +81,7 @@ export default function Search(props) {
         }) : null
 
     return (
-        <div className="search-container">
+        <div className="search-container" id="scroll-container">
             <section className="search">
                 <div className="search-header">
                     <div className="search-input-box">
